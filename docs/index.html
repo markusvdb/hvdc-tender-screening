@@ -32,7 +32,7 @@
     color: var(--text-primary); background: var(--bg);
     margin: 0; padding: 2rem 1rem; line-height: 1.5;
   }
-  .container { max-width: 860px; margin: 0 auto; }
+  .container { max-width: 880px; margin: 0 auto; }
   h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
   h2 { font-size: 18px; font-weight: 500; margin: 2.5rem 0 4px; }
   h2 .count { font-weight: 400; color: var(--text-secondary); font-size: 14px; margin-left: 8px; }
@@ -40,12 +40,27 @@
   .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 2rem; }
   .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 8px; }
   .last-run { font-size: 12px; color: var(--text-tertiary); }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 2rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
   .stat { background: var(--bg-secondary); border-radius: 8px; padding: 1rem; }
   .stat-label { font-size: 13px; color: var(--text-secondary); }
   .stat-value { font-size: 24px; font-weight: 500; margin-top: 4px; }
   .stat-value.info { color: var(--info-text); }
   .stat-value.warn { color: var(--warn-text); }
+  .filter-row { display: flex; gap: 8px; margin-bottom: 0.75rem; flex-wrap: wrap; align-items: center; }
+  .filter-label { font-size: 12px; color: var(--text-secondary); margin-right: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .fbtn {
+    font-size: 12px; padding: 5px 11px; background: transparent;
+    border: 0.5px solid var(--border); border-radius: 8px;
+    cursor: pointer; color: var(--text-secondary); font-family: inherit;
+  }
+  .fbtn.active { background: var(--info-bg); color: var(--info-text); border-color: var(--info-text); }
+  .fbtn.active-stage { background: var(--success-bg); color: var(--success-text); border-color: var(--success-text); }
+  .fbtn:hover:not(.active):not(.active-stage) { background: var(--bg-secondary); }
+  select {
+    font-size: 12px; padding: 5px 8px; border: 0.5px solid var(--border);
+    border-radius: 8px; background: transparent; color: var(--text-primary);
+    font-family: inherit;
+  }
   .tender {
     background: var(--bg); border: 0.5px solid var(--border);
     border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px;
@@ -62,6 +77,8 @@
   .b-intel { background: var(--gray-bg); color: var(--gray-text); }
   .b-corr { background: var(--warn-bg); color: var(--warn-text); }
   .b-award { background: var(--success-bg); color: var(--success-text); }
+  .b-pipeline { background: var(--purple-bg); color: var(--purple-text); }
+  .b-active { background: var(--success-bg); color: var(--success-text); }
   .b-fit-yes { background: var(--success-bg); color: var(--success-text); }
   .b-fit-partial { background: var(--warn-bg); color: var(--warn-text); }
   .tender-meta {
@@ -83,8 +100,7 @@
   .kw-service { background: var(--info-bg); color: var(--info-text); }
   .empty {
     text-align: center; padding: 2rem 1rem; color: var(--text-tertiary);
-    border: 0.5px dashed var(--border); border-radius: 12px;
-    font-size: 13px;
+    border: 0.5px dashed var(--border); border-radius: 12px; font-size: 13px;
   }
   footer {
     margin-top: 3rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border);
@@ -98,9 +114,9 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">Updated Thu 23 Apr 2026 · FTS + TED · 63 notices screened · 59 rejected at HVDC gate</p>
+      <p class="subtitle">Updated Thu 23 Apr 2026 · 819 notices screened · 814 rejected at HVDC gate</p>
     </div>
-    <div class="last-run">Last run: Thu 23 Apr 2026, 14:43 UTC</div>
+    <div class="last-run">Last run: Thu 23 Apr 2026, 15:18 UTC</div>
   </div>
 
   <div class="stats">
@@ -110,39 +126,100 @@
     </div>
     <div class="stat">
       <div class="stat-label">Market intel</div>
-      <div class="stat-value">4</div>
+      <div class="stat-value">5</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Active tenders</div>
+      <div class="stat-value">1</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Pipeline</div>
+      <div class="stat-value">0</div>
     </div>
     <div class="stat">
       <div class="stat-label">Corrigenda</div>
       <div class="stat-value warn">0</div>
     </div>
-    <div class="stat">
-      <div class="stat-label">Rejected at gate</div>
-      <div class="stat-value">59</div>
-    </div>
   </div>
 
-  <h2>1. Bid candidates<span class="count">0</span></h2>
-  <p class="section-desc">HVDC scope + RTEi-relevant service (owner's engineer, design review, feasibility, studies, consulting).</p>
+  <div class="filter-row">
+    <span class="filter-label">Stage:</span>
+    <button class="sbtn" data-stage="all">All (5)</button>
+    <button class="sbtn active-stage" data-stage="active">Active tenders (1)</button>
+    <button class="sbtn" data-stage="pipeline">Pipeline (0)</button>
+    <button class="sbtn" data-stage="corrigendum">Corrigenda (0)</button>
+    <button class="sbtn" data-stage="award">Awards (0)</button>
+  </div>
 
-  
-    <div class="empty">No bid candidates in this run. Check section 2 below for HVDC market intelligence.</div>
-  
+  <div class="filter-row">
+    <span class="filter-label">Scope:</span>
+    <button class="fbtn active" data-filter="all">All</button>
+    <button class="fbtn" data-filter="owners_engineer">Owner's engineer</button>
+    <button class="fbtn" data-filter="feasibility">Feasibility / FEED</button>
+    <button class="fbtn" data-filter="studies">Studies / EMT / grid</button>
+    <button class="fbtn" data-filter="design_review">Design review</button>
+    <button class="fbtn" data-filter="converter">Converter (intel)</button>
+    <span style="flex: 1;"></span>
+    <select id="source">
+      <option value="all">All sources</option>
+      <option value="FTS">FTS (UK)</option>
+      <option value="TED">TED (EU)</option>
+      <option value="WB">World Bank</option>
+      <option value="Gmail">Portal alerts</option>
+    </select>
+  </div>
 
-  <h2>2. HVDC market intelligence<span class="count">4</span></h2>
-  <p class="section-desc">Other HVDC tenders — typically OEM/EPC/cable supply/platform fabrication. Useful for tracking the market; not RTEi bid targets.</p>
+  <h2>1. Bid candidates<span class="count" id="bid-count-display">0</span></h2>
+  <p class="section-desc">HVDC scope + RTEi-relevant service. Default view: active tenders.</p>
 
-  
+  <div id="bid-section">
     
-    <div class="tender">
+  </div>
+  <div id="bid-empty" class="empty" style="display:none;">No bid candidates matching current filters.</div>
+
+  <h2>2. HVDC market intelligence<span class="count" id="intel-count-display">5</span></h2>
+  <p class="section-desc">Other HVDC tenders — OEM/EPC/cable supply. Useful for tracking the market; not RTEi bid targets.</p>
+
+  <div id="intel-section">
+    
+    <div class="tender"
+         data-cats="named_project"
+         data-source="TED"
+         data-stage="other">
+      <div class="tender-head">
+        <div style="flex: 1; min-width: 0;">
+          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/269965-2026" target="_blank" rel="noopener">Germany – Construction work for communication lines – Horizontal Directional Drilling (HDD-Verfahren) - LanWin3</a></p>
+          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · cn-standard · DEU</p>
+        </div>
+        <div class="badges">
+          <span class="badge b-other">Other</span>
+          <span class="badge b-intel">Market intel</span>
+        </div>
+      </div>
+      <div class="tender-meta">
+        
+        
+        <span><strong>Published:</strong> 21 Apr 2026</span>
+      </div>
+      
+      <p class="tender-summary">Construction of cable protection conduit system for LanWin3 HVDC project in Schleswig-Holstein, Germany. Scope includes ~16 km cable trench between Büsum landing point and Heide station, with three independent horizontal directional drilling (HDD) boreholes to cross flood defences and protected seagrass meadows. TenneT executing on behalf of 50Hertz under joint cooperation agreement.</p>
+      
+      <div class="tender-kw">
+        <span class="kw kw-hvdc">lanwin2</span><span class="kw kw-hvdc">lanwin3</span>
+      </div>
+    </div>
+    
+    <div class="tender"
+         data-cats=""
+         data-source="TED"
+         data-stage="other">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
           <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278909-2026" target="_blank" rel="noopener">France – Repair and maintenance services – Curative maintenance of submarine cable links – Marine operations</a></p>
           <p class="tender-buyer">[&#34;RTE Réseau de Transport d&#39;Electricité&#34;] · TED · pin-only · FRA</p>
         </div>
         <div class="badges">
-          
-          
+          <span class="badge b-other">Other</span>
           <span class="badge b-intel">Market intel</span>
         </div>
       </div>
@@ -152,22 +229,24 @@
         <span><strong>Published:</strong> 23 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">RTE, the French electricity transmission system operator, is responsible for developing, building and operating high-voltage submarine cable links for interconnection with neighboring countries, or for connecting offshore wind farms to the terrestrial transmission grid. RTE curre…</p>
+      <p class="tender-summary">RTE seeks marine operations services for curative maintenance of submarine cable links (HVAC and HVDC) across French waters, including fault location, cable deburial, cutting, repair preparation, and reprotection. This is a market-sounding periodic indicative notice to identify capable marine operators and explore cost-effective repair strategies.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span>
       </div>
     </div>
     
-    <div class="tender">
+    <div class="tender"
+         data-cats=""
+         data-source="TED"
+         data-stage="other">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
           <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/273777-2026" target="_blank" rel="noopener">Germany – Agricultural, forestry, horticultural, aquacultural and apicultural services – A060 SuedOstLink: Unterhaltungspflege der CEF-Maßnahmen</a></p>
           <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · cn-standard · DEU</p>
         </div>
         <div class="badges">
-          
-          
+          <span class="badge b-other">Other</span>
           <span class="badge b-intel">Market intel</span>
         </div>
       </div>
@@ -184,15 +263,17 @@
       </div>
     </div>
     
-    <div class="tender">
+    <div class="tender"
+         data-cats=""
+         data-source="TED"
+         data-stage="other">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
           <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274721-2026" target="_blank" rel="noopener">Germany – Excavation work at archaeological sites – A060 SuedOstLink: Tiefbauarbeiten für bauvorgreifende archäologische Maßnahmen</a></p>
           <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · can-modif · DEU</p>
         </div>
         <div class="badges">
-          
-          
+          <span class="badge b-other">Other</span>
           <span class="badge b-intel">Market intel</span>
         </div>
       </div>
@@ -209,36 +290,82 @@
       </div>
     </div>
     
-    <div class="tender">
+    <div class="tender"
+         data-cats=""
+         data-source="WB"
+         data-stage="active">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/269965-2026" target="_blank" rel="noopener">Germany – Construction work for communication lines – Horizontal Directional Drilling (HDD-Verfahren) - LanWin3</a></p>
-          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · cn-standard · DEU</p>
+          <p class="tender-title"><a href="https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00429938" target="_blank" rel="noopener"></a></p>
+          <p class="tender-buyer">World Bank — Rural Livelihoods Productivity and Resilience Project · WB · Invitation for Bids</p>
         </div>
         <div class="badges">
-          
-          
+          <span class="badge b-active">Active</span>
           <span class="badge b-intel">Market intel</span>
         </div>
       </div>
       <div class="tender-meta">
         
+        <span><strong>Deadline:</strong> 08 May 2026</span>
         
-        <span><strong>Published:</strong> 21 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">Construction of cable protection conduit system for LanWin3 HVDC project in Schleswig-Holstein, Germany. Scope includes ~16 km cable trench between Büsum landing point and Heide station, with three independent horizontal directional drilling (HDD) boreholes to cross flood defences and protected seagrass meadows. TenneT executing on behalf of 50Hertz under joint cooperation agreement.</p>
+      <p class="tender-summary">World Bank-financed rehabilitation works for two regional agriculture office buildings in Madagascar (Alaotra Mangoro and Sofia) to serve as project offices for the Rural Livelihoods Productivity and Resilience Project (Riz Plus). Two separate lots, civil works construction/rehabilitation scope.</p>
       
       <div class="tender-kw">
-        <span class="kw kw-hvdc">lanwin</span>
+        <span class="kw kw-hvdc">sofia</span>
       </div>
     </div>
     
-  
+  </div>
+  <div id="intel-empty" class="empty" style="display:none;">No market intel matching current filters.</div>
 
   <footer>
-    <p>Generated 2026-04-23 14:43 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: <a href="https://www.find-tender.service.gov.uk/" target="_blank">Find a Tender</a> (OGL v3.0), <a href="https://ted.europa.eu/" target="_blank">TED</a> (© EU)</p>
+    <p>Generated 2026-04-23 15:18 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
   </footer>
 </div>
+
+<script>
+  function applyFilters() {
+    const scope = document.querySelector(".fbtn.active").dataset.filter;
+    const stage = document.querySelector(".sbtn.active-stage").dataset.stage;
+    const src = document.getElementById("source").value;
+
+    ["bid-section", "intel-section"].forEach(sectionId => {
+      const tenders = document.querySelectorAll(`#${sectionId} .tender`);
+      let visible = 0;
+      tenders.forEach(t => {
+        const cats = (t.dataset.cats || "").split(",");
+        const tStage = t.dataset.stage || "";
+        const tSrc = t.dataset.source || "";
+        const matchScope = scope === "all" || cats.includes(scope);
+        const matchStage = stage === "all" || tStage === stage;
+        const matchSrc = src === "all" || tSrc === src;
+        const show = matchScope && matchStage && matchSrc;
+        t.style.display = show ? "" : "none";
+        if (show) visible++;
+      });
+      const emptyEl = document.getElementById(sectionId.replace("-section", "-empty"));
+      if (emptyEl) emptyEl.style.display = visible === 0 ? "" : "none";
+      const countEl = document.getElementById(sectionId.replace("-section", "-count-display"));
+      if (countEl) countEl.textContent = visible;
+    });
+  }
+
+  document.querySelectorAll(".fbtn").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".fbtn").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    applyFilters();
+  }));
+
+  document.querySelectorAll(".sbtn").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".sbtn").forEach(x => x.classList.remove("active-stage"));
+    b.classList.add("active-stage");
+    applyFilters();
+  }));
+
+  document.getElementById("source").addEventListener("change", applyFilters);
+  applyFilters();
+</script>
 </body>
 </html>
