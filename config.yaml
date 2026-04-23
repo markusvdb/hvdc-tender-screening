@@ -1,80 +1,31 @@
-# HVDC tender screening configuration
-# Edit this file to tune what the tool catches. Commit in the browser
-# and the next run picks up your changes automatically.
-
+# HVDC tender screening — v2 configuration
 # ============================================================
-# SCORING
+# GATE RULE
+# A tender is only considered if its title or description contains
+# at least one of these HVDC-specific terms. Everything else is
+# rejected regardless of score. No exceptions.
 # ============================================================
-# Each notice is scored: (strong_hits * 1.0) + (contextual_hits * 0.5)
-# Boosted by +2.0 if a watchlist_project name matches.
-scoring:
-  min_score_high: 1.5       # Highlighted as "high relevance" in dashboard & email
-  min_score_possible: 0.5   # Included in a secondary "possibly relevant" list
-  archive_days: 90          # How long to keep notices in the rolling archive
-
-# ============================================================
-# KEYWORDS — matched case-insensitively in title + description
-# ============================================================
-keywords_strong:
-  # Core HVDC terms
+hvdc_gate_terms:
   - HVDC
   - high voltage direct current
   - high-voltage direct current
-  # Converter technology
   - VSC converter
-  - LCC converter
   - voltage source converter
+  - LCC converter
   - line commutated converter
+  - line-commutated converter
   - MMC converter
   - modular multilevel converter
   - converter station
   - converter platform
   - valve hall
-  # DC voltage levels commonly seen
+  # HVDC voltage levels — unambiguous when they appear
   - "±320 kV"
   - "±525 kV"
   - "±640 kV"
   - "320 kV DC"
   - "525 kV DC"
-  # Interconnector & transmission project terms
-  - interconnector
-  - bipole
-  - monopole
-  - multi-terminal HVDC
-  - meshed HVDC
-  - hybrid interconnector
-  - offshore hybrid asset
-
-keywords_contextual:
-  # Only count half, since any of these alone could be non-HVDC
-  - converter
-  - DC cable
-  - subsea cable
-  - submarine cable
-  - HVDC cable
-  - offshore transmission
-  - offshore grid
-  - offshore platform
-  - DC breaker
-  - DC circuit breaker
-  - STATCOM
-  - reactive compensation
-  - harmonic filter
-  - EMT study
-  - electromagnetic transient
-  - grid stability study
-  - owner's engineer
-  - owners engineer
-  - technical advisor
-  - feasibility study
-  - pre-FEED
-  - FEED study
-
-# ============================================================
-# WATCHLIST — always surface these, +2.0 score boost
-# ============================================================
-watchlist_projects:
-  # UK
+  # Named HVDC projects (always HVDC by construction)
   - Eastern Green Link
   - EGL1
   - EGL2
@@ -86,7 +37,6 @@ watchlist_projects:
   - Shetland HVDC
   - Western HVDC Link
   - North Sea Link
-  # Continental Europe
   - SuedLink
   - SuedOstLink
   - NordLink
@@ -96,48 +46,92 @@ watchlist_projects:
   - DolWin
   - BorWin
   - HelWin
-  - IJmuiden Ver
-  - Nederwiek
-  - Doordewind
   - Kriegers Flak
   - Kontek
-  # TSOs worth flagging as buyer
+
+# ============================================================
+# CLASSIFICATION
+# A notice that passes the gate is classified as:
+#   - "bid_candidate"  → Section 1: relevant to RTEi's HVDC team
+#   - "market_intel"   → Section 2: HVDC news worth knowing
+# Classification rule:
+#   bid_candidate requires at least one rtei_service_signal.
+#   Otherwise it's market_intel.
+# ============================================================
+rtei_service_signals:
+  - owner's engineer
+  - owners engineer
+  - owner engineer
+  - technical advisor
+  - technical adviser
+  - independent engineer
+  - independent engineering
+  - engineering services
+  - technical assistance
+  - technical support services
+  - design review
+  - specification review
+  - spec writing
+  - specification writing
+  - feasibility study
+  - pre-FEED
+  - "pre FEED"
+  - FEED study
+  - concept study
+  - options study
+  - grid study
+  - grid stability study
+  - system study
+  - EMT study
+  - electromagnetic transient study
+  - harmonic study
+  - insulation coordination study
+  - protection study
+  - consultancy
+  - consulting services
+  - consultant
+
+# ============================================================
+# SCORING (within bid_candidate pool)
+# Bid candidates are ranked by score to prioritise attention.
+# Each gate term match: +1.0
+# Each service signal match: +1.0
+# Watchlist buyer match: +0.5 (buyer relationship signal)
+# ============================================================
+scoring:
+  bid_candidate_min_score: 2.0    # Gate term + service signal = 2.0 minimum
+  archive_days: 90
+
+# ============================================================
+# WATCHLIST BUYERS — boost score when these are the buyer
+# ============================================================
+watchlist_buyers:
   - TenneT
+  - National Grid
   - National Grid Ventures
+  - National Grid Electricity Transmission
   - NESO
+  - National Energy System Operator
+  - SSEN
+  - Scottish Hydro Electric Transmission
   - Energinet
   - 50Hertz
   - Amprion
   - TransnetBW
   - Elia
   - Statnett
+  - RTE
+  - Red Eléctrica
+  - Terna
+  - Fingrid
+  - Svenska kraftnät
 
 # ============================================================
-# CPV CODES — second net; any match adds 0.5 contextual score
-# ============================================================
-# Browse at https://simap.ted.europa.eu/web/simap/cpv
-cpv_codes:
-  - "31170000"   # Transformers
-  - "31321000"   # Electricity power lines
-  - "31321100"   # Overhead power lines
-  - "31321200"   # Low and medium-voltage lines / cables
-  - "31321300"   # High-voltage cables
-  - "45232200"   # Ancillary works for electricity transmission lines
-  - "45231400"   # Construction of electricity power lines
-  - "31682540"   # Substation equipment
-  - "71323100"   # Electrical power systems design services
-  - "71314100"   # Electrical services
-  - "71334000"   # Mechanical and electrical engineering services
-
-# ============================================================
-# API QUERY SCOPE
+# API SCOPE
 # ============================================================
 api:
-  # Find a Tender (UK) — dates used as 'publication-date' window
-  fts_days_lookback: 3        # Catch weekend notices on Monday
-  # TED (EU) — same lookback
+  fts_days_lookback: 3
   ted_days_lookback: 3
-  # TED country filter — comment out to search all
   ted_countries:
     - GBR
     - DEU
@@ -155,5 +149,5 @@ api:
 # LLM SUMMARY
 # ============================================================
 llm:
-  model: claude-haiku-4-5-20251001  # Fast and cheap for per-notice summaries
-  max_summaries_per_run: 30          # Cap cost — high-relevance first
+  model: claude-haiku-4-5-20251001
+  max_summaries_per_run: 25   # Cap cost — bid candidates first, market intel next
