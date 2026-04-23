@@ -5,9 +5,22 @@
 # ============================================================
 
 # ============================================================
-# GATE RULE — notices must mention at least one of these to pass.
+# GATE RULE — notices must pass the gate to appear on the dashboard.
+#
+# The gate has TWO paths:
+#   Path A: notice mentions a HVDC TECHNOLOGY term (always sufficient)
+#   Path B: notice mentions a PROJECT NAME from the watchlist AND a
+#           technology term or voltage level (co-occurrence required)
+#
+# Rationale: project names like "Sofia", "Shetland", "Gotland" are
+# geographic names in their own right, so they cannot stand alone as
+# evidence of HVDC relevance. Requiring co-occurrence with a technology
+# term eliminates false positives (e.g. Madagascar "Sofia region" road
+# projects, Shetland islands ferry services, Gotland regional tenders).
 # ============================================================
-hvdc_gate_terms:
+
+# Path A — HVDC technology terms, any of these alone is enough to pass
+hvdc_technology_terms:
   - HVDC
   - high voltage direct current
   - high-voltage direct current
@@ -21,7 +34,10 @@ hvdc_gate_terms:
   - converter station
   - converter platform
   - valve hall
-  # HVDC voltage levels
+  - DC cable
+  - subsea DC
+  - HVDC interconnector
+  # HVDC voltage levels (these only exist for HVDC transmission)
   - "±320 kV"
   - "±400 kV"
   - "±500 kV"
@@ -34,9 +50,12 @@ hvdc_gate_terms:
   - "500 kV DC"
   - "525 kV DC"
   - "800 kV DC"
-  # Named HVDC projects: all appear to be unambiguously HVDC
-  # Source: RTEi HVDC-VSC Newsletter March 2026, pages 10-30
-  # Maintenance: update this list when new projects appear in the newsletter
+
+# Path B — named HVDC projects from the RTEi HVDC-VSC Newsletter.
+# These match ONLY IF the notice also contains a technology term above.
+# This prevents geographic name collisions (Madagascar "Sofia region",
+# Scottish "Shetland" ferry services, etc.).
+hvdc_project_names:
   # --- UK ---
   - Eastern Green Link
   - EGL1
@@ -319,6 +338,10 @@ hvdc_gate_terms:
   - Murraylink
   - Nordic Link
   - NordicLink
+
+# Legacy key kept for backward-compatibility with older code paths.
+# screen.py now uses hvdc_technology_terms + hvdc_project_names instead.
+hvdc_gate_terms: []
 
 # ============================================================
 # RTEi SERVICE SIGNALS — mark a notice as bid_candidate if matched
