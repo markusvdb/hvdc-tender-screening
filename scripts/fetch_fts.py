@@ -39,8 +39,18 @@ def fetch_fts_notices(days_lookback: int = 3) -> list[dict]:
     page = 0
     while url and page < 50:  # hard safety limit
         log.info("FTS page %d — %s", page, url)
-        resp = _get_with_retry(url, params=params if page == 0 else None)
-        payload = resp.json()
+        try:
+            resp = _get_with_retry(url, params=params if page == 0 else None)
+            payload = resp.json()
+        except (requests.RequestException, ValueError) as e:
+            # Transient server glitch (bad JSON, 5xx, timeout). Keep what we
+            # already have rather than discarding the entire fetch.
+            log.warning(
+                "FTS page %d failed (%s) — continuing with %d releases gathered so far",
+                page, e, len(all_releases),
+            )
+            break
+
         releases = payload.get("releases", [])
         all_releases.extend(releases)
         log.info("  got %d releases (running total %d)", len(releases), len(all_releases))
