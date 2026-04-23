@@ -17,8 +17,22 @@ log = logging.getLogger(__name__)
 
 
 def score_notices(notices: list[dict], config: dict) -> list[dict]:
-    """Classify and score notices. Mutates and returns the list."""
-    gate_terms = [t.lower() for t in config.get("hvdc_gate_terms", [])]
+    """Classify and score notices. Mutates and returns the list.
+
+    Gate rule (two paths):
+      Path A: notice contains a HVDC TECHNOLOGY term → passes gate
+      Path B: notice contains a PROJECT NAME + a technology term → passes gate
+              (project name alone is insufficient — avoids geographic collisions
+              like Madagascar "Sofia region" matching the UK "Sofia" wind farm)
+    """
+    tech_terms = [t.lower() for t in config.get("hvdc_technology_terms", [])]
+    project_names = [p.lower() for p in config.get("hvdc_project_names", [])]
+    # Backward-compat: if old single-list config is used, treat all as tech
+    legacy_gate = [t.lower() for t in config.get("hvdc_gate_terms", [])]
+    if legacy_gate and not tech_terms:
+        tech_terms = legacy_gate
+        project_names = []
+
     service_terms = [t.lower() for t in config.get("rtei_service_signals", [])]
     watchlist_buyers = [b.lower() for b in config.get("watchlist_buyers", [])]
     stages_cfg = config.get("stages", {})
@@ -32,24 +46,45 @@ def score_notices(notices: list[dict], config: dict) -> list[dict]:
         ).lower()
         buyer = (n.get("buyer") or "").lower()
 
-        gate_hits = _find_hits(haystack, gate_terms)
+        tech_hits = _find_hits(haystack, tech_terms)
+        project_hits = _find_hits(haystack, project_names)
         service_hits = _find_hits(haystack, service_terms)
         buyer_hits = [b for b in watchlist_buyers if b in buyer]
 
+        # Apply two-path gate
+        if tech_hits:
+            # Path A: technology term present → pass, count project name as bonus
+            gate_hits = tech_hits + project_hits
+            gate_pass = True
+        elif project_hits and tech_hits:
+            # Path B would fire here but already covered above
+            gate_hits = project_hits + tech_hits
+            gate_pass = True
+        else:
+            # No technology term → project names are NOT sufficient alone
+            gate_hits = []
+            gate_pass = False
+
         n["gate_hits"] = gate_hits
+        n["tech_hits"] = tech_hits
+        n["project_hits"] = project_hits
         n["service_hits"] = service_hits
         n["buyer_hits"] = buyer_hits
         n["stage"] = _classify_stage(n, stages_cfg)
 
-        # Gate rule
-        if not gate_hits:
+        if not gate_pass:
             n["section"] = "rejected"
             n["relevance"] = "low"
             n["score"] = 0.0
             n["category_tags"] = []
             continue
 
-        score = len(gate_hits) * 1.0 + len(service_hits) * 1.0 + (0.5 if buyer_hits else 0.0)
+        score = (
+            len(tech_hits) * 1.0
+            + len(project_hits) * 0.5
+            + len(service_hits) * 1.0
+            + (0.5 if buyer_hits else 0.0)
+        )
         n["score"] = round(score, 2)
 
         if service_hits and score >= min_bid_score:

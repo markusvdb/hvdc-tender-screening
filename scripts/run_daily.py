@@ -46,9 +46,12 @@ def main() -> int:
 
     log.info("Fetching TED (EU)...")
     try:
+        # TED keyword search uses technology terms only — project names need
+        # co-occurrence with technology anyway, so searching for technology
+        # terms captures the superset.
         ted_notices = fetch_ted_notices(
             days_lookback=api_cfg.get("ted_days_lookback", 3),
-            strong_keywords=config.get("hvdc_gate_terms", [])[:15],  # broad net
+            strong_keywords=config.get("hvdc_technology_terms", [])[:15],
             cpv_codes=config.get("cpv_codes", []),
             countries=api_cfg.get("ted_countries", []),
         )
