@@ -32,7 +32,7 @@
     color: var(--text-primary); background: var(--bg);
     margin: 0; padding: 2rem 1rem; line-height: 1.5;
   }
-  .container { max-width: 860px; margin: 0 auto; }
+  .container { max-width: 880px; margin: 0 auto; }
   h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
   h2 { font-size: 18px; font-weight: 500; margin: 2.5rem 0 4px; }
   h2 .count { font-weight: 400; color: var(--text-secondary); font-size: 14px; margin-left: 8px; }
@@ -40,12 +40,27 @@
   .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 2rem; }
   .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 8px; }
   .last-run { font-size: 12px; color: var(--text-tertiary); }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 2rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
   .stat { background: var(--bg-secondary); border-radius: 8px; padding: 1rem; }
   .stat-label { font-size: 13px; color: var(--text-secondary); }
   .stat-value { font-size: 24px; font-weight: 500; margin-top: 4px; }
   .stat-value.info { color: var(--info-text); }
   .stat-value.warn { color: var(--warn-text); }
+  .filter-row { display: flex; gap: 8px; margin-bottom: 0.75rem; flex-wrap: wrap; align-items: center; }
+  .filter-label { font-size: 12px; color: var(--text-secondary); margin-right: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .fbtn {
+    font-size: 12px; padding: 5px 11px; background: transparent;
+    border: 0.5px solid var(--border); border-radius: 8px;
+    cursor: pointer; color: var(--text-secondary); font-family: inherit;
+  }
+  .fbtn.active { background: var(--info-bg); color: var(--info-text); border-color: var(--info-text); }
+  .fbtn.active-stage { background: var(--success-bg); color: var(--success-text); border-color: var(--success-text); }
+  .fbtn:hover:not(.active):not(.active-stage) { background: var(--bg-secondary); }
+  select {
+    font-size: 12px; padding: 5px 8px; border: 0.5px solid var(--border);
+    border-radius: 8px; background: transparent; color: var(--text-primary);
+    font-family: inherit;
+  }
   .tender {
     background: var(--bg); border: 0.5px solid var(--border);
     border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px;
@@ -62,6 +77,8 @@
   .b-intel { background: var(--gray-bg); color: var(--gray-text); }
   .b-corr { background: var(--warn-bg); color: var(--warn-text); }
   .b-award { background: var(--success-bg); color: var(--success-text); }
+  .b-pipeline { background: var(--purple-bg); color: var(--purple-text); }
+  .b-active { background: var(--success-bg); color: var(--success-text); }
   .b-fit-yes { background: var(--success-bg); color: var(--success-text); }
   .b-fit-partial { background: var(--warn-bg); color: var(--warn-text); }
   .tender-meta {
@@ -83,8 +100,7 @@
   .kw-service { background: var(--info-bg); color: var(--info-text); }
   .empty {
     text-align: center; padding: 2rem 1rem; color: var(--text-tertiary);
-    border: 0.5px dashed var(--border); border-radius: 12px;
-    font-size: 13px;
+    border: 0.5px dashed var(--border); border-radius: 12px; font-size: 13px;
   }
   footer {
     margin-top: 3rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border);
@@ -98,7 +114,7 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">{{ this_week_label }} · FTS + TED · {{ total_screened }} notices screened · {{ rejected_count }} rejected at HVDC gate</p>
+      <p class="subtitle">{{ this_week_label }} · {{ total_screened }} notices screened · {{ rejected_count }} rejected at HVDC gate</p>
     </div>
     <div class="last-run">Last run: {{ last_run_label }}</div>
   </div>
@@ -113,28 +129,62 @@
       <div class="stat-value">{{ intel_count }}</div>
     </div>
     <div class="stat">
+      <div class="stat-label">Active tenders</div>
+      <div class="stat-value">{{ active_count }}</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Pipeline</div>
+      <div class="stat-value">{{ pipeline_count }}</div>
+    </div>
+    <div class="stat">
       <div class="stat-label">Corrigenda</div>
       <div class="stat-value warn">{{ corrigenda_count }}</div>
     </div>
-    <div class="stat">
-      <div class="stat-label">Rejected at gate</div>
-      <div class="stat-value">{{ rejected_count }}</div>
-    </div>
   </div>
 
-  <h2>1. Bid candidates<span class="count">{{ bid_count }}</span></h2>
-  <p class="section-desc">HVDC scope + RTEi-relevant service (owner's engineer, design review, feasibility, studies, consulting).</p>
+  <div class="filter-row">
+    <span class="filter-label">Stage:</span>
+    <button class="sbtn" data-stage="all">All ({{ total_visible }})</button>
+    <button class="sbtn active-stage" data-stage="active">Active tenders ({{ active_count }})</button>
+    <button class="sbtn" data-stage="pipeline">Pipeline ({{ pipeline_count }})</button>
+    <button class="sbtn" data-stage="corrigendum">Corrigenda ({{ corrigenda_count }})</button>
+    <button class="sbtn" data-stage="award">Awards ({{ award_count }})</button>
+  </div>
 
-  {% if bid_candidates %}
+  <div class="filter-row">
+    <span class="filter-label">Scope:</span>
+    <button class="fbtn active" data-filter="all">All</button>
+    <button class="fbtn" data-filter="owners_engineer">Owner's engineer</button>
+    <button class="fbtn" data-filter="feasibility">Feasibility / FEED</button>
+    <button class="fbtn" data-filter="studies">Studies / EMT / grid</button>
+    <button class="fbtn" data-filter="design_review">Design review</button>
+    <button class="fbtn" data-filter="converter">Converter (intel)</button>
+    <span style="flex: 1;"></span>
+    <select id="source">
+      <option value="all">All sources</option>
+      <option value="FTS">FTS (UK)</option>
+      <option value="TED">TED (EU)</option>
+      <option value="WB">World Bank</option>
+      <option value="Gmail">Portal alerts</option>
+    </select>
+  </div>
+
+  <h2>1. Bid candidates<span class="count" id="bid-count-display">{{ bid_count }}</span></h2>
+  <p class="section-desc">HVDC scope + RTEi-relevant service. Default view: active tenders.</p>
+
+  <div id="bid-section">
     {% for t in bid_candidates %}
-    <div class="tender bid">
+    <div class="tender bid"
+         data-cats="{{ t.category_tags|join(',') }}"
+         data-source="{{ t.source }}"
+         data-stage="{{ t.stage }}">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
           <p class="tender-title"><a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title }}</a></p>
           <p class="tender-buyer">{{ t.buyer }} · {{ t.source }} · {{ t.notice_type }}{% if t.country %} · {{ t.country }}{% endif %}</p>
         </div>
         <div class="badges">
-          {% if t.is_corrigendum %}<span class="badge b-corr">Corrigendum</span>{% endif %}
+          <span class="badge b-{{ t.stage }}">{{ t.stage|capitalize }}</span>
           {% if t.summary and t.summary.rtei_bid_fit == 'yes' %}<span class="badge b-fit-yes">Fit: yes</span>
           {% elif t.summary and t.summary.rtei_bid_fit == 'partial' %}<span class="badge b-fit-partial">Fit: partial</span>
           {% endif %}
@@ -160,29 +210,30 @@
       {% endif %}
       {% endif %}
       <div class="tender-kw">
-        {% for kw in t.gate_hits %}<span class="kw kw-hvdc">{{ kw }}</span>{% endfor %}
-        {% for kw in t.service_hits %}<span class="kw kw-service">{{ kw }}</span>{% endfor %}
+        {% for kw in t.gate_hits[:5] %}<span class="kw kw-hvdc">{{ kw }}</span>{% endfor %}
+        {% for kw in t.service_hits[:3] %}<span class="kw kw-service">{{ kw }}</span>{% endfor %}
       </div>
     </div>
     {% endfor %}
-  {% else %}
-    <div class="empty">No bid candidates in this run. Check section 2 below for HVDC market intelligence.</div>
-  {% endif %}
+  </div>
+  <div id="bid-empty" class="empty" style="display:none;">No bid candidates matching current filters.</div>
 
-  <h2>2. HVDC market intelligence<span class="count">{{ intel_count }}</span></h2>
-  <p class="section-desc">Other HVDC tenders — typically OEM/EPC/cable supply/platform fabrication. Useful for tracking the market; not RTEi bid targets.</p>
+  <h2>2. HVDC market intelligence<span class="count" id="intel-count-display">{{ intel_count }}</span></h2>
+  <p class="section-desc">Other HVDC tenders — OEM/EPC/cable supply. Useful for tracking the market; not RTEi bid targets.</p>
 
-  {% if market_intel %}
+  <div id="intel-section">
     {% for t in market_intel %}
-    <div class="tender">
+    <div class="tender"
+         data-cats="{{ t.category_tags|join(',') }}"
+         data-source="{{ t.source }}"
+         data-stage="{{ t.stage }}">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
           <p class="tender-title"><a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title }}</a></p>
           <p class="tender-buyer">{{ t.buyer }} · {{ t.source }} · {{ t.notice_type }}{% if t.country %} · {{ t.country }}{% endif %}</p>
         </div>
         <div class="badges">
-          {% if t.is_corrigendum %}<span class="badge b-corr">Corrigendum</span>{% endif %}
-          {% if t.is_award %}<span class="badge b-award">Award</span>{% endif %}
+          <span class="badge b-{{ t.stage }}">{{ t.stage|capitalize }}</span>
           <span class="badge b-intel">Market intel</span>
         </div>
       </div>
@@ -197,17 +248,59 @@
       <p class="tender-summary">{{ t.description_snippet }}</p>
       {% endif %}
       <div class="tender-kw">
-        {% for kw in t.gate_hits %}<span class="kw kw-hvdc">{{ kw }}</span>{% endfor %}
+        {% for kw in t.gate_hits[:4] %}<span class="kw kw-hvdc">{{ kw }}</span>{% endfor %}
       </div>
     </div>
     {% endfor %}
-  {% else %}
-    <div class="empty">No HVDC market intelligence notices in this run.</div>
-  {% endif %}
+  </div>
+  <div id="intel-empty" class="empty" style="display:none;">No market intel matching current filters.</div>
 
   <footer>
-    <p>Generated {{ generated_at }} · <a href="https://github.com/{{ repo }}" target="_blank">source</a> · Data: <a href="https://www.find-tender.service.gov.uk/" target="_blank">Find a Tender</a> (OGL v3.0), <a href="https://ted.europa.eu/" target="_blank">TED</a> (© EU)</p>
+    <p>Generated {{ generated_at }} · <a href="https://github.com/{{ repo }}" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
   </footer>
 </div>
+
+<script>
+  function applyFilters() {
+    const scope = document.querySelector(".fbtn.active").dataset.filter;
+    const stage = document.querySelector(".sbtn.active-stage").dataset.stage;
+    const src = document.getElementById("source").value;
+
+    ["bid-section", "intel-section"].forEach(sectionId => {
+      const tenders = document.querySelectorAll(`#${sectionId} .tender`);
+      let visible = 0;
+      tenders.forEach(t => {
+        const cats = (t.dataset.cats || "").split(",");
+        const tStage = t.dataset.stage || "";
+        const tSrc = t.dataset.source || "";
+        const matchScope = scope === "all" || cats.includes(scope);
+        const matchStage = stage === "all" || tStage === stage;
+        const matchSrc = src === "all" || tSrc === src;
+        const show = matchScope && matchStage && matchSrc;
+        t.style.display = show ? "" : "none";
+        if (show) visible++;
+      });
+      const emptyEl = document.getElementById(sectionId.replace("-section", "-empty"));
+      if (emptyEl) emptyEl.style.display = visible === 0 ? "" : "none";
+      const countEl = document.getElementById(sectionId.replace("-section", "-count-display"));
+      if (countEl) countEl.textContent = visible;
+    });
+  }
+
+  document.querySelectorAll(".fbtn").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".fbtn").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    applyFilters();
+  }));
+
+  document.querySelectorAll(".sbtn").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".sbtn").forEach(x => x.classList.remove("active-stage"));
+    b.classList.add("active-stage");
+    applyFilters();
+  }));
+
+  document.getElementById("source").addEventListener("change", applyFilters);
+  applyFilters();
+</script>
 </body>
 </html>
