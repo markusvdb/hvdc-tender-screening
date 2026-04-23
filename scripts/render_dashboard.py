@@ -1,4 +1,4 @@
-"""Render the dashboard HTML to docs/index.html — two-section version."""
+"""Render dashboard HTML with two sections + stage filter."""
 from __future__ import annotations
 
 import logging
@@ -28,7 +28,12 @@ def render_dashboard(tenders: list[dict], total_screened: int, repo: str = "") -
     for t in bid_candidates + market_intel:
         _enrich_for_display(t)
 
-    corrigenda_count = sum(1 for t in bid_candidates + market_intel if t.get("is_corrigendum"))
+    # Stage counts (across visible sections)
+    visible = bid_candidates + market_intel
+    stage_counts = {"active": 0, "pipeline": 0, "corrigendum": 0, "award": 0, "other": 0}
+    for t in visible:
+        s = t.get("stage", "other")
+        stage_counts[s] = stage_counts.get(s, 0) + 1
 
     now = datetime.now(timezone.utc)
 
@@ -38,7 +43,11 @@ def render_dashboard(tenders: list[dict], total_screened: int, repo: str = "") -
         bid_count=len(bid_candidates),
         intel_count=len(market_intel),
         rejected_count=len(rejected),
-        corrigenda_count=corrigenda_count,
+        total_visible=len(visible),
+        active_count=stage_counts["active"],
+        pipeline_count=stage_counts["pipeline"],
+        corrigenda_count=stage_counts["corrigendum"],
+        award_count=stage_counts["award"],
         total_screened=total_screened,
         last_run_label=now.strftime("%a %d %b %Y, %H:%M UTC"),
         this_week_label=now.strftime("Updated %a %d %b %Y"),
@@ -53,9 +62,6 @@ def render_dashboard(tenders: list[dict], total_screened: int, repo: str = "") -
 
 
 def _enrich_for_display(t: dict) -> None:
-    t["is_corrigendum"] = _is_corrigendum(t)
-    t["is_award"] = _is_award(t)
-
     value = t.get("value_amount")
     currency = t.get("value_currency") or ""
     if value:
@@ -71,16 +77,6 @@ def _enrich_for_display(t: dict) -> None:
 
     desc = t.get("description") or ""
     t["description_snippet"] = (desc[:280] + "…") if len(desc) > 280 else desc
-
-
-def _is_corrigendum(t: dict) -> bool:
-    nt = (t.get("notice_type") or "").lower()
-    return "corrigendum" in nt or "f14" in nt or "cor-" in nt
-
-
-def _is_award(t: dict) -> bool:
-    nt = (t.get("notice_type") or "").lower()
-    return "award" in nt or "f03" in nt or "f06" in nt or "uk6" in nt
 
 
 def _short_date(s: str) -> str:
