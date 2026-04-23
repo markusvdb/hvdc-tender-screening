@@ -1,9 +1,11 @@
-# HVDC tender screening — v2 configuration
+# HVDC tender screening — v3 configuration
 # ============================================================
-# GATE RULE
-# A tender is only considered if its title or description contains
-# at least one of these HVDC-specific terms. Everything else is
-# rejected regardless of score. No exceptions.
+# This file is the control surface. Edit it in the GitHub web UI,
+# commit, and tomorrow's 06:00 UTC run picks it up automatically.
+# ============================================================
+
+# ============================================================
+# GATE RULE — notices must mention at least one of these to pass.
 # ============================================================
 hvdc_gate_terms:
   - HVDC
@@ -19,54 +21,319 @@ hvdc_gate_terms:
   - converter station
   - converter platform
   - valve hall
-  # HVDC voltage levels — unambiguous when they appear
+  # HVDC voltage levels
   - "±320 kV"
+  - "±400 kV"
+  - "±500 kV"
   - "±525 kV"
+  - "±600 kV"
   - "±640 kV"
+  - "±800 kV"
   - "320 kV DC"
+  - "400 kV DC"
+  - "500 kV DC"
   - "525 kV DC"
-  # Named HVDC projects (always HVDC by construction)
+  - "800 kV DC"
+  # Named HVDC projects: all appear to be unambiguously HVDC
+  # Source: RTEi HVDC-VSC Newsletter March 2026, pages 10-30
+  # Maintenance: update this list when new projects appear in the newsletter
+  # --- UK ---
   - Eastern Green Link
   - EGL1
   - EGL2
   - EGL3
   - EGL4
-  - Viking Link
-  - NeuConnect
-  - LionLink
+  - EGL5
+  - Caithness Moray
   - Shetland HVDC
+  - Shetland 2
+  - Viking Link
   - Western HVDC Link
+  - Western Link 2
+  - Western Isles
+  - Spittal-Peterhead
+  - Norfolk Vanguard
+  - Norfolk Boreas
+  - Dogger Bank A
+  - Dogger Bank B
+  - Dogger Bank C
+  - Dogger Bank South
+  - East Anglia THREE
+  - Hornsea 3
+  - Sofia
+  - Sea Link
+  - East West Interconnector
   - North Sea Link
-  - SuedLink
-  - SuedOstLink
+  - Nemo Link
+  - IFA2
+  - ElecLink
+  - Greenlink
+  - MaresConnect
+  - LirIc
+  - Nautilus
+  - FAB Link
+  - Gridlink
+  - Aquind
+  - Tarchon Energy
+  - Cronos Energy
+  - Aminth Energy
+  - HansaLink
+  - GriffinLink
+  - Xlinks
+  - Sila Atlantik
+  - HIP Atlantic
+  - Atlantic SuperConnection
+  - NATO-L
+  - NU-link
+  - LionLink
+  # --- Germany ---
+  - NeuConnect
   - NordLink
   - NordOstLink
-  - BalWin
-  - LanWin
-  - DolWin
-  - BorWin
-  - HelWin
+  - SuedLink
+  - SuedOstLink
+  - SuedOstLink+
+  - Ultranet
+  - A-Nord
+  - ALEGrO
+  - Korridor-B
+  - Rhine-Main-Link
+  - Rhein-Main-Link
+  - OstWestLink
+  - NordWestLink
+  - SuedWestLink
+  - Kusenhorst
+  - Rommerskirchen
+  - Windader-West
+  - BorWin1
+  - BorWin2
+  - BorWin3
+  - BorWin4
+  - BorWin5
+  - BorWin6
+  - BorWin7
+  - DolWin1
+  - DolWin2
+  - DolWin3
+  - DolWin4
+  - DolWin5
+  - DolWin6
+  - HelWin1
+  - HelWin2
+  - SylWin1
+  - BalWin1
+  - BalWin2
+  - BalWin3
+  - BalWin4
+  - BalWin5
+  - LanWin1
+  - LanWin2
+  - LanWin3
+  - LanWin4
+  - LanWin5
+  - LanWin6
+  - LanWin7
+  - Ostwind 4
+  - Oberzier
+  # --- Netherlands ---
+  - IJmuiden Ver
+  - Nederwiek 1
+  - Nederwiek 2
+  - Nederwiek 3
+  - Doordewind 1
+  - Doordewind 2
+  # --- Nordic / Baltic ---
   - Kriegers Flak
   - Kontek
+  - COBRAcable
+  - Estlink-1
+  - Estlink 3
+  - NordBalt
+  - Fenno-Skan 3
+  - Skagerrak 4
+  - SW Link
+  - Konti-Skan
+  - Bornholm Energy Island
+  - Hällsjön
+  - Gotland HVDC
+  - Tjaereborg
+  - Åland
+  - Troll A
+  - Valhall
+  - Johan Sverdrup
+  - Baltic WindConnector
+  - Triton Link
+  - LaSGo Link
+  - Elwind
+  - Baltic-German PowerLink
+  # --- Belgium / France / Iberia ---
+  - Princess Elisabeth Energy Island
+  - Celtic Interconnector
+  - Bay of Biscay
+  - INELFE
+  - Savoie-Piedmont
+  - Centre Manche 1
+  - Centre Manche 2
+  - Oléron 1
+  - Oléron 2
+  - GiLA
+  - Fécamp Grand Large
+  - Bretagne Nord
+  - Golfe de Gascogne
+  - Golfe du Lion
+  - Roches-Douvres
+  - Aragón-Atlantic Pyrenees
+  - Navarra-Landes
+  - Península-Baleares
+  - Qantara Med
+  # --- Italy / Adriatic / Mediterranean ---
+  - Adriatic Link
+  - Adriatic backbone
+  - Tyrrhenian Link
+  - ELMED
+  - Ionian-Tyrrhenian
+  - SACOI3
+  - GRITA 2
+  - Fiumesanto-Montalto
+  - SAPEI
+  - Milan-Montalto
+  - Italy-Slovenia
+  - TuNur
+  - Greenconnector
+  - Medlink
+  - Apollo-Link
+  - IberiaLink
+  - The Green Vein
+  - GulfLink
+  # --- Greece / Cyprus / Egypt ---
+  - Crete-Attica
+  - Ariadne
+  - Great Sea Interconnector
+  - GSI interconnector
+  - GREGY Interconnector
+  - GAP Interconnector
+  - Corinth-Kos
+  # --- Central Europe / Caucasus ---
+  - HVDC Line DE-CH
+  - Ayrum HVDC
+  - Akhaltsikhe HVDC
+  - Black Sea Submarine Cable
+  - Green Energy Corridor
+  - Romania-Hungary Interconnector
+  - Romania-Serbia Interconnector
+  # --- Asia ---
+  - Project Lightning
+  - Shin-bupyeong
+  - Hokkaido-Honshu
+  - Yangju VSC
+  - Wando-DongJeju
+  - Jeju Island
+  - West Coast Energy Expressway
+  - Kudus-Aarey
+  - Pugalur-Thrissur
+  - Khavda-III
+  - Madurai-Mannar
+  - Paradeep Andaman
+  - Paradeep Nicobar
+  - Sasaram
+  - Zhangbei
+  - Zhoushan
+  - Nan'ao
+  - Nanhui
+  - Xiamen
+  - Luxi
+  - Rudong
+  - Yu'E
+  - Baihetan-Jiangsu
+  - KunLiuLong
+  - Wudongde
+  - Guangdong B2B
+  - Mengxi-Beijing-Tianjin-Hebei
+  - Chongqing-Guizhou
+  - Hunan-Guizhou
+  - Hunan-Guangdong
+  - Fujian-Jiangxi
+  - Anhui-Hubei
+  - Gansu-Zhejiang
+  - Zhangjiang
+  - Sanshan Island
+  - Shin-Sakuma
+  - Higashi-Shimizu
+  - EEL Project
+  - FUGU Project
+  - TUNA Project
+  # --- Middle East ---
+  - Riyadh-Jeddah
+  - Riyadh-Jizan
+  - Yanbu-NIC
+  # --- Americas ---
+  - Cross Sound
+  - Eagle Pass
+  - Mackinac
+  - Trans Bay Cable
+  - Maritime Link
+  - Quebec New England
+  - NECEC
+  - Champlain Hudson Power Express
+  - CHPE
+  - Clean Path New York
+  - SunZia
+  - Grain Belt Express
+  - Three Corners Connector
+  - Continental Connector
+  - TransWest Express
+  - Square Butte
+  - SOO Green HVDC
+  - North Plains Connector
+  - North Path Transmission
+  - Cimarron Link
+  - Wyoming Intertie
+  - Southern Spirit
+  - New Humboldt-Collinsville
+  - Attentive Energy
+  - Beacon Wind
+  - SouthCoast Wind
+  - Sunrise wind
+  - Community Offshore Wind
+  - Excelsior Wind
+  - Lake Erie Connector
+  - Cascade Renewable Transmission
+  - Power Santa Clara Valley
+  - Châteauguay
+  - Angicos Itaporanga
+  - Atlantic Wind Connection
+  - Pacific Transmission Expansion
+  # --- Oceania ---
+  - Marinus Link
+  - AAPowerLink
+  - DarwinLink
+  - SingaporeLink
+  - Syncline Community Cable
+  - Taslink
+  # --- Africa ---
+  - Caprivi Link
+  - Angola VSC
+  # --- Russia / Central Asia / Other ---
+  - Direct Link
+  - TerraNora
+  - Murraylink
+  - Nordic Link
+  - NordicLink
 
 # ============================================================
-# CLASSIFICATION
-# A notice that passes the gate is classified as:
-#   - "bid_candidate"  → Section 1: relevant to RTEi's HVDC team
-#   - "market_intel"   → Section 2: HVDC news worth knowing
-# Classification rule:
-#   bid_candidate requires at least one rtei_service_signal.
-#   Otherwise it's market_intel.
+# RTEi SERVICE SIGNALS — mark a notice as bid_candidate if matched
 # ============================================================
 rtei_service_signals:
   - owner's engineer
   - owners engineer
   - owner engineer
+  - owner's representative
   - technical advisor
   - technical adviser
   - independent engineer
   - independent engineering
   - engineering services
+  - engineering consultancy
   - technical assistance
   - technical support services
   - design review
@@ -85,27 +352,54 @@ rtei_service_signals:
   - EMT study
   - electromagnetic transient study
   - harmonic study
+  - power system study
   - insulation coordination study
   - protection study
+  - protection settings review
+  - control and protection study
   - consultancy
   - consulting services
   - consultant
+  - expression of interest
+  - request for expression of interest
 
 # ============================================================
-# SCORING (within bid_candidate pool)
-# Bid candidates are ranked by score to prioritise attention.
-# Each gate term match: +1.0
-# Each service signal match: +1.0
-# Watchlist buyer match: +0.5 (buyer relationship signal)
+# STAGE CLASSIFICATION
+# ============================================================
+# Each notice is tagged with one of these stages based on notice_type.
+# The dashboard has a filter to show only specific stages.
+stages:
+  pipeline:      # Planning, pre-market engagement, PIN
+    keywords: [pipeline, prior information, prior-information, preliminary market engagement, planned, "UK1", "UK2", "UK3", F01, F04, F16, "general procurement notice", "Specific Procurement Notice"]
+  active:        # Tender notice, bids open
+    keywords: [tender notice, contract notice, "UK4", F02, F05, F17, F24, "invitation for bids", "request for expression of interest", "specific procurement notice", "invitation for prequalification"]
+  corrigendum:   # Modification to a prior notice
+    keywords: [corrigendum, "UK10", F14, "cor-"]
+  award:         # Contract awarded
+    keywords: [award, "UK6", F03, F06, F18, F20, F25, "contract award"]
+  other:
+    keywords: []   # catch-all
+
+# Which stage to show by default on the dashboard:
+default_stage_filter: active
+
+# Which stages go into the Monday email:
+email_stages:
+  - active
+  - corrigendum
+
+# ============================================================
+# SCORING
 # ============================================================
 scoring:
-  bid_candidate_min_score: 2.0    # Gate term + service signal = 2.0 minimum
+  bid_candidate_min_score: 2.0
   archive_days: 90
 
 # ============================================================
-# WATCHLIST BUYERS — boost score when these are the buyer
+# WATCHLIST BUYERS — boost on score, appear as "watched buyer"
 # ============================================================
 watchlist_buyers:
+  # European TSOs
   - TenneT
   - National Grid
   - National Grid Ventures
@@ -113,7 +407,10 @@ watchlist_buyers:
   - NESO
   - National Energy System Operator
   - SSEN
+  - SSEN Transmission
   - Scottish Hydro Electric Transmission
+  - Scottish Power Transmission
+  - SP Transmission
   - Energinet
   - 50Hertz
   - Amprion
@@ -121,17 +418,67 @@ watchlist_buyers:
   - Elia
   - Statnett
   - RTE
+  - Réseau de Transport d'Électricité
   - Red Eléctrica
+  - REE
   - Terna
   - Fingrid
   - Svenska kraftnät
+  - ADMIE
+  - IPTO
+  # Project SPVs
+  - NeuConnect Britain
+  - LionLink
+  - Xlinks
+  # Major HVDC OEMs (competitors for bid intelligence, not RTEi clients)
+  - Hitachi Energy
+  - Siemens Energy
+  - GE Vernova
+  - Prysmian
+  - Nexans
+  - NKT
+  - RXHK
+  - Rongxin Huiko
+  - NR Electric
+  # Developers mentioned in newsletter
+  - Pattern Energy
+  - TenneT TSO
+  - Meridiam
+  - Allianz Capital Partners
+  - Argo Infrastructure Partners
+  # Development finance / supranational
+  - European Investment Bank
+  - World Bank
+  - EBRD
+  - European Commission
+  - CINEA
+  - INEA
+  - Connecting Europe Facility
 
 # ============================================================
-# API SCOPE
+# CPV CODES (used by TED query)
+# ============================================================
+cpv_codes:
+  - "31170000"   # Transformers
+  - "31321000"   # Electricity power lines
+  - "31321100"
+  - "31321200"
+  - "31321300"   # High-voltage cables
+  - "45232200"   # Ancillary works for electricity transmission lines
+  - "45231400"   # Construction of electricity power lines
+  - "31682540"   # Substation equipment
+  - "71323100"   # Electrical power systems design services
+  - "71314100"   # Electrical services
+  - "71334000"   # Mechanical and electrical engineering services
+
+# ============================================================
+# API SCOPES
 # ============================================================
 api:
   fts_days_lookback: 3
   ted_days_lookback: 3
+  worldbank_days_lookback: 3
+  gmail_days_lookback: 3
   ted_countries:
     - GBR
     - DEU
@@ -144,10 +491,46 @@ api:
     - SWE
     - ESP
     - ITA
+    - FIN
+    - GRC
+    - AUT
+    - CHE
+
+# World Bank scope — which sectors / regions matter
+worldbank:
+  # Limit to energy-sector notices (major-sector filter)
+  major_sector: "Energy and Extractives"
+  # Notice types we care about
+  notice_types:
+    - "Request for Expression of Interest"
+    - "Invitation for Bids"
+    - "Invitation for Prequalification"
+    - "General Procurement Notice"
+    - "Specific Procurement Notice"
+    - "Contract Award"
+
+# Gmail scope — which senders are trusted TSO portal alerts
+# Add more as you register on additional portals
+gmail:
+  label: "HVDC-Alerts"  # Gmail label — set up a filter in Gmail to auto-label alert emails with this
+  trusted_senders:
+    - mercell.com
+    - tenderned.nl
+    - jaggaer.com
+    - in-tend.co.uk
+    - sap-ariba.com
+    - ariba.com
+    - sap.com
+    - tenders@tennet.eu
+    - no-reply@sse.com
+    - alerts@nationalgrid.com
+    - procurement@50hertz.com
+    - alerts@ebrd.com
+    - ecepp.ebrd.com
 
 # ============================================================
 # LLM SUMMARY
 # ============================================================
 llm:
   model: claude-haiku-4-5-20251001
-  max_summaries_per_run: 25   # Cap cost — bid candidates first, market intel next
+  max_summaries_per_run: 25
