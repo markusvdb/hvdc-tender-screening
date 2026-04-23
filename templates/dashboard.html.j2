@@ -6,110 +6,85 @@
 <title>HVDC tender screening</title>
 <style>
   :root {
-    --bg: #ffffff;
-    --bg-secondary: #f7f6f2;
-    --text-primary: #1c1c1a;
-    --text-secondary: #5f5e5a;
-    --text-tertiary: #888780;
+    --bg: #ffffff; --bg-secondary: #f7f6f2;
+    --text-primary: #1c1c1a; --text-secondary: #5f5e5a; --text-tertiary: #888780;
     --border: rgba(0,0,0,0.12);
-    --border-strong: rgba(0,0,0,0.2);
-    --info-bg: #e6f1fb;
-    --info-text: #0c447c;
-    --warn-bg: #faeeda;
-    --warn-text: #854f0b;
-    --success-bg: #e1f5ee;
-    --success-text: #085041;
-    --purple-bg: #eeedfe;
-    --purple-text: #3c3489;
+    --info-bg: #e6f1fb; --info-text: #0c447c;
+    --warn-bg: #faeeda; --warn-text: #854f0b;
+    --success-bg: #e1f5ee; --success-text: #085041;
+    --purple-bg: #eeedfe; --purple-text: #3c3489;
+    --gray-bg: #f1efe8; --gray-text: #5f5e5a;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1c1a;
-      --bg-secondary: #2c2c2a;
-      --text-primary: #f1efe8;
-      --text-secondary: #b4b2a9;
-      --text-tertiary: #888780;
+      --bg: #1c1c1a; --bg-secondary: #2c2c2a;
+      --text-primary: #f1efe8; --text-secondary: #b4b2a9; --text-tertiary: #888780;
       --border: rgba(255,255,255,0.15);
-      --border-strong: rgba(255,255,255,0.25);
-      --info-bg: #0c447c;
-      --info-text: #b5d4f4;
-      --warn-bg: #633806;
-      --warn-text: #fac775;
-      --success-bg: #085041;
-      --success-text: #9fe1cb;
-      --purple-bg: #3c3489;
-      --purple-text: #cecbf6;
+      --info-bg: #0c447c; --info-text: #b5d4f4;
+      --warn-bg: #633806; --warn-text: #fac775;
+      --success-bg: #085041; --success-text: #9fe1cb;
+      --purple-bg: #3c3489; --purple-text: #cecbf6;
+      --gray-bg: #444441; --gray-text: #d3d1c7;
     }
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    color: var(--text-primary);
-    background: var(--bg);
-    margin: 0;
-    padding: 2rem 1rem;
-    line-height: 1.5;
+    color: var(--text-primary); background: var(--bg);
+    margin: 0; padding: 2rem 1rem; line-height: 1.5;
   }
-  .container { max-width: 820px; margin: 0 auto; }
+  .container { max-width: 860px; margin: 0 auto; }
   h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
-  h2 { font-size: 18px; font-weight: 500; margin: 2rem 0 1rem; }
-  p { margin: 0; }
+  h2 { font-size: 18px; font-weight: 500; margin: 2.5rem 0 4px; }
+  h2 .count { font-weight: 400; color: var(--text-secondary); font-size: 14px; margin-left: 8px; }
+  .section-desc { font-size: 13px; color: var(--text-secondary); margin: 0 0 1rem; }
   .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 2rem; }
   .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 8px; }
   .last-run { font-size: 12px; color: var(--text-tertiary); }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 2rem; }
   .stat { background: var(--bg-secondary); border-radius: 8px; padding: 1rem; }
   .stat-label { font-size: 13px; color: var(--text-secondary); }
   .stat-value { font-size: 24px; font-weight: 500; margin-top: 4px; }
   .stat-value.info { color: var(--info-text); }
   .stat-value.warn { color: var(--warn-text); }
-  .filters { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
-  .filter-label { font-size: 13px; color: var(--text-secondary); margin-right: 4px; }
-  .fbtn {
-    font-size: 12px; padding: 5px 11px; background: transparent;
-    border: 0.5px solid var(--border); border-radius: 8px;
-    cursor: pointer; color: var(--text-secondary); font-family: inherit;
-  }
-  .fbtn.active { background: var(--info-bg); color: var(--info-text); border-color: var(--info-text); }
-  .fbtn:hover:not(.active) { background: var(--bg-secondary); }
-  select {
-    font-size: 12px; padding: 5px 8px; border: 0.5px solid var(--border);
-    border-radius: 8px; background: transparent; color: var(--text-primary);
-    font-family: inherit;
-  }
   .tender {
     background: var(--bg); border: 0.5px solid var(--border);
     border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px;
   }
-  .tender-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+  .tender.bid { border-left: 3px solid var(--info-text); }
+  .tender-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
   .tender-title { font-size: 15px; font-weight: 500; margin: 0; }
   .tender-title a { color: var(--text-primary); text-decoration: none; }
   .tender-title a:hover { text-decoration: underline; }
   .tender-buyer { font-size: 13px; color: var(--text-secondary); margin: 4px 0 0; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
   .badge { font-size: 11px; padding: 3px 9px; border-radius: 8px; white-space: nowrap; font-weight: 500; }
-  .b-high { background: var(--info-bg); color: var(--info-text); }
-  .b-possible { background: var(--bg-secondary); color: var(--text-secondary); }
+  .b-bid { background: var(--info-bg); color: var(--info-text); }
+  .b-intel { background: var(--gray-bg); color: var(--gray-text); }
   .b-corr { background: var(--warn-bg); color: var(--warn-text); }
   .b-award { background: var(--success-bg); color: var(--success-text); }
+  .b-fit-yes { background: var(--success-bg); color: var(--success-text); }
+  .b-fit-partial { background: var(--warn-bg); color: var(--warn-text); }
   .tender-meta {
     display: flex; gap: 16px; font-size: 12px; color: var(--text-secondary);
     margin: 10px 0; flex-wrap: wrap;
   }
   .tender-meta strong { color: var(--text-primary); font-weight: 500; }
-  .tender-summary {
-    font-size: 13px; line-height: 1.6; color: var(--text-primary); margin: 10px 0;
-  }
-  .tender-kw { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-  .kw { font-size: 11px; padding: 2px 8px; background: var(--bg-secondary); border-radius: 6px; color: var(--text-secondary); }
-  .kw-strong { background: var(--purple-bg); color: var(--purple-text); }
-  .tender-requirements { margin: 10px 0 0; padding-left: 1.2rem; font-size: 13px; color: var(--text-secondary); }
+  .tender-summary { font-size: 13px; line-height: 1.6; color: var(--text-primary); margin: 10px 0; }
+  .bid-fit-reason { font-size: 12px; color: var(--text-secondary); font-style: italic; margin: 4px 0 8px; }
+  .tender-requirements { margin: 8px 0 0; padding-left: 1.2rem; font-size: 13px; color: var(--text-secondary); }
   .tender-requirements li { margin-bottom: 3px; }
   .tender-red-flag {
     font-size: 12px; color: var(--warn-text); margin-top: 8px;
     padding: 6px 10px; background: var(--warn-bg); border-radius: 6px;
   }
+  .tender-kw { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .kw { font-size: 11px; padding: 2px 8px; background: var(--bg-secondary); border-radius: 6px; color: var(--text-secondary); }
+  .kw-hvdc { background: var(--purple-bg); color: var(--purple-text); }
+  .kw-service { background: var(--info-bg); color: var(--info-text); }
   .empty {
-    text-align: center; padding: 3rem 1rem; color: var(--text-tertiary);
+    text-align: center; padding: 2rem 1rem; color: var(--text-tertiary);
     border: 0.5px dashed var(--border); border-radius: 12px;
+    font-size: 13px;
   }
   footer {
     margin-top: 3rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border);
@@ -123,122 +98,116 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">{{ this_week_label }} · FTS + TED · {{ total_screened }} notices screened</p>
+      <p class="subtitle">{{ this_week_label }} · FTS + TED · {{ total_screened }} notices screened · {{ rejected_count }} rejected at HVDC gate</p>
     </div>
     <div class="last-run">Last run: {{ last_run_label }}</div>
   </div>
 
   <div class="stats">
     <div class="stat">
-      <div class="stat-label">Notices screened</div>
-      <div class="stat-value">{{ total_screened }}</div>
+      <div class="stat-label">Bid candidates</div>
+      <div class="stat-value info">{{ bid_count }}</div>
     </div>
     <div class="stat">
-      <div class="stat-label">High relevance</div>
-      <div class="stat-value info">{{ high_count }}</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Possibly relevant</div>
-      <div class="stat-value">{{ possible_count }}</div>
+      <div class="stat-label">Market intel</div>
+      <div class="stat-value">{{ intel_count }}</div>
     </div>
     <div class="stat">
       <div class="stat-label">Corrigenda</div>
       <div class="stat-value warn">{{ corrigenda_count }}</div>
     </div>
+    <div class="stat">
+      <div class="stat-label">Rejected at gate</div>
+      <div class="stat-value">{{ rejected_count }}</div>
+    </div>
   </div>
 
-  <div class="filters">
-    <span class="filter-label">Filter:</span>
-    <button class="fbtn active" data-filter="all">All ({{ relevant_count }})</button>
-    <button class="fbtn" data-filter="converter">Converter stations ({{ counts.converter }})</button>
-    <button class="fbtn" data-filter="interconnector">Interconnectors ({{ counts.interconnector }})</button>
-    <button class="fbtn" data-filter="consulting">Consulting / OE ({{ counts.consulting }})</button>
-    <button class="fbtn" data-filter="studies">Studies / R&amp;D ({{ counts.studies }})</button>
-    <span style="flex: 1;"></span>
-    <select id="source">
-      <option value="all">All sources</option>
-      <option value="FTS">FTS (UK)</option>
-      <option value="TED">TED (EU)</option>
-    </select>
-    <select id="relevance">
-      <option value="all">All relevance</option>
-      <option value="high" selected>High only</option>
-      <option value="possible">Possibly relevant</option>
-    </select>
-  </div>
+  <h2>1. Bid candidates<span class="count">{{ bid_count }}</span></h2>
+  <p class="section-desc">HVDC scope + RTEi-relevant service (owner's engineer, design review, feasibility, studies, consulting).</p>
 
-  <div id="tenders">
-    {% if relevant_count == 0 %}
-      <div class="empty">No relevant HVDC tenders in this run. The watchlist keeps scanning automatically.</div>
-    {% endif %}
-    {% for t in tenders %}
-    <div class="tender"
-         data-cats="{{ t.category_tags|join(',') }}"
-         data-source="{{ t.source }}"
-         data-relevance="{{ t.relevance }}">
+  {% if bid_candidates %}
+    {% for t in bid_candidates %}
+    <div class="tender bid">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
           <p class="tender-title"><a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title }}</a></p>
           <p class="tender-buyer">{{ t.buyer }} · {{ t.source }} · {{ t.notice_type }}{% if t.country %} · {{ t.country }}{% endif %}</p>
         </div>
-        <span class="badge {{ t.badge_class }}">{{ t.badge_label }}</span>
+        <div class="badges">
+          {% if t.is_corrigendum %}<span class="badge b-corr">Corrigendum</span>{% endif %}
+          {% if t.summary and t.summary.rtei_bid_fit == 'yes' %}<span class="badge b-fit-yes">Fit: yes</span>
+          {% elif t.summary and t.summary.rtei_bid_fit == 'partial' %}<span class="badge b-fit-partial">Fit: partial</span>
+          {% endif %}
+          <span class="badge b-bid">Bid candidate</span>
+        </div>
       </div>
       <div class="tender-meta">
         {% if t.value_display %}<span><strong>Value:</strong> {{ t.value_display }}</span>{% endif %}
-        {% if t.deadline %}<span><strong>Deadline:</strong> {{ t.deadline_display }}</span>{% endif %}
-        {% if t.published %}<span><strong>Published:</strong> {{ t.published_display }}</span>{% endif %}
+        {% if t.deadline_display %}<span><strong>Deadline:</strong> {{ t.deadline_display }}</span>{% endif %}
+        {% if t.published_display %}<span><strong>Published:</strong> {{ t.published_display }}</span>{% endif %}
         <span><strong>Score:</strong> {{ t.score }}</span>
       </div>
       {% if t.summary and t.summary.scope_summary %}
       <p class="tender-summary">{{ t.summary.scope_summary }}</p>
+      {% if t.summary.rtei_bid_fit_reason %}<p class="bid-fit-reason">Fit: {{ t.summary.rtei_bid_fit_reason }}</p>{% endif %}
       {% if t.summary.notable_requirements %}
       <ul class="tender-requirements">
         {% for req in t.summary.notable_requirements %}<li>{{ req }}</li>{% endfor %}
       </ul>
       {% endif %}
       {% if t.summary.red_flags %}
-        {% for flag in t.summary.red_flags %}
-        <div class="tender-red-flag">⚠ {{ flag }}</div>
-        {% endfor %}
+        {% for flag in t.summary.red_flags %}<div class="tender-red-flag">⚠ {{ flag }}</div>{% endfor %}
       {% endif %}
+      {% endif %}
+      <div class="tender-kw">
+        {% for kw in t.gate_hits %}<span class="kw kw-hvdc">{{ kw }}</span>{% endfor %}
+        {% for kw in t.service_hits %}<span class="kw kw-service">{{ kw }}</span>{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty">No bid candidates in this run. Check section 2 below for HVDC market intelligence.</div>
+  {% endif %}
+
+  <h2>2. HVDC market intelligence<span class="count">{{ intel_count }}</span></h2>
+  <p class="section-desc">Other HVDC tenders — typically OEM/EPC/cable supply/platform fabrication. Useful for tracking the market; not RTEi bid targets.</p>
+
+  {% if market_intel %}
+    {% for t in market_intel %}
+    <div class="tender">
+      <div class="tender-head">
+        <div style="flex: 1; min-width: 0;">
+          <p class="tender-title"><a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.title }}</a></p>
+          <p class="tender-buyer">{{ t.buyer }} · {{ t.source }} · {{ t.notice_type }}{% if t.country %} · {{ t.country }}{% endif %}</p>
+        </div>
+        <div class="badges">
+          {% if t.is_corrigendum %}<span class="badge b-corr">Corrigendum</span>{% endif %}
+          {% if t.is_award %}<span class="badge b-award">Award</span>{% endif %}
+          <span class="badge b-intel">Market intel</span>
+        </div>
+      </div>
+      <div class="tender-meta">
+        {% if t.value_display %}<span><strong>Value:</strong> {{ t.value_display }}</span>{% endif %}
+        {% if t.deadline_display %}<span><strong>Deadline:</strong> {{ t.deadline_display }}</span>{% endif %}
+        {% if t.published_display %}<span><strong>Published:</strong> {{ t.published_display }}</span>{% endif %}
+      </div>
+      {% if t.summary and t.summary.scope_summary %}
+      <p class="tender-summary">{{ t.summary.scope_summary }}</p>
       {% elif t.description %}
       <p class="tender-summary">{{ t.description_snippet }}</p>
       {% endif %}
       <div class="tender-kw">
-        {% for kw in t.matched_watchlist %}<span class="kw kw-strong">{{ kw }}</span>{% endfor %}
-        {% for kw in t.matched_strong %}<span class="kw kw-strong">{{ kw }}</span>{% endfor %}
-        {% for kw in t.matched_contextual %}<span class="kw">{{ kw }}</span>{% endfor %}
+        {% for kw in t.gate_hits %}<span class="kw kw-hvdc">{{ kw }}</span>{% endfor %}
       </div>
     </div>
     {% endfor %}
-  </div>
+  {% else %}
+    <div class="empty">No HVDC market intelligence notices in this run.</div>
+  {% endif %}
 
   <footer>
     <p>Generated {{ generated_at }} · <a href="https://github.com/{{ repo }}" target="_blank">source</a> · Data: <a href="https://www.find-tender.service.gov.uk/" target="_blank">Find a Tender</a> (OGL v3.0), <a href="https://ted.europa.eu/" target="_blank">TED</a> (© EU)</p>
   </footer>
 </div>
-
-<script>
-  function applyFilters() {
-    const cat = document.querySelector(".fbtn.active").dataset.filter;
-    const src = document.getElementById("source").value;
-    const rel = document.getElementById("relevance").value;
-    document.querySelectorAll(".tender").forEach(t => {
-      const cats = (t.dataset.cats || "").split(",");
-      const matchCat = cat === "all" || cats.includes(cat);
-      const matchSrc = src === "all" || t.dataset.source === src;
-      const matchRel = rel === "all" || t.dataset.relevance === rel;
-      t.style.display = (matchCat && matchSrc && matchRel) ? "" : "none";
-    });
-  }
-  document.querySelectorAll(".fbtn").forEach(b => b.addEventListener("click", () => {
-    document.querySelectorAll(".fbtn").forEach(x => x.classList.remove("active"));
-    b.classList.add("active");
-    applyFilters();
-  }));
-  document.getElementById("source").addEventListener("change", applyFilters);
-  document.getElementById("relevance").addEventListener("change", applyFilters);
-  applyFilters();
-</script>
 </body>
 </html>
