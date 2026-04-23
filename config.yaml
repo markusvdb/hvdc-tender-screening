@@ -368,15 +368,76 @@ rtei_service_signals:
 # ============================================================
 # Each notice is tagged with one of these stages based on notice_type.
 # The dashboard has a filter to show only specific stages.
+#
+# TED uses eForms technical codes (cn-standard, pin-buyer, can-standard, etc.)
+# FTS uses UK1/UK4/UK6-style codes and older F-codes.
+# World Bank uses free-text names.
 stages:
   pipeline:      # Planning, pre-market engagement, PIN
-    keywords: [pipeline, prior information, prior-information, preliminary market engagement, planned, "UK1", "UK2", "UK3", F01, F04, F16, "general procurement notice", "Specific Procurement Notice"]
+    keywords:
+      - pipeline
+      - prior information
+      - prior-information
+      - preliminary market engagement
+      - planned procurement
+      - "UK1"
+      - "UK2"
+      - "UK3"
+      - F01
+      - F04
+      - F16
+      - pin-
+      - pin-buyer
+      - pin-only
+      - pin-cfc
+      - pin-rtl
+      - pin-tran
+      - "general procurement notice"
   active:        # Tender notice, bids open
-    keywords: [tender notice, contract notice, "UK4", F02, F05, F17, F24, "invitation for bids", "request for expression of interest", "specific procurement notice", "invitation for prequalification"]
+    keywords:
+      - tender notice
+      - contract notice
+      - "UK4"
+      - F02
+      - F05
+      - F17
+      - F24
+      - cn-standard
+      - cn-social
+      - cn-desg
+      - cn-util
+      - cn-def
+      - "invitation for bids"
+      - "invitation for prequalification"
+      - "request for expression of interest"
+      - "specific procurement notice"
+      - call for tenders
+      - tender
   corrigendum:   # Modification to a prior notice
-    keywords: [corrigendum, "UK10", F14, "cor-"]
+    keywords:
+      - corrigendum
+      - "UK10"
+      - F14
+      - cor-
+      - cn-modif
+      - can-modif
+      - modification notice
   award:         # Contract awarded
-    keywords: [award, "UK6", F03, F06, F18, F20, F25, "contract award"]
+    keywords:
+      - award notice
+      - contract award
+      - "UK6"
+      - "UK7"
+      - F03
+      - F06
+      - F18
+      - F20
+      - F25
+      - can-standard
+      - can-social
+      - can-desg
+      - can-def
+      - can-tran
   other:
     keywords: []   # catch-all
 
@@ -475,9 +536,13 @@ cpv_codes:
 # API SCOPES
 # ============================================================
 api:
-  fts_days_lookback: 3
-  ted_days_lookback: 3
-  worldbank_days_lookback: 3
+  # 30-day lookback catches pipeline/planning notices that come out weeks
+  # before the tender itself. Deduplication via state/tenders.json prevents
+  # re-summarising the same notice. Gmail stays at 3 days since alerts are
+  # real-time and we don't want to re-process old emails.
+  fts_days_lookback: 30
+  ted_days_lookback: 30
+  worldbank_days_lookback: 30
   gmail_days_lookback: 3
   ted_countries:
     - GBR
