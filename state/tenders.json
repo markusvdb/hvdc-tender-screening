@@ -29,7 +29,7 @@
    "71334000"
   ],
   "country": "ESP",
-  "score": 7.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -50,7 +50,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Engineering services, technical assistance, and legal support for AT (high-voltage) works across E-Distribución's network, plus cartographic data maintenance for AT/MT/BT infrastructure covering Spain and Portugal for 2026–2030 (plus one optional annual extension).",
@@ -77,7 +77,13 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "servicios de Ingeniería, Legalizaciones y Asistencia Técnica en Obras AT, y Actualización y mantenimiento de datos de la Red AT, MT y BT de (Cartografía) de E-Distribución en todo su ámbito territorial, para el periodo 2026-2030, más una (1) opcional temporal anual.",
   "first_seen": "2026-04-23T14:06:19.808098+00:00",
-  "last_seen": "2026-04-23T14:06:19.808102+00:00"
+  "last_seen": "2026-04-23T14:43:33.812774+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -98,7 +104,7 @@
    "31174000"
   ],
   "country": "DEU",
-  "score": 3.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [
@@ -108,7 +114,7 @@
    "31170000",
    "31170000"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Supply, manufacture and installation-ready delivery of two 120 kV / 10.5 kV, 75 MVA power transformers (switchable to 60 kV) for TenneT's Landesbergen substation. Transformers support the station's upgrade from 220 kV to 380 kV switchgear and provide auxiliary power and customer supply at 10 kV.",
@@ -135,7 +141,13 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Allgemeine Hinweise zum Projekt Umspannwerk Landesbergen: Im UW Landesbergen ist im Zuge der Umstellung der 220-kV-Schaltanlage auf die 380-kV-Schaltanlage der Austausch der sich noch im Betrieb befindlichen Netzkupplungstransformatoren notwendig. Aufgrund dieser Umstellung und d…",
   "first_seen": "2026-04-23T14:06:19.808137+00:00",
-  "last_seen": "2026-04-23T14:06:19.808141+00:00"
+  "last_seen": "2026-04-23T14:43:33.812780+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [
+   "tennet"
+  ],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -156,7 +168,7 @@
    "45231400"
   ],
   "country": "FRA",
-  "score": 2.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -166,7 +178,7 @@
    "45231400",
    "45231400"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Construction and equipment installation work for distribution substations (postes DP) in the Île-de-France Ouest region, including civil engineering, OMT (on-load tap changer) installation, HTA control line construction, and associated metalwork.",
@@ -189,7 +201,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Le présent marché concerne : La réalisation des travaux d’équipement de poste DP électricité et génie civil associé. La réalisation de travaux de mise en place d’OMT dans les postes DP. La réalisation de travaux de constructions de lignes téléphoniques de télécommande de meuble H…",
   "first_seen": "2026-04-23T14:06:19.808203+00:00",
-  "last_seen": "2026-04-23T14:06:19.808206+00:00"
+  "last_seen": "2026-04-23T14:43:33.812787+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -212,7 +228,7 @@
    "45317200"
   ],
   "country": "BEL",
-  "score": 1.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -221,7 +237,7 @@
    "31170000",
    "31170000"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Design, supply, testing and installation of various types of power transformers for Fluvius System Operator (Belgian DSO). Scope covers multiple transformer configurations but specific voltage class and capacity details not disclosed in summary.",
@@ -244,7 +260,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Dit aankoopdossier betreft het ontwerpen, leveren, testen en plaatsen van verschillende types vermogenstransformatoren.",
   "first_seen": "2026-04-23T14:06:19.808212+00:00",
-  "last_seen": "2026-04-23T14:06:19.808215+00:00"
+  "last_seen": "2026-04-23T14:43:33.812793+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -285,7 +305,7 @@
    "45215140"
   ],
   "country": "IRL",
-  "score": 1.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [
    "feasibility study"
@@ -295,10 +315,8 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "high",
-  "category_tags": [
-   "consulting"
-  ],
+  "relevance": "low",
+  "category_tags": [],
   "summary": {
    "scope_summary": "Architectural and multi-disciplinary design team services for a hospital ICU expansion project in Dublin. Scope includes feasibility study, design across all project stages for six additional ICU bed spaces, and relocation of existing Day of Surgery Admission (DOSA) and staff facilities (~340 m² reconfiguration).",
    "key_dates": {
@@ -324,7 +342,13 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Beaumont Hospital is the principal teaching hospital for the Royal College of Surgeons in Ireland and has an international reputation for excellence in patient care, medical education, innovation and research. In addition to providing a wide range of national and regional service…",
   "first_seen": "2026-04-23T14:06:19.808221+00:00",
-  "last_seen": "2026-04-23T14:06:19.808224+00:00"
+  "last_seen": "2026-04-23T14:43:33.812798+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "feasibility study"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -359,44 +383,25 @@
    "98360000"
   ],
   "country": "FRA",
-  "score": 1.5,
-  "matched_strong": [
+  "gate_hits": [
    "hvdc"
   ],
-  "matched_contextual": [
-   "submarine cable"
+  "service_hits": [],
+  "buyer_hits": [
+   "rte"
   ],
-  "matched_watchlist": [],
-  "matched_cpv": [],
-  "relevance": "high",
+  "score": 1.5,
+  "section": "market_intel",
+  "relevance": "possible",
   "category_tags": [],
-  "summary": {
-   "scope_summary": "RTE seeks marine operations services for curative (corrective) maintenance of submarine cable links, including both HVAC and HVDC systems across French waters (Channel, Atlantic, Mediterranean). Services cover fault location, cable deburial, cutting, repair joint deployment, and reprotection—excluding jointing itself—with emphasis on minimizing return-to-service time and cost-effectiveness.",
-   "key_dates": {
-    "submission_deadline": "Not specified",
-    "other_milestones": "Periodic indicative notice (PIN) published 23 April 2026; no tender deadline yet issued"
-   },
-   "estimated_value": "Not disclosed",
-   "notable_requirements": [
-    "Bundled HVDC cable handling (two power cables + one fiber optic)",
-    "Full cable length fault location (landfall to offshore substation hang-off)",
-    "Vessel mobilization, deburial, cutting, pull-in, and reprotection capabilities",
-    "Cost-effective solutions with rapid return-to-service focus"
-   ],
-   "red_flags": [
-    "PIN-only notice with no tender deadline specified—market engagement phase, not yet a binding competition",
-    "Jointing operation explicitly excluded; interface/responsibility boundary with jointing contractor unclear"
-   ],
-   "bid_fit_indicator": "strong"
-  },
-  "badge_class": "b-high",
-  "badge_label": "High relevance",
+  "is_corrigendum": false,
+  "is_award": false,
   "value_display": "",
   "deadline_display": "",
   "published_display": "23 Apr 2026",
   "description_snippet": "RTE, the French electricity transmission system operator, is responsible for developing, building and operating high-voltage submarine cable links for interconnection with neighboring countries, or for connecting offshore wind farms to the terrestrial transmission grid. RTE curre…",
   "first_seen": "2026-04-23T14:06:19.808230+00:00",
-  "last_seen": "2026-04-23T14:06:19.808233+00:00"
+  "last_seen": "2026-04-23T14:43:33.812732+00:00"
  },
  {
   "source": "TED",
@@ -431,7 +436,7 @@
    "71312000"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -439,7 +444,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -448,7 +453,13 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Limerick City and County Council as Contracting Authority seeks to procure the services of a Grade I Conservation Architect led Integrated Design Team for delivery of this project from Stage (i) Preliminary Design to Stage (v) Project Handover. The Project involves the developmen…",
   "first_seen": "2026-04-23T14:06:19.808370+00:00",
-  "last_seen": "2026-04-23T14:06:19.808372+00:00"
+  "last_seen": "2026-04-23T14:43:33.812804+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "consultancy"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -467,7 +478,7 @@
    "71334000"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -475,7 +486,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -484,7 +495,13 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "The Commissioners of Public Works in Ireland are currently seeking Mechanical and Electrical Resident Engineering Services (Chartered) to ensure the successful delivery of the Portlaoise Garda Station (Divisional Headquarters) project. The service will involve the provision of an…",
   "first_seen": "2026-04-23T14:06:19.808375+00:00",
-  "last_seen": "2026-04-23T14:06:19.808377+00:00"
+  "last_seen": "2026-04-23T14:43:33.812809+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -513,7 +530,7 @@
    "45316000"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -521,7 +538,7 @@
    "45231400",
    "45231400"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -530,7 +547,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "21FEI50822 - Komplexer Umbau des Betriebsbahnhofes Bad Schandau Ost inkl. Umbau, Ertüchtigung und bahntechnischer Ausrüstung angrenzender Streckenabschnitte (Strecke Dresden - Pirna - Bahngrenze DB/CD)",
   "first_seen": "2026-04-23T14:06:19.808380+00:00",
-  "last_seen": "2026-04-23T14:06:19.808382+00:00"
+  "last_seen": "2026-04-23T14:43:33.812814+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -577,7 +598,7 @@
    "71521000"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -585,7 +606,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -594,7 +615,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Establishment of a Multi Supplier Design and Build Contractor Framework for Design and Build Works ranging from €20m-€60m with an initial contract for the Design and Construction of 30 No. Apartments and Associated Works at Blakestown Cross, Mulhuddart, Dublin 15, 34 No Dwellings…",
   "first_seen": "2026-04-23T14:06:19.808385+00:00",
-  "last_seen": "2026-04-23T14:06:19.808387+00:00"
+  "last_seen": "2026-04-23T14:43:33.812819+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -625,7 +650,7 @@
    "45312200"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -633,7 +658,7 @@
    "45231400",
    "45231400"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -642,7 +667,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Technisches Gebäudemanagement (TGM), BLB NRW, Niederlassung Aachen. Das TGM der NL Aachen ist insgesamt in 11 Fachlose aufgeteilt. Die Fachlose sind ggf. in weitere Lose unterteilt. Für das hier ausgeschriebene Regionallos 4.4 (Elektro, hier: GMA, Bereich: NL Aachen) sind, Wartun…",
   "first_seen": "2026-04-23T14:06:19.808390+00:00",
-  "last_seen": "2026-04-23T14:06:19.808392+00:00"
+  "last_seen": "2026-04-23T14:43:33.812825+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -663,7 +692,7 @@
    "71334000"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -671,7 +700,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -680,7 +709,13 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Die LAKUMED Kliniken, das Klinikum Landshut und das Kinderkrankenhaus St. Marien fusionieren zum 01.01.2026 zu den LA-Regio-Kliniken. Im Zuge dieser Fusion entsteht ein medizinisches Gesamtkonzept, welches die Versorgungsstrukturen auf die Häuser Landshut-Mitte, Achdorf, Vilsbibu…",
   "first_seen": "2026-04-23T14:06:19.808396+00:00",
-  "last_seen": "2026-04-23T14:06:19.808397+00:00"
+  "last_seen": "2026-04-23T14:43:33.812832+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -699,7 +734,7 @@
    "31682540"
   ],
   "country": "FRA",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -707,7 +742,7 @@
    "31682540",
    "31682540"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -716,7 +751,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Conception, fourniture, livraison et mise en service de 3 postes de livraison HTA (PDL)",
   "first_seen": "2026-04-23T14:06:19.808401+00:00",
-  "last_seen": "2026-04-23T14:06:19.808402+00:00"
+  "last_seen": "2026-04-23T14:43:33.812837+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -751,7 +790,7 @@
    "71312000"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -759,7 +798,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -768,7 +807,14 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "The City and County Council as Contracting Authority seeks to procure the services of an Architect led Integrated Design Team to provide technical assistance for the re-purposing of the former Bank of Ireland in Rathkeale County Limerick for the co-location of enterprise and comm…",
   "first_seen": "2026-04-23T14:06:19.808406+00:00",
-  "last_seen": "2026-04-23T14:06:19.808407+00:00"
+  "last_seen": "2026-04-23T14:43:33.812843+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "technical assistance",
+   "consultancy"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -796,7 +842,7 @@
    "50532200"
   ],
   "country": "SWE",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -804,7 +850,7 @@
    "31170000",
    "31170000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -813,7 +859,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Skellefteå Kraft Elnät AB upphandlar underhållstjänster av reläskydd på våra TT, ST-Stationer samt vår PT-station.  Syftet är att genom regelbundet återkommande funktions- och inställningskontroll säkerställa utrustningarnas korrekta funktion.",
   "first_seen": "2026-04-23T14:06:19.808411+00:00",
-  "last_seen": "2026-04-23T14:06:19.808412+00:00"
+  "last_seen": "2026-04-23T14:43:33.812849+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -844,7 +894,7 @@
    "45312311"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -852,7 +902,7 @@
    "45231400",
    "45231400"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -861,7 +911,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Technisches Gebäudemanagement (TGM), BLB NRW, Niederlassung Aachen. Das TGM der NL Aachen ist insgesamt in 11 Fachlose aufgeteilt. Die Fachlose sind ggf. in weitere Lose unterteilt. Für das hier ausgeschriebene Regionallos 4.3 (Elektro, hier: Blitzschutz, Bereich: NL Aachen) sind…",
   "first_seen": "2026-04-23T14:06:19.808417+00:00",
-  "last_seen": "2026-04-23T14:06:19.808418+00:00"
+  "last_seen": "2026-04-23T14:43:33.812855+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -882,14 +936,14 @@
    "31213200"
   ],
   "country": "ITA",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "31170000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -898,7 +952,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "10042112 fornitura di trasformatori MT/BT – fabbisogno 2026/2027",
   "first_seen": "2026-04-23T14:06:19.808465+00:00",
-  "last_seen": "2026-04-23T14:06:19.808466+00:00"
+  "last_seen": "2026-04-23T14:43:33.812861+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -922,14 +980,14 @@
    "50000000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -938,7 +996,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee & Delta, district Noord",
   "first_seen": "2026-04-23T14:06:19.808470+00:00",
-  "last_seen": "2026-04-23T14:06:19.808471+00:00"
+  "last_seen": "2026-04-23T14:43:33.812866+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -961,14 +1023,14 @@
    "50000000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -977,7 +1039,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "De werkzaamheden betreffen het vast onderhoud van de tunnels in perceel 2. De volgende tunnels behoren tot perceel 2: Beneluxtunnel, Drechttunnel, 2e Heinenoordtunnel, Ketheltunnel, Noordtunnel en de Sijtwendetunnel. Naast het vast onderhoud van de tunnels zijn er ook Voorgeschre…",
   "first_seen": "2026-04-23T14:06:19.808475+00:00",
-  "last_seen": "2026-04-23T14:06:19.808476+00:00"
+  "last_seen": "2026-04-23T14:43:33.812872+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -998,14 +1064,14 @@
    "45222000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1014,7 +1080,11 @@
   "published_display": "23 Apr 2026",
   "description_snippet": "31107985 Meerjarig Onderhoud natte areaal RWS Midden Nederland, district Zuid 2018-2026",
   "first_seen": "2026-04-23T14:06:19.808480+00:00",
-  "last_seen": "2026-04-23T14:06:19.808481+00:00"
+  "last_seen": "2026-04-23T14:43:33.812877+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1041,7 +1111,11 @@
   "relevance": "low",
   "category_tags": [],
   "first_seen": "2026-04-23T14:06:19.808501+00:00",
-  "last_seen": "2026-04-23T14:06:19.808503+00:00"
+  "last_seen": "2026-04-23T14:43:33.812882+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1083,7 +1157,11 @@
   "relevance": "low",
   "category_tags": [],
   "first_seen": "2026-04-23T14:06:19.808506+00:00",
-  "last_seen": "2026-04-23T14:06:19.808508+00:00"
+  "last_seen": "2026-04-23T14:43:33.812887+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1110,7 +1188,11 @@
   "relevance": "low",
   "category_tags": [],
   "first_seen": "2026-04-23T14:06:19.808511+00:00",
-  "last_seen": "2026-04-23T14:06:19.808513+00:00"
+  "last_seen": "2026-04-23T14:43:33.812892+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1134,7 +1216,7 @@
    "31321200"
   ],
   "country": "DEU",
-  "score": 3.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1147,7 +1229,7 @@
    "31321200",
    "31321200"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Supply of low- and medium-voltage XLPE cables and associated hardware (insulators, brackets, shackles) for distribution in Nigeria. Multiple cable configurations specified (3x50 mm² to 1x70 mm²) with armoured variants.",
@@ -1174,7 +1256,13 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "- ABC XLPE cable 3x50 mm2 + 1x50 mm2+1x16 mm2 - XLPE cable 3x50 mm2 + 1x50 mm2 (Armoured) Upriser - XLPE cable 1x70 mm2 - Single Phase-ABC XLPE cable 2x10 mm2 - Three Phase-ABC XLPE cable 4x16 mm2+1×16 mm2 - Complete D-Iron bracket and shackle porcelain Insulator",
   "first_seen": "2026-04-23T14:06:19.808125+00:00",
-  "last_seen": "2026-04-23T14:06:19.808129+00:00"
+  "last_seen": "2026-04-23T14:43:33.812898+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [
+   "terna"
+  ],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1236,7 +1324,7 @@
    "45232141"
   ],
   "country": "IRL",
-  "score": 2.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1247,7 +1335,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Framework agreements for repair and maintenance services of mechanical building installations (HVAC, plumbing, etc.) across Technological University of the Shannon's Midlands and Midwest campuses. This is general facilities maintenance, not power system or grid-related work.",
@@ -1267,7 +1355,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Call for Tenders for Establishment of Framework Agreements for the Provision of Mechanical Maintenance Services to Technological University of the Shannon Midwest and Midlands Campuses",
   "first_seen": "2026-04-23T14:06:19.808149+00:00",
-  "last_seen": "2026-04-23T14:06:19.808152+00:00"
+  "last_seen": "2026-04-23T14:43:33.812904+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1294,7 +1386,7 @@
    "71323100"
   ],
   "country": "SWE",
-  "score": 2.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1304,7 +1396,7 @@
    "71314100",
    "71323100"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Successive provision of consulting services for network development (nätutvecklare) to the Power Grid/Planning business area of Eskilstuna Strängnäs Energi och Miljö. Scope covers architectural, construction, engineering and inspection services related to grid planning and development.",
@@ -1327,7 +1419,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Upphandlingen avser successiva leveranser av konsulter (nätutvecklare) till Affärsområde Elnät/Planering.",
   "first_seen": "2026-04-23T14:06:19.808176+00:00",
-  "last_seen": "2026-04-23T14:06:19.808179+00:00"
+  "last_seen": "2026-04-23T14:43:33.812910+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1348,7 +1444,7 @@
    "77300000"
   ],
   "country": "DEU",
-  "score": 2.0,
+  "score": 1.5,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [
@@ -1357,7 +1453,7 @@
    "50hertz"
   ],
   "matched_cpv": [],
-  "relevance": "high",
+  "relevance": "possible",
   "category_tags": [],
   "summary": {
    "scope_summary": "Maintenance and ecological care services for nature compensation measures (CEF-Maßnahmen) along the SuedOstLink 525 kV DC underground cable project in Bavaria, Germany. Work includes grassland mowing, shrub cutting, and habitat maintenance across nine district lots over a five-year period per site.",
@@ -1384,7 +1480,17 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Ausschreibung Unterhaltungspflege CEF-Maßnahmen Projekt: SuedOstLink SuedOstLink ist ein Netzausbauprojekt, welches als Erdkabel-Verbindung von den beiden Übertragungsnetzbetreibern TenneT TSO GmbH und 50Hertz GmbH geplant und mit einer Spannungsebene von 525 KV (Gleichspannung) …",
   "first_seen": "2026-04-23T14:06:19.808185+00:00",
-  "last_seen": "2026-04-23T14:06:19.808188+00:00"
+  "last_seen": "2026-04-23T14:43:33.812748+00:00",
+  "gate_hits": [
+   "suedostlink"
+  ],
+  "service_hits": [],
+  "buyer_hits": [
+   "tennet"
+  ],
+  "section": "market_intel",
+  "is_corrigendum": false,
+  "is_award": false
  },
  {
   "source": "TED",
@@ -1402,7 +1508,7 @@
    "45112450"
   ],
   "country": "DEU",
-  "score": 2.0,
+  "score": 1.5,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [
@@ -1411,7 +1517,7 @@
    "50hertz"
   ],
   "matched_cpv": [],
-  "relevance": "high",
+  "relevance": "possible",
   "category_tags": [],
   "summary": {
    "scope_summary": "Excavation and soil management work at archaeological sites along the SuedOstLink HVDC corridor in Bavaria, Germany. The contract covers mechanical topsoil removal and proper backfilling at pre-construction archaeological investigation areas (VAM) identified along the planned 525 kV DC cable route.",
@@ -1438,7 +1544,17 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "SuedOstLink ist ein Netzausbauprojekt, welches als Erdkabel-Verbindung von den beiden Übertragungsnetzbetreibern TenneT TSO GmbH und 50Hertz GmbH geplant und mit einer Spannungsebene von 525 KV (Gleichspannung) realisiert wird. Die Bundesregierung hat den Bedarf für SuedOstLink b…",
   "first_seen": "2026-04-23T14:06:19.808194+00:00",
-  "last_seen": "2026-04-23T14:06:19.808197+00:00"
+  "last_seen": "2026-04-23T14:43:33.812761+00:00",
+  "gate_hits": [
+   "suedostlink"
+  ],
+  "service_hits": [],
+  "buyer_hits": [
+   "tennet"
+  ],
+  "section": "market_intel",
+  "is_corrigendum": false,
+  "is_award": false
  },
  {
   "source": "TED",
@@ -1459,7 +1575,7 @@
    "71340000"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1467,7 +1583,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1476,7 +1592,13 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Gegenstand dieser Ausschreibung ist der Abschluss einer Rahmenvereinbarung über die Erbringung von technischen Beraterdienstleistungen, die Leitung der Bauüberwachung und die Zeichnungsprüfung für den Bau von zwei, optional drei Zollbooten für den Einsatzbereich Bodensee und Hamb…",
   "first_seen": "2026-04-23T14:06:19.808324+00:00",
-  "last_seen": "2026-04-23T14:06:19.808326+00:00"
+  "last_seen": "2026-04-23T14:43:33.812916+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1495,7 +1617,7 @@
    "31321200"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1503,7 +1625,7 @@
    "31321200",
    "31321200"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1512,7 +1634,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Ausgeschrieben wird eine bis zu dreiährige Rahmenvereinbarung mit einem Rahmenvertragspartner über die Lieferung von Mittel- und Niederspannungskabeln für das Stromverteilnetz der Stadtwerke Solingen GmbH. Ausgeschrieben werden Mittelspannungskabel der Typen NA2XS(F)2Y sowie N2XS…",
   "first_seen": "2026-04-23T14:06:19.808330+00:00",
-  "last_seen": "2026-04-23T14:06:19.808332+00:00"
+  "last_seen": "2026-04-23T14:43:33.812922+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1538,7 +1664,7 @@
    "71314100"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1546,7 +1672,7 @@
    "71314100",
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1555,7 +1681,13 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Die Verbandsgemeinde Maifeld möchte die Grund- und Ganztagsschule \"St. Martin\" in Ochtendung, Raiffeisenplatz 5, 56299 Ochtendung, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit d…",
   "first_seen": "2026-04-23T14:06:19.808335+00:00",
-  "last_seen": "2026-04-23T14:06:19.808337+00:00"
+  "last_seen": "2026-04-23T14:43:33.812927+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1580,7 +1712,7 @@
    "71321000"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1588,7 +1720,7 @@
    "71314100",
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1597,7 +1729,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Die Verbandsgemeinde Ransbach Baumbach betreibt zur Reinigung des anfallenden Abwassers aus den jeweiligen Einzugsgebieten neben der Hauptkläranlage Hundsdorf (Ausbaugröße 17.250 EW) u. a. die mechanisch-biologische Kläranlage Haiderbach (Ausbaugröße 3.000 EW) sowie die beiden Te…",
   "first_seen": "2026-04-23T14:06:19.808341+00:00",
-  "last_seen": "2026-04-23T14:06:19.808342+00:00"
+  "last_seen": "2026-04-23T14:43:33.812933+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1624,7 +1760,7 @@
    "50610000"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1632,7 +1768,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1641,7 +1777,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "The Works involve the servicing and inspection and testing, by a suitably qualified and experienced specialist firm, of existing powered security barriers, electric gates and powered roller shutters in full compliance with the relevant standards for a Thirty Six {36} month period…",
   "first_seen": "2026-04-23T14:06:19.808346+00:00",
-  "last_seen": "2026-04-23T14:06:19.808347+00:00"
+  "last_seen": "2026-04-23T14:43:33.812939+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1667,7 +1807,7 @@
    "71314100"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1675,7 +1815,7 @@
    "71314100",
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1684,7 +1824,13 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Die Verbandsgemeinde Maifeld möchte die \"Cusanusschule\" in Münstermaifeld, Cusanusstraße 1, 56294 Münstermaifeld, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit des Gebäudes. Ziel…",
   "first_seen": "2026-04-23T14:06:19.808351+00:00",
-  "last_seen": "2026-04-23T14:06:19.808352+00:00"
+  "last_seen": "2026-04-23T14:43:33.812944+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1707,7 +1853,7 @@
    "71334000"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1715,7 +1861,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1724,7 +1870,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "EWS26 Electrical upgrade works to Hewetson NS Millicent Clane Co Kildare. The works entail replacement of the existing electrical services throughout the building. Refer to the attached documents for further information on the work to be carried out. Site visits to be arranged di…",
   "first_seen": "2026-04-23T14:06:19.808356+00:00",
-  "last_seen": "2026-04-23T14:06:19.808357+00:00"
+  "last_seen": "2026-04-23T14:43:33.812950+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1743,7 +1893,7 @@
    "31321200"
   ],
   "country": "DNK",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1751,7 +1901,7 @@
    "31321200",
    "31321200"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1760,7 +1910,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Indkøb af 72,5 kV muffer og endeafslutninger",
   "first_seen": "2026-04-23T14:06:19.808361+00:00",
-  "last_seen": "2026-04-23T14:06:19.808362+00:00"
+  "last_seen": "2026-04-23T14:43:33.812956+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1785,7 +1939,7 @@
    "71321000"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -1793,7 +1947,7 @@
    "71314100",
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1802,7 +1956,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Die Verbandsgemeinde Ransbach Baumbach betreibt zur Reinigung des anfallenden Abwassers aus den jeweiligen Einzugsgebieten neben der Hauptkläranlage Hundsdorf (Ausbaugröße 17.250 EW) u. a. die mechanisch-biologische Kläranlage Haiderbach (Ausbaugröße 3.000 EW) sowie die beiden Te…",
   "first_seen": "2026-04-23T14:06:19.808366+00:00",
-  "last_seen": "2026-04-23T14:06:19.808367+00:00"
+  "last_seen": "2026-04-23T14:43:33.812961+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1825,14 +1983,14 @@
    "50000000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1841,7 +1999,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "De werkzaamheden betreffen het vast onderhoud van de tunnels in perceel 2. De volgende tunnels behoren tot perceel 2: Beneluxtunnel, Drechttunnel, 2e Heinenoordtunnel, Ketheltunnel, Noordtunnel en de Sijtwendetunnel. Naast het vast onderhoud van de tunnels zijn er ook Voorgeschre…",
   "first_seen": "2026-04-23T14:06:19.808446+00:00",
-  "last_seen": "2026-04-23T14:06:19.808447+00:00"
+  "last_seen": "2026-04-23T14:43:33.812967+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1869,14 +2031,14 @@
    "71321000"
   ],
   "country": "DEU",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1885,7 +2047,13 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Die Verbandsgemeinde Maifeld möchte die \"Cusanusschule\" in Münstermaifeld, Cusanusstraße 1, 56294 Münstermaifeld, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit des Gebäudes. Ziel…",
   "first_seen": "2026-04-23T14:06:19.808450+00:00",
-  "last_seen": "2026-04-23T14:06:19.808452+00:00"
+  "last_seen": "2026-04-23T14:43:33.812972+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1909,14 +2077,14 @@
    "50000000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1925,7 +2093,11 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee & Delta, district Noord",
   "first_seen": "2026-04-23T14:06:19.808455+00:00",
-  "last_seen": "2026-04-23T14:06:19.808457+00:00"
+  "last_seen": "2026-04-23T14:43:33.812978+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -1953,14 +2125,14 @@
    "71321000"
   ],
   "country": "DEU",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -1969,7 +2141,13 @@
   "published_display": "22 Apr 2026",
   "description_snippet": "Die Verbandsgemeinde Maifeld möchte die Grund- und Ganztagsschule \"St. Martin\" in Ochtendung, Raiffeisenplatz 5, 56299 Ochtendung, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit d…",
   "first_seen": "2026-04-23T14:06:19.808460+00:00",
-  "last_seen": "2026-04-23T14:06:19.808462+00:00"
+  "last_seen": "2026-04-23T14:43:33.812983+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2042,7 +2220,11 @@
   "relevance": "low",
   "category_tags": [],
   "first_seen": "2026-04-23T14:06:19.808496+00:00",
-  "last_seen": "2026-04-23T14:06:19.808498+00:00"
+  "last_seen": "2026-04-23T14:43:33.812988+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2067,7 +2249,7 @@
    "45231000"
   ],
   "country": "DEU",
-  "score": 2.0,
+  "score": 1.5,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [
@@ -2075,8 +2257,10 @@
    "50hertz"
   ],
   "matched_cpv": [],
-  "relevance": "high",
-  "category_tags": [],
+  "relevance": "possible",
+  "category_tags": [
+   "named_project"
+  ],
   "summary": {
    "scope_summary": "Construction of cable protection conduit system for LanWin3 HVDC project in Schleswig-Holstein, Germany. Scope includes ~16 km cable trench between Büsum landing point and Heide station, with three independent horizontal directional drilling (HDD) boreholes to cross flood defences and protected seagrass meadows. TenneT executing on behalf of 50Hertz under joint cooperation agreement.",
    "key_dates": {
@@ -2102,7 +2286,17 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "Die Übertragungsnetzbetreiber 50Hertz Transmission GmbH und TenneT TSO GmbH haben im Dezember 2023 eine Kooperationsvereinbarung mit der Absicht geschlossen, ihre Bauvorhaben, die sich in unmittelbarer Nähe zueinander befinden, im Rahmen einer Partnerschaft umzusetzen. In diesen …",
   "first_seen": "2026-04-23T14:06:19.808167+00:00",
-  "last_seen": "2026-04-23T14:06:19.808170+00:00"
+  "last_seen": "2026-04-23T14:43:33.812767+00:00",
+  "gate_hits": [
+   "lanwin"
+  ],
+  "service_hits": [],
+  "buyer_hits": [
+   "tennet"
+  ],
+  "section": "market_intel",
+  "is_corrigendum": false,
+  "is_award": false
  },
  {
   "source": "TED",
@@ -2123,7 +2317,7 @@
    "71333000"
   ],
   "country": "NLD",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2131,7 +2325,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2140,7 +2334,13 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "Het doel van de Aanbesteding is om een transparant, eerlijk en efficiënt proces te waarborgen voor het selecteren van de beste dienstverlener op het gebied van onderhoud van Elektrotechnische installaties (E-installaties) en de beste dienstverlener op het gebied van Werktuigbouwk…",
   "first_seen": "2026-04-23T14:06:19.808292+00:00",
-  "last_seen": "2026-04-23T14:06:19.808293+00:00"
+  "last_seen": "2026-04-23T14:43:33.812993+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2183,7 +2383,7 @@
    "71314100"
   ],
   "country": "NOR",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2191,7 +2391,7 @@
    "71314100",
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2200,7 +2400,11 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "The contracting authority shall enter into parallel framework agreements for electrician services. The framework agreement includes electrician services, mainly for purpose-built buildings, housing management and some charging.",
   "first_seen": "2026-04-23T14:06:19.808297+00:00",
-  "last_seen": "2026-04-23T14:06:19.808298+00:00"
+  "last_seen": "2026-04-23T14:43:33.812998+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2221,7 +2425,7 @@
    "71314100"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2229,7 +2433,7 @@
    "71314100",
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2238,7 +2442,11 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "Der Bau- und Liegenschaftsbetrieb NRW, schreibt die Leistungen des Neubaus Materiallager Taucherzug in der Herzog-von Braunschweig Kaserne in Minden aus. Das neu entstehende Taucherzuggebäude für die Bundeswehr soll in eingeschossiger Bauweise ohne Unterkellerung errichtet werden…",
   "first_seen": "2026-04-23T14:06:19.808302+00:00",
-  "last_seen": "2026-04-23T14:06:19.808304+00:00"
+  "last_seen": "2026-04-23T14:43:33.813004+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2261,7 +2469,7 @@
    "71334000"
   ],
   "country": "NLD",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2269,7 +2477,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2278,7 +2486,11 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "De werkzaamheden bestaan uit: - Vast onderhoud Het vast onderhoud bestaat uit: 1 het uitvoeren van PO (periodiek onderhoud) modeljobs. Periodiek onderhoud komt overeen met het standaard verzorgend onderhoud (SVO) zoals gebruikelijk bij BOC contracten. a. inspectie b. onderhoud c.…",
   "first_seen": "2026-04-23T14:06:19.808308+00:00",
-  "last_seen": "2026-04-23T14:06:19.808309+00:00"
+  "last_seen": "2026-04-23T14:43:33.813009+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2315,17 +2527,15 @@
    "71351000"
   ],
   "country": "FRA",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [
    "interconnector"
   ],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [],
-  "relevance": "possible",
-  "category_tags": [
-   "interconnector"
-  ],
+  "relevance": "low",
+  "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
   "value_display": "",
@@ -2333,7 +2543,13 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "RTE is the French Transmission System Operator, a public service company responsible for developing, maintaining and operating all electricity transmission assets in France, French territorial waters and the French exclusive economic zone, to the extent directly connected to the …",
   "first_seen": "2026-04-23T14:06:19.808313+00:00",
-  "last_seen": "2026-04-23T14:06:19.808315+00:00"
+  "last_seen": "2026-04-23T14:43:33.813015+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [
+   "rte"
+  ],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2352,7 +2568,7 @@
    "71334000"
   ],
   "country": "NLD",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2360,7 +2576,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2369,7 +2585,13 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "De opdracht betreft het installatieonderhoud voor de E en W installaties voor de locaties zoals genoemd in paragraaf 1.2 van de aanbestedingsleidraad. Opdrachtnemer dient de opdracht uit te voeren conform het programma van eisen zoals opgenomen in Bijlage 1. Het doel van de opdra…",
   "first_seen": "2026-04-23T14:06:19.808319+00:00",
-  "last_seen": "2026-04-23T14:06:19.808320+00:00"
+  "last_seen": "2026-04-23T14:43:33.813021+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2393,14 +2615,14 @@
    "50000000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2409,7 +2631,11 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee & Delta, district Noord",
   "first_seen": "2026-04-23T14:06:19.808436+00:00",
-  "last_seen": "2026-04-23T14:06:19.808438+00:00"
+  "last_seen": "2026-04-23T14:43:33.813026+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2432,14 +2658,14 @@
    "50000000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2448,7 +2674,11 @@
   "published_display": "21 Apr 2026",
   "description_snippet": "De werkzaamheden betreffen het vast onderhoud van de tunnels in perceel 2. De volgende tunnels behoren tot perceel 2: Beneluxtunnel, Drechttunnel, 2e Heinenoordtunnel, Ketheltunnel, Noordtunnel en de Sijtwendetunnel. Naast het vast onderhoud van de tunnels zijn er ook Voorgeschre…",
   "first_seen": "2026-04-23T14:06:19.808441+00:00",
-  "last_seen": "2026-04-23T14:06:19.808442+00:00"
+  "last_seen": "2026-04-23T14:43:33.813032+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2477,7 +2707,11 @@
   "relevance": "low",
   "category_tags": [],
   "first_seen": "2026-04-23T14:06:19.808491+00:00",
-  "last_seen": "2026-04-23T14:06:19.808493+00:00"
+  "last_seen": "2026-04-23T14:43:33.813056+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2534,7 +2768,7 @@
    "32412100"
   ],
   "country": "FRA",
-  "score": 6.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2552,7 +2786,7 @@
    "71323100",
    "71323100"
   ],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Framework agreement for engineering management services covering study, supervision and monitoring of electrification works, electronic communications equipment, public lighting, and demand-side management for the Gard-SMEG territory during 2027–2030.",
@@ -2575,7 +2809,11 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "Accord cadre de maitrise d'oeuvre pour l'étude, le contrôle et le suivi des travaux d'électrification, d'équipements électroniques de communication, d'éclairage public, et de maitrise de la demande d'énergie pour les années 2027 à 2030.",
   "first_seen": "2026-04-23T14:06:19.808110+00:00",
-  "last_seen": "2026-04-23T14:06:19.808112+00:00"
+  "last_seen": "2026-04-23T14:43:33.813062+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2596,14 +2834,14 @@
    "45262000"
   ],
   "country": "DNK",
-  "score": 2.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [
    "energinet"
   ],
   "matched_cpv": [],
-  "relevance": "high",
+  "relevance": "low",
   "category_tags": [],
   "summary": {
    "scope_summary": "Construction and civil works for a new 132 kV high-voltage substation (Haslev Øst) in Denmark. Energinet is procuring the build and installation services for this transmission-level facility.",
@@ -2625,7 +2863,13 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "Ordregiver ønsker at anskaffe bygge- og anlægsarbejder i forbindelse med opførelse af en ny 132 kV høj-spændingsstation.",
   "first_seen": "2026-04-23T14:06:19.808158+00:00",
-  "last_seen": "2026-04-23T14:06:19.808161+00:00"
+  "last_seen": "2026-04-23T14:43:33.813070+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [
+   "energinet"
+  ],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2652,7 +2896,7 @@
    "71300000"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2660,7 +2904,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2669,7 +2913,15 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "MEP Led Consultancy Services for Apprenticeship Expansion at Linenhall (City Campus), Premier House and TDC (Tallaght Campus), Block D (Blanchardstown Campus). The expansion projects require comprehensive MEP led consultancy services (Mechanical, Electrical, Plumbing, Architectur…",
   "first_seen": "2026-04-23T14:06:19.808240+00:00",
-  "last_seen": "2026-04-23T14:06:19.808244+00:00"
+  "last_seen": "2026-04-23T14:43:33.813076+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "engineering services",
+   "consultancy",
+   "consultant"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2698,7 +2950,7 @@
    "71311200"
   ],
   "country": "IRL",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2706,7 +2958,7 @@
    "71334000",
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2715,7 +2967,14 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "The IDA Raheen Business Park is located on the southern fringe of Limerick City approx. 5kms from the City Centre. The Park is accessible from the nearby M20 Motorway and has two main access routes which include the predominant access from the Ballycummin Road off the M20 while t…",
   "first_seen": "2026-04-23T14:06:19.808251+00:00",
-  "last_seen": "2026-04-23T14:06:19.808255+00:00"
+  "last_seen": "2026-04-23T14:43:33.813081+00:00",
+  "gate_hits": [],
+  "service_hits": [
+   "consultancy",
+   "consultant"
+  ],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2740,7 +2999,7 @@
    "45231000"
   ],
   "country": "NLD",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2748,7 +3007,7 @@
    "31321200",
    "31321200"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2757,7 +3016,11 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "Het doel van deze marktconsultatie is het ophalen van kennis over de Solo productiestraten Kleinverbruik (KV), Grootverbruik (GVR&N), Grote aansluitingen en -projecten. Alliander wil inzichten, aandachtspunten en prioriteiten ophalen van aannemers om deze waar mogelijk mee te nem…",
   "first_seen": "2026-04-23T14:06:19.808261+00:00",
-  "last_seen": "2026-04-23T14:06:19.808265+00:00"
+  "last_seen": "2026-04-23T14:43:33.813086+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2786,7 +3049,7 @@
    "71314100"
   ],
   "country": "ESP",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2794,7 +3057,7 @@
    "71314100",
    "71314100"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2803,7 +3066,11 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "La contratación de trabajos de albañilería, ayudas logísticas, fontanería e implantación la instalación eléctrica del recinto ferial del Palma International Boat Show 2026 (PIBS 2026), incluida la compra de ciertos materiales necesarios para el montaje de la red eléctrica. Concre…",
   "first_seen": "2026-04-23T14:06:19.808271+00:00",
-  "last_seen": "2026-04-23T14:06:19.808274+00:00"
+  "last_seen": "2026-04-23T14:43:33.813092+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2822,7 +3089,7 @@
    "31321300"
   ],
   "country": "DEU",
-  "score": 1.0,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
@@ -2830,7 +3097,7 @@
    "31321300",
    "31321300"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2839,7 +3106,11 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "Der Gegenstand dieser Ausschreibung ist das Herstellen einer betriebsfertigen 110 kV Kabelanlage vom Umspannwerk UW Gremberghoven bis Umspannwerk UW Porz. Die Trassen-länge beträgt ca. 3,2 km. Nachfolgend wird dieser Trassenabschnitt K-279 benannt. Des Weiteren soll die Trasse vo…",
   "first_seen": "2026-04-23T14:06:19.808281+00:00",
-  "last_seen": "2026-04-23T14:06:19.808285+00:00"
+  "last_seen": "2026-04-23T14:43:33.813097+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2863,14 +3134,14 @@
    "50000000"
   ],
   "country": "NLD",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "71334000"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2879,7 +3150,11 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee & Delta, district Noord",
   "first_seen": "2026-04-23T14:06:19.808422+00:00",
-  "last_seen": "2026-04-23T14:06:19.808423+00:00"
+  "last_seen": "2026-04-23T14:43:33.813102+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2899,14 +3174,14 @@
    "45232200"
   ],
   "country": "ITA",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "45232200"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2915,7 +3190,11 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "PROCEDURA APERTA PER LA REALIZZAZIONE DI ALLACCIAMENTI MULTIBUSINESS NEI TERRITORI DI TRIESTE E GORIZIA GESTITI DA ACEGASAPSAMGA S.P.A.",
   "first_seen": "2026-04-23T14:06:19.808427+00:00",
-  "last_seen": "2026-04-23T14:06:19.808428+00:00"
+  "last_seen": "2026-04-23T14:43:33.813107+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2937,14 +3216,14 @@
    "31321220"
   ],
   "country": "DEU",
-  "score": 0.5,
+  "score": 0.0,
   "matched_strong": [],
   "matched_contextual": [],
   "matched_watchlist": [],
   "matched_cpv": [
    "31321200"
   ],
-  "relevance": "possible",
+  "relevance": "low",
   "category_tags": [],
   "badge_class": "b-possible",
   "badge_label": "Possibly relevant",
@@ -2953,7 +3232,11 @@
   "published_display": "20 Apr 2026",
   "description_snippet": "Lieferung von Nieder- und Mittelspannungskabel",
   "first_seen": "2026-04-23T14:06:19.808431+00:00",
-  "last_seen": "2026-04-23T14:06:19.808433+00:00"
+  "last_seen": "2026-04-23T14:43:33.813112+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  },
  {
   "source": "TED",
@@ -2981,6 +3264,10 @@
   "relevance": "low",
   "category_tags": [],
   "first_seen": "2026-04-23T14:06:19.808485+00:00",
-  "last_seen": "2026-04-23T14:06:19.808487+00:00"
+  "last_seen": "2026-04-23T14:43:33.813117+00:00",
+  "gate_hits": [],
+  "service_hits": [],
+  "buyer_hits": [],
+  "section": "rejected"
  }
 ]

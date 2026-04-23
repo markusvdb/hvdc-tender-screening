@@ -6,110 +6,85 @@
 <title>HVDC tender screening</title>
 <style>
   :root {
-    --bg: #ffffff;
-    --bg-secondary: #f7f6f2;
-    --text-primary: #1c1c1a;
-    --text-secondary: #5f5e5a;
-    --text-tertiary: #888780;
+    --bg: #ffffff; --bg-secondary: #f7f6f2;
+    --text-primary: #1c1c1a; --text-secondary: #5f5e5a; --text-tertiary: #888780;
     --border: rgba(0,0,0,0.12);
-    --border-strong: rgba(0,0,0,0.2);
-    --info-bg: #e6f1fb;
-    --info-text: #0c447c;
-    --warn-bg: #faeeda;
-    --warn-text: #854f0b;
-    --success-bg: #e1f5ee;
-    --success-text: #085041;
-    --purple-bg: #eeedfe;
-    --purple-text: #3c3489;
+    --info-bg: #e6f1fb; --info-text: #0c447c;
+    --warn-bg: #faeeda; --warn-text: #854f0b;
+    --success-bg: #e1f5ee; --success-text: #085041;
+    --purple-bg: #eeedfe; --purple-text: #3c3489;
+    --gray-bg: #f1efe8; --gray-text: #5f5e5a;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1c1a;
-      --bg-secondary: #2c2c2a;
-      --text-primary: #f1efe8;
-      --text-secondary: #b4b2a9;
-      --text-tertiary: #888780;
+      --bg: #1c1c1a; --bg-secondary: #2c2c2a;
+      --text-primary: #f1efe8; --text-secondary: #b4b2a9; --text-tertiary: #888780;
       --border: rgba(255,255,255,0.15);
-      --border-strong: rgba(255,255,255,0.25);
-      --info-bg: #0c447c;
-      --info-text: #b5d4f4;
-      --warn-bg: #633806;
-      --warn-text: #fac775;
-      --success-bg: #085041;
-      --success-text: #9fe1cb;
-      --purple-bg: #3c3489;
-      --purple-text: #cecbf6;
+      --info-bg: #0c447c; --info-text: #b5d4f4;
+      --warn-bg: #633806; --warn-text: #fac775;
+      --success-bg: #085041; --success-text: #9fe1cb;
+      --purple-bg: #3c3489; --purple-text: #cecbf6;
+      --gray-bg: #444441; --gray-text: #d3d1c7;
     }
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    color: var(--text-primary);
-    background: var(--bg);
-    margin: 0;
-    padding: 2rem 1rem;
-    line-height: 1.5;
+    color: var(--text-primary); background: var(--bg);
+    margin: 0; padding: 2rem 1rem; line-height: 1.5;
   }
-  .container { max-width: 820px; margin: 0 auto; }
+  .container { max-width: 860px; margin: 0 auto; }
   h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
-  h2 { font-size: 18px; font-weight: 500; margin: 2rem 0 1rem; }
-  p { margin: 0; }
+  h2 { font-size: 18px; font-weight: 500; margin: 2.5rem 0 4px; }
+  h2 .count { font-weight: 400; color: var(--text-secondary); font-size: 14px; margin-left: 8px; }
+  .section-desc { font-size: 13px; color: var(--text-secondary); margin: 0 0 1rem; }
   .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 2rem; }
   .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 8px; }
   .last-run { font-size: 12px; color: var(--text-tertiary); }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 2rem; }
   .stat { background: var(--bg-secondary); border-radius: 8px; padding: 1rem; }
   .stat-label { font-size: 13px; color: var(--text-secondary); }
   .stat-value { font-size: 24px; font-weight: 500; margin-top: 4px; }
   .stat-value.info { color: var(--info-text); }
   .stat-value.warn { color: var(--warn-text); }
-  .filters { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
-  .filter-label { font-size: 13px; color: var(--text-secondary); margin-right: 4px; }
-  .fbtn {
-    font-size: 12px; padding: 5px 11px; background: transparent;
-    border: 0.5px solid var(--border); border-radius: 8px;
-    cursor: pointer; color: var(--text-secondary); font-family: inherit;
-  }
-  .fbtn.active { background: var(--info-bg); color: var(--info-text); border-color: var(--info-text); }
-  .fbtn:hover:not(.active) { background: var(--bg-secondary); }
-  select {
-    font-size: 12px; padding: 5px 8px; border: 0.5px solid var(--border);
-    border-radius: 8px; background: transparent; color: var(--text-primary);
-    font-family: inherit;
-  }
   .tender {
     background: var(--bg); border: 0.5px solid var(--border);
     border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px;
   }
-  .tender-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+  .tender.bid { border-left: 3px solid var(--info-text); }
+  .tender-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
   .tender-title { font-size: 15px; font-weight: 500; margin: 0; }
   .tender-title a { color: var(--text-primary); text-decoration: none; }
   .tender-title a:hover { text-decoration: underline; }
   .tender-buyer { font-size: 13px; color: var(--text-secondary); margin: 4px 0 0; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
   .badge { font-size: 11px; padding: 3px 9px; border-radius: 8px; white-space: nowrap; font-weight: 500; }
-  .b-high { background: var(--info-bg); color: var(--info-text); }
-  .b-possible { background: var(--bg-secondary); color: var(--text-secondary); }
+  .b-bid { background: var(--info-bg); color: var(--info-text); }
+  .b-intel { background: var(--gray-bg); color: var(--gray-text); }
   .b-corr { background: var(--warn-bg); color: var(--warn-text); }
   .b-award { background: var(--success-bg); color: var(--success-text); }
+  .b-fit-yes { background: var(--success-bg); color: var(--success-text); }
+  .b-fit-partial { background: var(--warn-bg); color: var(--warn-text); }
   .tender-meta {
     display: flex; gap: 16px; font-size: 12px; color: var(--text-secondary);
     margin: 10px 0; flex-wrap: wrap;
   }
   .tender-meta strong { color: var(--text-primary); font-weight: 500; }
-  .tender-summary {
-    font-size: 13px; line-height: 1.6; color: var(--text-primary); margin: 10px 0;
-  }
-  .tender-kw { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-  .kw { font-size: 11px; padding: 2px 8px; background: var(--bg-secondary); border-radius: 6px; color: var(--text-secondary); }
-  .kw-strong { background: var(--purple-bg); color: var(--purple-text); }
-  .tender-requirements { margin: 10px 0 0; padding-left: 1.2rem; font-size: 13px; color: var(--text-secondary); }
+  .tender-summary { font-size: 13px; line-height: 1.6; color: var(--text-primary); margin: 10px 0; }
+  .bid-fit-reason { font-size: 12px; color: var(--text-secondary); font-style: italic; margin: 4px 0 8px; }
+  .tender-requirements { margin: 8px 0 0; padding-left: 1.2rem; font-size: 13px; color: var(--text-secondary); }
   .tender-requirements li { margin-bottom: 3px; }
   .tender-red-flag {
     font-size: 12px; color: var(--warn-text); margin-top: 8px;
     padding: 6px 10px; background: var(--warn-bg); border-radius: 6px;
   }
+  .tender-kw { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .kw { font-size: 11px; padding: 2px 8px; background: var(--bg-secondary); border-radius: 6px; color: var(--text-secondary); }
+  .kw-hvdc { background: var(--purple-bg); color: var(--purple-text); }
+  .kw-service { background: var(--info-bg); color: var(--info-text); }
   .empty {
-    text-align: center; padding: 3rem 1rem; color: var(--text-tertiary);
+    text-align: center; padding: 2rem 1rem; color: var(--text-tertiary);
     border: 0.5px dashed var(--border); border-radius: 12px;
+    font-size: 13px;
   }
   footer {
     margin-top: 3rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border);
@@ -123,1756 +98,147 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">Updated Thu 23 Apr 2026 · FTS + TED · 63 notices screened</p>
+      <p class="subtitle">Updated Thu 23 Apr 2026 · FTS + TED · 63 notices screened · 59 rejected at HVDC gate</p>
     </div>
-    <div class="last-run">Last run: Thu 23 Apr 2026, 14:06 UTC</div>
+    <div class="last-run">Last run: Thu 23 Apr 2026, 14:43 UTC</div>
   </div>
 
   <div class="stats">
     <div class="stat">
-      <div class="stat-label">Notices screened</div>
-      <div class="stat-value">63</div>
+      <div class="stat-label">Bid candidates</div>
+      <div class="stat-value info">0</div>
     </div>
     <div class="stat">
-      <div class="stat-label">High relevance</div>
-      <div class="stat-value info">14</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Possibly relevant</div>
-      <div class="stat-value">43</div>
+      <div class="stat-label">Market intel</div>
+      <div class="stat-value">4</div>
     </div>
     <div class="stat">
       <div class="stat-label">Corrigenda</div>
       <div class="stat-value warn">0</div>
     </div>
+    <div class="stat">
+      <div class="stat-label">Rejected at gate</div>
+      <div class="stat-value">59</div>
+    </div>
   </div>
 
-  <div class="filters">
-    <span class="filter-label">Filter:</span>
-    <button class="fbtn active" data-filter="all">All (57)</button>
-    <button class="fbtn" data-filter="converter">Converter stations (0)</button>
-    <button class="fbtn" data-filter="interconnector">Interconnectors (1)</button>
-    <button class="fbtn" data-filter="consulting">Consulting / OE (1)</button>
-    <button class="fbtn" data-filter="studies">Studies / R&amp;D (0)</button>
-    <span style="flex: 1;"></span>
-    <select id="source">
-      <option value="all">All sources</option>
-      <option value="FTS">FTS (UK)</option>
-      <option value="TED">TED (EU)</option>
-    </select>
-    <select id="relevance">
-      <option value="all">All relevance</option>
-      <option value="high" selected>High only</option>
-      <option value="possible">Possibly relevant</option>
-    </select>
-  </div>
+  <h2>1. Bid candidates<span class="count">0</span></h2>
+  <p class="section-desc">HVDC scope + RTEi-relevant service (owner's engineer, design review, feasibility, studies, consulting).</p>
 
-  <div id="tenders">
+  
+    <div class="empty">No bid candidates in this run. Check section 2 below for HVDC market intelligence.</div>
+  
+
+  <h2>2. HVDC market intelligence<span class="count">4</span></h2>
+  <p class="section-desc">Other HVDC tenders — typically OEM/EPC/cable supply/platform fabrication. Useful for tracking the market; not RTEi bid targets.</p>
+
+  
     
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/279764-2026" target="_blank" rel="noopener">Spain – Mechanical and electrical engineering services – prj_127811 - S_GRD_ES - INGENIERÍA AT + CARTOGRAFÍA DE LA RED 2026-30/31</a></p>
-          <p class="tender-buyer">[&#39;ENDESA, S.A. y todas las sociedades y establecimientos permanentes del Grupo ENEL radicados en España y Portugal.&#39;] · TED · can-standard · ESP</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 7.5</span>
-      </div>
-      
-      <p class="tender-summary">Engineering services, technical assistance, and legal support for AT (high-voltage) works across E-Distribución&#39;s network, plus cartographic data maintenance for AT/MT/BT infrastructure covering Spain and Portugal for 2026–2030 (plus one optional annual extension).</p>
-      
-      <ul class="tender-requirements">
-        <li>AT (high-voltage) engineering and technical assistance</li><li>Network cartography data updates and maintenance across voltage levels</li><li>Multi-territory scope (Spain and Portugal)</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Submission deadline missing from notice</div>
-        
-        <div class="tender-red-flag">⚠ Value not disclosed — budget uncertainty for bid preparation</div>
-        
-      
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/266369-2026" target="_blank" rel="noopener">France – Electrical power systems design services – Accord-cadre de Maîtrise d&#39;oeuvre, infrastructure, réseaux secs pour le TE Gard-SMEG</a></p>
-          <p class="tender-buyer">[&#34;Territoire d&#39;Energie GARD-SMEG&#34;] · TED · cn-standard · FRA</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 08 Jun 2026</span>
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 6.0</span>
-      </div>
-      
-      <p class="tender-summary">Framework agreement for engineering management services covering study, supervision and monitoring of electrification works, electronic communications equipment, public lighting, and demand-side management for the Gard-SMEG territory during 2027–2030.</p>
-      
-      
-        
-        <div class="tender-red-flag">⚠ No HVDC-specific scope evident in description; appears focused on general grid electrification and DSM</div>
-        
-        <div class="tender-red-flag">⚠ Framework agreement with undefined contract volumes and phasing</div>
-        
-      
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274235-2026" target="_blank" rel="noopener">Germany – Low- and medium-voltage cable – Cables for Nigeria</a></p>
-          <p class="tender-buyer">[&#39;Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 11 May 2026</span>
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 3.5</span>
-      </div>
-      
-      <p class="tender-summary">Supply of low- and medium-voltage XLPE cables and associated hardware (insulators, brackets, shackles) for distribution in Nigeria. Multiple cable configurations specified (3x50 mm² to 1x70 mm²) with armoured variants.</p>
-      
-      <ul class="tender-requirements">
-        <li>XLPE insulation (multiple cross-sections and phase configurations)</li><li>Armoured cable variant for upriser applications</li><li>D-iron brackets and porcelain insulators included</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Low/medium-voltage scope; not HVDC-related</div>
-        
-        <div class="tender-red-flag">⚠ Destination is Nigeria (potential compliance/delivery logistics considerations)</div>
-        
-      
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/277756-2026" target="_blank" rel="noopener">Germany – Transformers – UW Landesbergen - 120 kV 75 MVA Transformatoren</a></p>
-          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · can-standard · DEU</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 3.0</span>
-      </div>
-      
-      <p class="tender-summary">Supply, manufacture and installation-ready delivery of two 120 kV / 10.5 kV, 75 MVA power transformers (switchable to 60 kV) for TenneT&#39;s Landesbergen substation. Transformers support the station&#39;s upgrade from 220 kV to 380 kV switchgear and provide auxiliary power and customer supply at 10 kV.</p>
-      
-      <ul class="tender-requirements">
-        <li>Dual-voltage switchable design (120 kV ±16% and 60 kV ±16% on primary)</li><li>Factory acceptance testing and installation-ready delivery</li><li>Mandatory NDA signature required before access to tender documents</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Submission only via Mercell e-procurement platform; non-compliance results in exclusion</div>
-        
-        <div class="tender-red-flag">⚠ No deadline extension available; strict single-channel submission requirement</div>
-        
-      
-      
-      <div class="tender-kw">
-        <span class="kw kw-strong">tennet</span>
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/276228-2026" target="_blank" rel="noopener">Ireland – Repair and maintenance services of mechanical building installations – Call for Tenders for Establishment of Framework Agreements for the Provision of Mechanical Maintenance Services to Technological University of the Shannon Midwest and Midlands Campuses</a></p>
-          <p class="tender-buyer">[&#39;Technological University of the Shannon: Midlands Midwest (TUSMM)&#39;] · TED · cn-standard · IRL</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 21 May 2026</span>
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 2.5</span>
-      </div>
-      
-      <p class="tender-summary">Framework agreements for repair and maintenance services of mechanical building installations (HVAC, plumbing, etc.) across Technological University of the Shannon&#39;s Midlands and Midwest campuses. This is general facilities maintenance, not power system or grid-related work.</p>
-      
-      
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/268935-2026" target="_blank" rel="noopener">Denmark – Transformer substation – 22/06127 -Anskaffelse af bygge- og anlægsarbejder for etablering transformer-station Haslev Øst</a></p>
-          <p class="tender-buyer">[&#39;Energinet Eltransmission A/S&#39;] · TED · cn-standard · DNK</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 2.0</span>
-      </div>
-      
-      <p class="tender-summary">Construction and civil works for a new 132 kV high-voltage substation (Haslev Øst) in Denmark. Energinet is procuring the build and installation services for this transmission-level facility.</p>
-      
-      
-        
-        <div class="tender-red-flag">⚠ No submission deadline published yet — notice may still be in draft or pre-publication phase</div>
-        
-      
-      
-      <div class="tender-kw">
-        <span class="kw kw-strong">energinet</span>
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/269965-2026" target="_blank" rel="noopener">Germany – Construction work for communication lines – Horizontal Directional Drilling (HDD-Verfahren) - LanWin3</a></p>
-          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 2.0</span>
-      </div>
-      
-      <p class="tender-summary">Construction of cable protection conduit system for LanWin3 HVDC project in Schleswig-Holstein, Germany. Scope includes ~16 km cable trench between Büsum landing point and Heide station, with three independent horizontal directional drilling (HDD) boreholes to cross flood defences and protected seagrass meadows. TenneT executing on behalf of 50Hertz under joint cooperation agreement.</p>
-      
-      <ul class="tender-requirements">
-        <li>525 kV DC cable system with three independent HDD boreholes for two conductors plus metallic return conductor</li><li>PE-RT cable protection conduits with integrated fibre-optic cable in one duct</li><li>HDD method mandatory due to dike stability and environmental protection (Natura 2000 seagrass area)</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Coordinated execution with parallel LanWin2 project (six HDD boreholes total in 2027) — potential schedule and resource conflicts</div>
-        
-        <div class="tender-red-flag">⚠ Environmentally sensitive crossing area requiring specialized dike protection measures and minimal disturbance techniques</div>
-        
-      
-      
-      <div class="tender-kw">
-        <span class="kw kw-strong">tennet</span><span class="kw kw-strong">50hertz</span>
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/273131-2026" target="_blank" rel="noopener">Sweden – Architectural, construction, engineering and inspection services – Konsulttjänster nätutvecklare</a></p>
-          <p class="tender-buyer">[&#39;Eskilstuna Strängnäs Energi och Miljö Aktiebolag&#39;] · TED · can-standard · SWE</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 2.0</span>
-      </div>
-      
-      <p class="tender-summary">Successive provision of consulting services for network development (nätutvecklare) to the Power Grid/Planning business area of Eskilstuna Strängnäs Energi och Miljö. Scope covers architectural, construction, engineering and inspection services related to grid planning and development.</p>
-      
-      
-        
-        <div class="tender-red-flag">⚠ No submission deadline provided in notice</div>
-        
-        <div class="tender-red-flag">⚠ No HVDC-specific language; CPV codes are generic engineering/consulting</div>
-        
-      
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/273777-2026" target="_blank" rel="noopener">Germany – Agricultural, forestry, horticultural, aquacultural and apicultural services – A060 SuedOstLink: Unterhaltungspflege der CEF-Maßnahmen</a></p>
-          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 2.0</span>
-      </div>
-      
-      <p class="tender-summary">Maintenance and ecological care services for nature compensation measures (CEF-Maßnahmen) along the SuedOstLink 525 kV DC underground cable project in Bavaria, Germany. Work includes grassland mowing, shrub cutting, and habitat maintenance across nine district lots over a five-year period per site.</p>
-      
-      <ul class="tender-requirements">
-        <li>Five-year maintenance cycle per compensation site</li><li>Nine geographical lots (Hof, Wunsiedel, Tirschenreuth, Neustadt, Weiden, Schwandorf, Regensburg, Straubing-Bogen, Landshut districts)</li><li>Ecological functionality compliance for nature/forest impact mitigation</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Submission deadline not yet published despite tender notice date</div>
-        
-        <div class="tender-red-flag">⚠ Submission and all communications restricted to Mercell platform only</div>
-        
-      
-      
-      <div class="tender-kw">
-        <span class="kw kw-strong">suedostlink</span><span class="kw kw-strong">tennet</span><span class="kw kw-strong">50hertz</span>
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274721-2026" target="_blank" rel="noopener">Germany – Excavation work at archaeological sites – A060 SuedOstLink: Tiefbauarbeiten für bauvorgreifende archäologische Maßnahmen</a></p>
-          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · can-modif · DEU</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 2.0</span>
-      </div>
-      
-      <p class="tender-summary">Excavation and soil management work at archaeological sites along the SuedOstLink HVDC corridor in Bavaria, Germany. The contract covers mechanical topsoil removal and proper backfilling at pre-construction archaeological investigation areas (VAM) identified along the planned 525 kV DC cable route.</p>
-      
-      <ul class="tender-requirements">
-        <li>Mechanical earthwork for topsoil removal and reinstatement at designated archaeological zones</li><li>Compliance with Bavarian heritage authority (BLfD) requirements and NABEG planning regulations</li><li>Coordination with ongoing archaeological investigations across SuedOstLink sections C1–D3b</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Notice type is &#39;can-modif&#39; (modification notice) — suggests contract already awarded; may indicate scope creep or revised terms</div>
-        
-        <div class="tender-red-flag">⚠ Submission deadline not disclosed in published notice — clarification needed on bidding window</div>
-        
-      
-      
-      <div class="tender-kw">
-        <span class="kw kw-strong">suedostlink</span><span class="kw kw-strong">tennet</span><span class="kw kw-strong">50hertz</span>
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278848-2026" target="_blank" rel="noopener">France – Construction work for electricity power lines – TG1BI Marché Equipement de Poste Ile de France Ouest</a></p>
-          <p class="tender-buyer">[&#39;Enedis SA&#39;] · TED · cn-standard · FRA</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 2.0</span>
-      </div>
-      
-      <p class="tender-summary">Construction and equipment installation work for distribution substations (postes DP) in the Île-de-France Ouest region, including civil engineering, OMT (on-load tap changer) installation, HTA control line construction, and associated metalwork.</p>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Scope is distribution-level (HTA) rather than HVDC transmission</div>
-        
-        <div class="tender-red-flag">⚠ No submission deadline provided in notice</div>
-        
-      
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/277493-2026" target="_blank" rel="noopener">Belgium – Transformers – Vermogenstransformator</a></p>
-          <p class="tender-buyer">[&#39;Fluvius System Operator cv (Speciale Sectoren)&#39;] · TED · cn-standard · BEL</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.5</span>
-      </div>
-      
-      <p class="tender-summary">Design, supply, testing and installation of various types of power transformers for Fluvius System Operator (Belgian DSO). Scope covers multiple transformer configurations but specific voltage class and capacity details not disclosed in summary.</p>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Submission deadline missing from notice — confirm via contracting authority</div>
-        
-        <div class="tender-red-flag">⚠ No voltage class, capacity range, or technical specs provided in summary</div>
-        
-      
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats="consulting"
-         data-source="TED"
-         data-relevance="high">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278284-2026" target="_blank" rel="noopener">Ireland – Architectural services for buildings – Multi Disciplinary Design Team Services for the delivery of six (6) additional ICU bed spaces at Beaumont Hospital, Dublin.</a></p>
-          <p class="tender-buyer">[&#39;Beaumont Hospital_403&#39;] · TED · cn-standard · IRL</p>
-        </div>
-        <span class="badge b-high">High relevance</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 27 May 2026</span>
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.5</span>
-      </div>
-      
-      <p class="tender-summary">Architectural and multi-disciplinary design team services for a hospital ICU expansion project in Dublin. Scope includes feasibility study, design across all project stages for six additional ICU bed spaces, and relocation of existing Day of Surgery Admission (DOSA) and staff facilities (~340 m² reconfiguration).</p>
-      
-      <ul class="tender-requirements">
-        <li>Multi-disciplinary design team services across all project stages</li><li>Feasibility study with up to three alternative layout options for DOSA/staff facilities relocation</li><li>Design must minimise disruption to ongoing hospital operations</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ Scope is architectural/hospital design services, not HVDC-related — matched keywords show &#39;none&#39;</div>
-        
-        <div class="tender-red-flag">⚠ Procurement is for a single healthcare facility in Ireland with no energy infrastructure component</div>
-        
-      
-      
-      <div class="tender-kw">
-        
-        
-        <span class="kw">feasibility study</span>
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="high">
+    <div class="tender">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
           <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278909-2026" target="_blank" rel="noopener">France – Repair and maintenance services – Curative maintenance of submarine cable links – Marine operations</a></p>
           <p class="tender-buyer">[&#34;RTE Réseau de Transport d&#39;Electricité&#34;] · TED · pin-only · FRA</p>
         </div>
-        <span class="badge b-high">High relevance</span>
+        <div class="badges">
+          
+          
+          <span class="badge b-intel">Market intel</span>
+        </div>
       </div>
       <div class="tender-meta">
         
         
         <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.5</span>
       </div>
       
-      <p class="tender-summary">RTE seeks marine operations services for curative (corrective) maintenance of submarine cable links, including both HVAC and HVDC systems across French waters (Channel, Atlantic, Mediterranean). Services cover fault location, cable deburial, cutting, repair joint deployment, and reprotection—excluding jointing itself—with emphasis on minimizing return-to-service time and cost-effectiveness.</p>
-      
-      <ul class="tender-requirements">
-        <li>Bundled HVDC cable handling (two power cables + one fiber optic)</li><li>Full cable length fault location (landfall to offshore substation hang-off)</li><li>Vessel mobilization, deburial, cutting, pull-in, and reprotection capabilities</li><li>Cost-effective solutions with rapid return-to-service focus</li>
-      </ul>
-      
-      
-        
-        <div class="tender-red-flag">⚠ PIN-only notice with no tender deadline specified—market engagement phase, not yet a binding competition</div>
-        
-        <div class="tender-red-flag">⚠ Jointing operation explicitly excluded; interface/responsibility boundary with jointing contractor unclear</div>
-        
-      
+      <p class="tender-summary">RTE, the French electricity transmission system operator, is responsible for developing, building and operating high-voltage submarine cable links for interconnection with neighboring countries, or for connecting offshore wind farms to the terrestrial transmission grid. RTE curre…</p>
       
       <div class="tender-kw">
-        
-        <span class="kw kw-strong">hvdc</span>
-        <span class="kw">submarine cable</span>
+        <span class="kw kw-hvdc">hvdc</span>
       </div>
     </div>
     
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
+    <div class="tender">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/266576-2026" target="_blank" rel="noopener">Ireland – Mechanical and electrical engineering services – MEP Led Consultancy Services for TU Dublin Apprenticeship Expansion</a></p>
-          <p class="tender-buyer">[&#39;Technological University Dublin (TU Dublin)&#39;] · TED · cn-standard · IRL</p>
+          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/273777-2026" target="_blank" rel="noopener">Germany – Agricultural, forestry, horticultural, aquacultural and apicultural services – A060 SuedOstLink: Unterhaltungspflege der CEF-Maßnahmen</a></p>
+          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · cn-standard · DEU</p>
         </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 01 May 2026</span>
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">MEP Led Consultancy Services for Apprenticeship Expansion at Linenhall (City Campus), Premier House and TDC (Tallaght Campus), Block D (Blanchardstown Campus). The expansion projects require comprehensive MEP led consultancy services (Mechanical, Electrical, Plumbing, Architectur…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/267388-2026" target="_blank" rel="noopener">Ireland – Construction project management services – Project Management Led Multi-Disciplinary Team for Construction Consultancy Services</a></p>
-          <p class="tender-buyer">[&#39;IDA Ireland&#39;] · TED · can-standard · IRL</p>
+        <div class="badges">
+          
+          
+          <span class="badge b-intel">Market intel</span>
         </div>
-        <span class="badge b-possible">Possibly relevant</span>
       </div>
       <div class="tender-meta">
         
         
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
+        <span><strong>Published:</strong> 22 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">The IDA Raheen Business Park is located on the southern fringe of Limerick City approx. 5kms from the City Centre. The Park is accessible from the nearby M20 Motorway and has two main access routes which include the predominant access from the Ballycummin Road off the M20 while t…</p>
+      <p class="tender-summary">Maintenance and ecological care services for nature compensation measures (CEF-Maßnahmen) along the SuedOstLink 525 kV DC underground cable project in Bavaria, Germany. Work includes grassland mowing, shrub cutting, and habitat maintenance across nine district lots over a five-year period per site.</p>
       
       <div class="tender-kw">
-        
-        
-        
+        <span class="kw kw-hvdc">suedostlink</span>
       </div>
     </div>
     
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
+    <div class="tender">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/267763-2026" target="_blank" rel="noopener">Netherlands – Installation of cable infrastructure – Marktconsultatie Marktaanpak Alliander</a></p>
-          <p class="tender-buyer">[&#39;Alliander N.V.&#39;] · TED · pin-only · NLD</p>
+          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274721-2026" target="_blank" rel="noopener">Germany – Excavation work at archaeological sites – A060 SuedOstLink: Tiefbauarbeiten für bauvorgreifende archäologische Maßnahmen</a></p>
+          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · can-modif · DEU</p>
         </div>
-        <span class="badge b-possible">Possibly relevant</span>
+        <div class="badges">
+          
+          
+          <span class="badge b-intel">Market intel</span>
+        </div>
       </div>
       <div class="tender-meta">
         
         
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
+        <span><strong>Published:</strong> 22 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">Het doel van deze marktconsultatie is het ophalen van kennis over de Solo productiestraten Kleinverbruik (KV), Grootverbruik (GVR&amp;N), Grote aansluitingen en -projecten. Alliander wil inzichten, aandachtspunten en prioriteiten ophalen van aannemers om deze waar mogelijk mee te nem…</p>
+      <p class="tender-summary">Excavation and soil management work at archaeological sites along the SuedOstLink HVDC corridor in Bavaria, Germany. The contract covers mechanical topsoil removal and proper backfilling at pre-construction archaeological investigation areas (VAM) identified along the planned 525 kV DC cable route.</p>
       
       <div class="tender-kw">
-        
-        
-        
+        <span class="kw kw-hvdc">suedostlink</span>
       </div>
     </div>
     
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
+    <div class="tender">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/268198-2026" target="_blank" rel="noopener">Spain – Electrical services – Trabajos de albañilería, fontanería, ayudas logísticas y montaje de la instalación eléctrica del recinto ferial del Palma International Boat Show 2026 y de la base provisional de la flota pesquera al moll vell, rama-corta, del puerto de palma, así como la compra de ciertos materiales necesarios para el montaje de la red eléctrica general del recinto ferial</a></p>
-          <p class="tender-buyer">[&#39;Agencia de Desarrollo Regional de las Illes Balears&#39;] · TED · can-standard · ESP</p>
+          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/269965-2026" target="_blank" rel="noopener">Germany – Construction work for communication lines – Horizontal Directional Drilling (HDD-Verfahren) - LanWin3</a></p>
+          <p class="tender-buyer">[&#39;TenneT TSO GmbH&#39;] · TED · cn-standard · DEU</p>
         </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">La contratación de trabajos de albañilería, ayudas logísticas, fontanería e implantación la instalación eléctrica del recinto ferial del Palma International Boat Show 2026 (PIBS 2026), incluida la compra de ciertos materiales necesarios para el montaje de la red eléctrica. Concre…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/269080-2026" target="_blank" rel="noopener">Germany – High-voltage cable – betriebsfertige 110 kV Kabelanlage Südring TSP4 UW POR – UW GRE K279 | TSP3 UW KAS – UW POR K280</a></p>
-          <p class="tender-buyer">[&#39;RheinEnergie AG -L-&#39;] · TED · cn-standard · DEU</p>
+        <div class="badges">
+          
+          
+          <span class="badge b-intel">Market intel</span>
         </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Der Gegenstand dieser Ausschreibung ist das Herstellen einer betriebsfertigen 110 kV Kabelanlage vom Umspannwerk UW Gremberghoven bis Umspannwerk UW Porz. Die Trassen-länge beträgt ca. 3,2 km. Nachfolgend wird dieser Trassenabschnitt K-279 benannt. Des Weiteren soll die Trasse vo…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/269592-2026" target="_blank" rel="noopener">Netherlands – Mechanical and electrical engineering services – Onderhoud E&amp;W installaties</a></p>
-          <p class="tender-buyer">[&#39;Stichting ZAAM, Interconfessioneel Voortgezet Onderwijs&#39;] · TED · cn-standard · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 07 Sep 2026</span>
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Het doel van de Aanbesteding is om een transparant, eerlijk en efficiënt proces te waarborgen voor het selecteren van de beste dienstverlener op het gebied van onderhoud van Elektrotechnische installaties (E-installaties) en de beste dienstverlener op het gebied van Werktuigbouwk…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/270767-2026" target="_blank" rel="noopener">Norway – Electrical installation work – Framework agreement for electrician services</a></p>
-          <p class="tender-buyer">[&#39;Lillestrøm Kommune&#39;, &#39;Nittedal kommunale eiendomsforetak (Nittedal-Eiendom KF)&#39;, &#39;Lillestrøm parkering AS&#39;, &#39;Lillestrøm kirkelige fellesråd&#39;, &#39;Nedre Romerike Brann- og Redningsvesen IKS&#39;, &#39;Rælingen kommune&#39;] · TED · can-standard · NOR</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
       </div>
       <div class="tender-meta">
         
         
         <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
       </div>
       
-      <p class="tender-summary">The contracting authority shall enter into parallel framework agreements for electrician services. The framework agreement includes electrician services, mainly for purpose-built buildings, housing management and some charging.</p>
+      <p class="tender-summary">Construction of cable protection conduit system for LanWin3 HVDC project in Schleswig-Holstein, Germany. Scope includes ~16 km cable trench between Büsum landing point and Heide station, with three independent horizontal directional drilling (HDD) boreholes to cross flood defences and protected seagrass meadows. TenneT executing on behalf of 50Hertz under joint cooperation agreement.</p>
       
       <div class="tender-kw">
-        
-        
-        
+        <span class="kw kw-hvdc">lanwin</span>
       </div>
     </div>
     
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/271095-2026" target="_blank" rel="noopener">Germany – Architectural, construction, engineering and inspection services – BLB NRW BB/ BI/ WB7210/ HvB Kaserne Minden / Taucherzug/ Fachplanung TGA</a></p>
-          <p class="tender-buyer">[&#39;Bau- und Liegenschaftbetrieb NRW Bundesbau&#39;] · TED · can-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Der Bau- und Liegenschaftsbetrieb NRW, schreibt die Leistungen des Neubaus Materiallager Taucherzug in der Herzog-von Braunschweig Kaserne in Minden aus. Das neu entstehende Taucherzuggebäude für die Bundeswehr soll in eingeschossiger Bauweise ohne Unterkellerung errichtet werden…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/271515-2026" target="_blank" rel="noopener">Netherlands – Flood-defences maintenance works – 31186964: Basisonderhoudscontract (BOC) Hollandsche IJsselkering en Haringvlietsluizen</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-standard · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">De werkzaamheden bestaan uit: - Vast onderhoud Het vast onderhoud bestaat uit: 1 het uitvoeren van PO (periodiek onderhoud) modeljobs. Periodiek onderhoud komt overeen met het standaard verzorgend onderhoud (SVO) zoals gebruikelijk bij BOC contracten. a. inspectie b. onderhoud c.…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats="interconnector"
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/271894-2026" target="_blank" rel="noopener">France – Engineering-related scientific and technical services – Marine Surveys</a></p>
-          <p class="tender-buyer">[&#34;RTE Réseau de Transport d&#39;Electricité&#34;] · TED · qu-sy · FRA</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">RTE is the French Transmission System Operator, a public service company responsible for developing, maintaining and operating all electricity transmission assets in France, French territorial waters and the French exclusive economic zone, to the extent directly connected to the …</p>
-      
-      <div class="tender-kw">
-        
-        <span class="kw kw-strong">interconnector</span>
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/272616-2026" target="_blank" rel="noopener">Netherlands – Mechanical and electrical engineering services – E&amp;W Installatieonderhoud</a></p>
-          <p class="tender-buyer">[&#39;Driestar-Wartburg College&#39;] · TED · can-standard · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">De opdracht betreft het installatieonderhoud voor de E en W installaties voor de locaties zoals genoemd in paragraaf 1.2 van de aanbestedingsleidraad. Opdrachtnemer dient de opdracht uit te voeren conform het programma van eisen zoals opgenomen in Bijlage 1. Het doel van de opdra…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/273351-2026" target="_blank" rel="noopener">Germany – Mechanical and electrical engineering services – Technische Beratungsleistungen im Schiffsbau für den Bau von Zollbooten für das Einsatzgebiet Bodensee und den Hamburger Hafen</a></p>
-          <p class="tender-buyer">[&#39;Generalzolldirektion Zentrale Beschaffungsstelle der Bundesfinanzverwaltung&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 04 May 2026</span>
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Gegenstand dieser Ausschreibung ist der Abschluss einer Rahmenvereinbarung über die Erbringung von technischen Beraterdienstleistungen, die Leitung der Bauüberwachung und die Zeichnungsprüfung für den Bau von zwei, optional drei Zollbooten für den Einsatzbereich Bodensee und Hamb…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/273362-2026" target="_blank" rel="noopener">Germany – Low- and medium-voltage cable – Vergabe Rahmenvertrag Kabellieferung 2026 - 2028</a></p>
-          <p class="tender-buyer">[&#39;SWS Netze Solingen GmbH&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 21 May 2026</span>
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Ausgeschrieben wird eine bis zu dreiährige Rahmenvereinbarung mit einem Rahmenvertragspartner über die Lieferung von Mittel- und Niederspannungskabeln für das Stromverteilnetz der Stadtwerke Solingen GmbH. Ausgeschrieben werden Mittelspannungskabel der Typen NA2XS(F)2Y sowie N2XS…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/273534-2026" target="_blank" rel="noopener">Germany – Engineering services – Energetische Sanierung Grund- und Ganztagsschule Ochtendung, Los 3: Fachplanung Technische Ausrüstung Elektro</a></p>
-          <p class="tender-buyer">[&#39;Verbandsgemeinde Maifeld&#39;] · TED · can-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Die Verbandsgemeinde Maifeld möchte die Grund- und Ganztagsschule &#34;St. Martin&#34; in Ochtendung, Raiffeisenplatz 5, 56299 Ochtendung, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit d…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274254-2026" target="_blank" rel="noopener">Germany – Architectural, construction, engineering and inspection services – Zentralisierung der Abwasser- und Schlammbehandlung in der VG Ransbach-Baumbach - Anbindung Teichkläranlagen</a></p>
-          <p class="tender-buyer">[&#39;Verbandsgemeinde Ransbach-Baumbach&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Die Verbandsgemeinde Ransbach Baumbach betreibt zur Reinigung des anfallenden Abwassers aus den jeweiligen Einzugsgebieten neben der Hauptkläranlage Hundsdorf (Ausbaugröße 17.250 EW) u. a. die mechanisch-biologische Kläranlage Haiderbach (Ausbaugröße 3.000 EW) sowie die beiden Te…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274259-2026" target="_blank" rel="noopener">Ireland – Repair and maintenance services of mechanical building installations – Single Party Framework for the provision of Maintenance of Powered Security Barriers, Electric Gates and Powered Roller Shutters for Limerick City and County Council - 2026</a></p>
-          <p class="tender-buyer">[&#39;Limerick City and County Council&#39;, &#39;Limerick city and County Council&#39;] · TED · cn-standard · IRL</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 22 May 2026</span>
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">The Works involve the servicing and inspection and testing, by a suitably qualified and experienced specialist firm, of existing powered security barriers, electric gates and powered roller shutters in full compliance with the relevant standards for a Thirty Six {36} month period…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274826-2026" target="_blank" rel="noopener">Germany – Engineering services – Energetische Sanierung Grundschule Münstermaifeld, Los 3: Technische Ausrüstung Elektro</a></p>
-          <p class="tender-buyer">[&#39;Verbandsgemeinde Maifeld&#39;] · TED · can-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Die Verbandsgemeinde Maifeld möchte die &#34;Cusanusschule&#34; in Münstermaifeld, Cusanusstraße 1, 56294 Münstermaifeld, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit des Gebäudes. Ziel…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/275420-2026" target="_blank" rel="noopener">Ireland – Electrical installation work – EWS26 Hewetson National School Millicent Clane Co Kildare</a></p>
-          <p class="tender-buyer">[&#39;Hewetson National School&#39;] · TED · cn-standard · IRL</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 06 May 2026</span>
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">EWS26 Electrical upgrade works to Hewetson NS Millicent Clane Co Kildare. The works entail replacement of the existing electrical services throughout the building. Refer to the attached documents for further information on the work to be carried out. Site visits to be arranged di…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/276029-2026" target="_blank" rel="noopener">Denmark – Low- and medium-voltage cable – 72.5 kV joints and Terminations</a></p>
-          <p class="tender-buyer">[&#39;Nexel A/S&#39;] · TED · can-standard · DNK</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Indkøb af 72,5 kV muffer og endeafslutninger</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/276062-2026" target="_blank" rel="noopener">Germany – Architectural, construction, engineering and inspection services – Zentralisierung der Abwasser- und Schlammbehandlung in der VG Ransbach-Baumbach - KA Haiderbach</a></p>
-          <p class="tender-buyer">[&#39;Verbandsgemeinde Ransbach-Baumbach&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Die Verbandsgemeinde Ransbach Baumbach betreibt zur Reinigung des anfallenden Abwassers aus den jeweiligen Einzugsgebieten neben der Hauptkläranlage Hundsdorf (Ausbaugröße 17.250 EW) u. a. die mechanisch-biologische Kläranlage Haiderbach (Ausbaugröße 3.000 EW) sowie die beiden Te…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/276897-2026" target="_blank" rel="noopener">Ireland – Architectural services for buildings – Merchant’s house complex Kilmallock - Grade I Conservation Architect led Integrated Design Team Consultancy Services</a></p>
-          <p class="tender-buyer">[&#39;Limerick City and County Council_103432&#39;] · TED · can-standard · IRL</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Limerick City and County Council as Contracting Authority seeks to procure the services of a Grade I Conservation Architect led Integrated Design Team for delivery of this project from Stage (i) Preliminary Design to Stage (v) Project Handover. The Project involves the developmen…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/277348-2026" target="_blank" rel="noopener">Ireland – Mechanical and electrical engineering services – Resident Mechanical and Electrical Engineering Services - Portlaoise Garda Divisional Headquarters</a></p>
-          <p class="tender-buyer">[&#39;Office of Public Works (OPW)&#39;] · TED · can-standard · IRL</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">The Commissioners of Public Works in Ireland are currently seeking Mechanical and Electrical Resident Engineering Services (Chartered) to ensure the successful delivery of the Portlaoise Garda Station (Divisional Headquarters) project. The service will involve the provision of an…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/277545-2026" target="_blank" rel="noopener">Germany – Railway construction works – Komplexmaßnahme Umbau Bf. Bad Schandau Ost</a></p>
-          <p class="tender-buyer">[&#39;DB Netz AG (Bukr 16)&#39;] · TED · can-modif · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">21FEI50822 - Komplexer Umbau des Betriebsbahnhofes Bad Schandau Ost inkl. Umbau, Ertüchtigung und bahntechnischer Ausrüstung angrenzender Streckenabschnitte (Strecke Dresden - Pirna - Bahngrenze DB/CD)</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278222-2026" target="_blank" rel="noopener">Ireland – Building construction work – FCC/112/26 Est of Multi-Party Framework Design and Build Wks (Range €20m-€60m ) with an Initial Contract for a. Blakestown Cross, b. Woodside Swords and c. Park Rd Rush for Fingal County Council</a></p>
-          <p class="tender-buyer">[&#39;Fingal County Council_371&#39;] · TED · cn-standard · IRL</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 14 Jul 2026</span>
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Establishment of a Multi Supplier Design and Build Contractor Framework for Design and Build Works ranging from €20m-€60m with an initial contract for the Design and Construction of 30 No. Apartments and Associated Works at Blakestown Cross, Mulhuddart, Dublin 15, 34 No Dwellings…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278910-2026" target="_blank" rel="noopener">Germany – Electrical wiring and fitting work – BLB NRW Z/NL Aachen/Technisches Gebäudemanagement TGM 100-26-00006/ Los 4: Elektro, hier GMA, hier: Regionallos 4.4</a></p>
-          <p class="tender-buyer">[&#39;Bau- und Liegenschaftsbetrieb NRW Zentrale&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 27 Jul 2026</span>
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Technisches Gebäudemanagement (TGM), BLB NRW, Niederlassung Aachen. Das TGM der NL Aachen ist insgesamt in 11 Fachlose aufgeteilt. Die Fachlose sind ggf. in weitere Lose unterteilt. Für das hier ausgeschriebene Regionallos 4.4 (Elektro, hier: GMA, Bereich: NL Aachen) sind, Wartun…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/279020-2026" target="_blank" rel="noopener">Germany – Engineering services – LAKUMED Krankenhaus Landshut-Achdorf – Umbau und Teilerweiterung BA 8 - Leistungen der Technischen Ausrüstung, Anlagengruppen 4, 5 und 6‚ gemäß §§ 53 ff. HOAI - Leistungsphasen 1-9</a></p>
-          <p class="tender-buyer">[&#39;LAKUMED Kliniken Landshuter Kommunalunternehmen für medizinische Versorgung (Ab 01.01.2026 zu den gKU LA-Regio-Kliniken - Haus Süd)&#39;] · TED · can-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Die LAKUMED Kliniken, das Klinikum Landshut und das Kinderkrankenhaus St. Marien fusionieren zum 01.01.2026 zu den LA-Regio-Kliniken. Im Zuge dieser Fusion entsteht ein medizinisches Gesamtkonzept, welches die Versorgungsstrukturen auf die Häuser Landshut-Mitte, Achdorf, Vilsbibu…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/279078-2026" target="_blank" rel="noopener">France – Substation equipment – ELPF - Fourniture - Conception, fourniture, livraison et mise en service de poste(s) de livraison HTA (PDL) (Formalisé)</a></p>
-          <p class="tender-buyer">[&#39;CENTRALE EOLIENNE LA PLAINE DES FIEFS&#39;] · TED · cn-standard · FRA</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Conception, fourniture, livraison et mise en service de 3 postes de livraison HTA (PDL)</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/279971-2026" target="_blank" rel="noopener">Ireland – Architectural design services – Former Bank of Ireland Building in Rathkeale – provision of Architect led Integrated Design Team Consultancy Services</a></p>
-          <p class="tender-buyer">[&#39;Limerick City and County Council_103432&#39;] · TED · can-standard · IRL</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">The City and County Council as Contracting Authority seeks to procure the services of an Architect led Integrated Design Team to provide technical assistance for the re-purposing of the former Bank of Ireland in Rathkeale County Limerick for the co-location of enterprise and comm…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/279977-2026" target="_blank" rel="noopener">Sweden – Repair and maintenance services – Underhållstjänster av Reläskydd</a></p>
-          <p class="tender-buyer">[&#39;Skellefteå Kraft AB&#39;] · TED · cn-standard · SWE</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 23 May 2026</span>
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Skellefteå Kraft Elnät AB upphandlar underhållstjänster av reläskydd på våra TT, ST-Stationer samt vår PT-station.  Syftet är att genom regelbundet återkommande funktions- och inställningskontroll säkerställa utrustningarnas korrekta funktion.</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/280039-2026" target="_blank" rel="noopener">Germany – Electrical wiring and fitting work – BLB NRW Z/NL Aachen/Technisches Gebäudemanagement TGM 100-26-00005/ Los 4: Elektro, hier Blitzschutz, hier: Regionallos 4.3</a></p>
-          <p class="tender-buyer">[&#39;Bau- und Liegenschaftsbetrieb NRW Zentrale&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 27 Jul 2026</span>
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 1.0</span>
-      </div>
-      
-      <p class="tender-summary">Technisches Gebäudemanagement (TGM), BLB NRW, Niederlassung Aachen. Das TGM der NL Aachen ist insgesamt in 11 Fachlose aufgeteilt. Die Fachlose sind ggf. in weitere Lose unterteilt. Für das hier ausgeschriebene Regionallos 4.3 (Elektro, hier: Blitzschutz, Bereich: NL Aachen) sind…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/266476-2026" target="_blank" rel="noopener">Netherlands – Repair and maintenance services – 31137096: Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van RWS Zee &amp; Delta, district Nrd</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee &amp; Delta, district Noord</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/267156-2026" target="_blank" rel="noopener">Italy – Ancillary works for water pipelines – Procedura aperta per la conclusione di Accordi Quadro per l’esecuzione di lavori di realizzazione di allacciamenti, limitate estensioni / potenziamenti e piccoli spostamenti di reti e impianti, nonché interventi sulle colonne montanti, collegamenti elettrici e manutenzione pozzetti nell’ambito dei servizi acqua, fognatura, gas ed energia elettrica gestiti da AcegasApsAmga</a></p>
-          <p class="tender-buyer">[&#39;AcegasApsAmga S.p.A.&#39;] · TED · can-standard · ITA</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">PROCEDURA APERTA PER LA REALIZZAZIONE DI ALLACCIAMENTI MULTIBUSINESS NEI TERRITORI DI TRIESTE E GORIZIA GESTITI DA ACEGASAPSAMGA S.P.A.</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/267742-2026" target="_blank" rel="noopener">Germany – Low- and medium-voltage cable – Lieferung von Nieder- und Mittelspannungskabel 2027</a></p>
-          <p class="tender-buyer">[&#39;ovag Netz GmbH&#39;] · TED · cn-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 20 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">Lieferung von Nieder- und Mittelspannungskabel</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/270290-2026" target="_blank" rel="noopener">Netherlands – Repair and maintenance services – 31137096: Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van RWS Zee &amp; Delta, district Nrd</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee &amp; Delta, district Noord</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/271278-2026" target="_blank" rel="noopener">Netherlands – Works for complete or part construction and civil engineering work – 31149727: Meerjarig onderhouden van tunnels in de regio&#39;s West Nederland Noord/Midden Nederland, West Nederland Zuid en Zee &amp; Delta</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 21 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">De werkzaamheden betreffen het vast onderhoud van de tunnels in perceel 2. De volgende tunnels behoren tot perceel 2: Beneluxtunnel, Drechttunnel, 2e Heinenoordtunnel, Ketheltunnel, Noordtunnel en de Sijtwendetunnel. Naast het vast onderhoud van de tunnels zijn er ook Voorgeschre…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/274535-2026" target="_blank" rel="noopener">Netherlands – Works for complete or part construction and civil engineering work – 31149727: Meerjarig onderhouden van tunnels in de regio&#39;s West Nederland Noord/Midden Nederland, West Nederland Zuid en Zee &amp; Delta</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">De werkzaamheden betreffen het vast onderhoud van de tunnels in perceel 2. De volgende tunnels behoren tot perceel 2: Beneluxtunnel, Drechttunnel, 2e Heinenoordtunnel, Ketheltunnel, Noordtunnel en de Sijtwendetunnel. Naast het vast onderhoud van de tunnels zijn er ook Voorgeschre…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/275430-2026" target="_blank" rel="noopener">Germany – Engineering services – Energetische Sanierung Grundschule Münstermaifeld, Los 2: Technische Ausrüstung HLS</a></p>
-          <p class="tender-buyer">[&#39;Verbandsgemeinde Maifeld&#39;] · TED · can-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">Die Verbandsgemeinde Maifeld möchte die &#34;Cusanusschule&#34; in Münstermaifeld, Cusanusstraße 1, 56294 Münstermaifeld, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit des Gebäudes. Ziel…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/276307-2026" target="_blank" rel="noopener">Netherlands – Repair and maintenance services – 31137096: Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van RWS Zee &amp; Delta, district Nrd</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee &amp; Delta, district Noord</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/276693-2026" target="_blank" rel="noopener">Germany – Engineering services – Energetische Sanierung Grund- und Ganztagsschule Ochtendung, Los 2: Fachplanung Technische Ausrüstung HLS</a></p>
-          <p class="tender-buyer">[&#39;Verbandsgemeinde Maifeld&#39;] · TED · can-standard · DEU</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 22 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">Die Verbandsgemeinde Maifeld möchte die Grund- und Ganztagsschule &#34;St. Martin&#34; in Ochtendung, Raiffeisenplatz 5, 56299 Ochtendung, energetisch grundsanieren. Die energetische Sanierung beinhaltet die umfassenden Maßnahmen zur Verbesserung der Energieeffizienz und Nachhaltigkeit d…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278077-2026" target="_blank" rel="noopener">Italy – Transformers – 10042112 fornitura trasformatori MT/bt</a></p>
-          <p class="tender-buyer">[&#39;edyna srl&#39;] · TED · cn-standard · ITA</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        <span><strong>Deadline:</strong> 07 May 2026</span>
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">10042112 fornitura di trasformatori MT/BT – fabbisogno 2026/2027</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/278815-2026" target="_blank" rel="noopener">Netherlands – Repair and maintenance services – 31137096: Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van RWS Zee &amp; Delta, district Nrd</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">Het meerjarig in stand houden van, monitoren van en informeren over de toestand van het areaal, met upgradewerkzaamheden, in het beheergebied van Rijkswaterstaat Zee &amp; Delta, district Noord</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/279394-2026" target="_blank" rel="noopener">Netherlands – Works for complete or part construction and civil engineering work – 31149727: Meerjarig onderhouden van tunnels in de regio&#39;s West Nederland Noord/Midden Nederland, West Nederland Zuid en Zee &amp; Delta</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">De werkzaamheden betreffen het vast onderhoud van de tunnels in perceel 2. De volgende tunnels behoren tot perceel 2: Beneluxtunnel, Drechttunnel, 2e Heinenoordtunnel, Ketheltunnel, Noordtunnel en de Sijtwendetunnel. Naast het vast onderhoud van de tunnels zijn er ook Voorgeschre…</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-relevance="possible">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/280303-2026" target="_blank" rel="noopener">Netherlands – Construction work for engineering works except bridges, tunnels, shafts and subways – 31107985 Meerjarig Onderhoud natte areaal RWS Midden Nederland, district Zuid 2018-2023</a></p>
-          <p class="tender-buyer">[&#34;Rijkswaterstaat Programma&#39;s, Projecten en Onderhoud (PPO)&#34;] · TED · can-modif · NLD</p>
-        </div>
-        <span class="badge b-possible">Possibly relevant</span>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 23 Apr 2026</span>
-        <span><strong>Score:</strong> 0.5</span>
-      </div>
-      
-      <p class="tender-summary">31107985 Meerjarig Onderhoud natte areaal RWS Midden Nederland, district Zuid 2018-2026</p>
-      
-      <div class="tender-kw">
-        
-        
-        
-      </div>
-    </div>
-    
-  </div>
+  
 
   <footer>
-    <p>Generated 2026-04-23 14:06 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: <a href="https://www.find-tender.service.gov.uk/" target="_blank">Find a Tender</a> (OGL v3.0), <a href="https://ted.europa.eu/" target="_blank">TED</a> (© EU)</p>
+    <p>Generated 2026-04-23 14:43 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: <a href="https://www.find-tender.service.gov.uk/" target="_blank">Find a Tender</a> (OGL v3.0), <a href="https://ted.europa.eu/" target="_blank">TED</a> (© EU)</p>
   </footer>
 </div>
-
-<script>
-  function applyFilters() {
-    const cat = document.querySelector(".fbtn.active").dataset.filter;
-    const src = document.getElementById("source").value;
-    const rel = document.getElementById("relevance").value;
-    document.querySelectorAll(".tender").forEach(t => {
-      const cats = (t.dataset.cats || "").split(",");
-      const matchCat = cat === "all" || cats.includes(cat);
-      const matchSrc = src === "all" || t.dataset.source === src;
-      const matchRel = rel === "all" || t.dataset.relevance === rel;
-      t.style.display = (matchCat && matchSrc && matchRel) ? "" : "none";
-    });
-  }
-  document.querySelectorAll(".fbtn").forEach(b => b.addEventListener("click", () => {
-    document.querySelectorAll(".fbtn").forEach(x => x.classList.remove("active"));
-    b.classList.add("active");
-    applyFilters();
-  }));
-  document.getElementById("source").addEventListener("change", applyFilters);
-  document.getElementById("relevance").addEventListener("change", applyFilters);
-  applyFilters();
-</script>
 </body>
 </html>
