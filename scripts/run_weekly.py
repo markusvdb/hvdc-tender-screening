@@ -1,7 +1,6 @@
-"""Monday morning: send weekly digest of the last 7 days.
+"""Monday morning: send weekly digest of bid candidates seen in the last 7 days.
 
-Called by .github/workflows/weekly.yml every Monday 06:00 UTC.
-Reads from the archive that the daily job maintains — does NOT re-fetch.
+Reads from the archive that the daily job maintains.
 """
 from __future__ import annotations
 
@@ -30,22 +29,23 @@ log = logging.getLogger("weekly")
 
 
 def main() -> int:
-    log.info("=== Weekly HVDC digest ===")
+    log.info("=== Weekly HVDC bid candidates digest ===")
     config = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
-    _ = config  # reserved for future tuning (e.g. email thresholds)
+    _ = config
 
     archive = load_archive()
 
-    # Take anything first-seen in the last 7 days
     cutoff = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+
+    # Only bid_candidates seen in the last 7 days
     this_week = [
         t for t in archive
         if (t.get("first_seen") or t.get("published") or "") >= cutoff
-        and t.get("relevance") in ("high", "possible")
+        and t.get("section") == "bid_candidate"
     ]
     this_week.sort(key=lambda t: t.get("score", 0), reverse=True)
 
-    log.info("This week: %d relevant tenders", len(this_week))
+    log.info("This week: %d bid candidates", len(this_week))
 
     dashboard_url = _dashboard_url()
 
@@ -57,13 +57,16 @@ def main() -> int:
 
     text_body = _plain_text_fallback(this_week, dashboard_url)
 
-    high_count = sum(1 for t in this_week if t.get("relevance") == "high")
-    subject = f"HVDC tenders — {high_count} high-relevance this week"
-    if high_count == 0:
-        subject = "HVDC tenders — weekly digest (no high-relevance matches)"
+    bid_count = len(this_week)
+    if bid_count == 0:
+        subject = "HVDC digest — no bid candidates this week"
+    elif bid_count == 1:
+        subject = "HVDC digest — 1 bid candidate this week"
+    else:
+        subject = f"HVDC digest — {bid_count} bid candidates this week"
 
     send_email(subject=subject, html_body=html, text_body=text_body)
-    log.info("=== Weekly digest complete ===")
+    log.info("=== Weekly digest sent ===")
     return 0
 
 
@@ -76,7 +79,7 @@ def _dashboard_url() -> str:
 
 
 def _plain_text_fallback(tenders: list[dict], url: str) -> str:
-    lines = [f"HVDC tender weekly digest — {len(tenders)} matches", "", f"Dashboard: {url}", ""]
+    lines = [f"HVDC bid candidates — {len(tenders)} this week", "", f"Full dashboard: {url}", ""]
     for t in tenders[:30]:
         lines.append(f"- [{t.get('source')}] {t.get('title')}")
         lines.append(f"    {t.get('buyer')} · score {t.get('score')}")

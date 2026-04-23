@@ -1,4 +1,4 @@
-"""Render the dashboard HTML to docs/index.html."""
+"""Render the dashboard HTML to docs/index.html — two-section version."""
 from __future__ import annotations
 
 import logging
@@ -15,39 +15,31 @@ OUTPUT_PATH = Path(__file__).parent.parent / "docs" / "index.html"
 
 
 def render_dashboard(tenders: list[dict], total_screened: int, repo: str = "") -> Path:
-    """Build docs/index.html from the screened + summarised tender list."""
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATE_DIR)),
         autoescape=select_autoescape(["html", "j2"]),
     )
     tpl = env.get_template("dashboard.html.j2")
 
-    # Only show high + possible on the dashboard
-    visible = [t for t in tenders if t.get("relevance") in ("high", "possible")]
-    for t in visible:
+    bid_candidates = [t for t in tenders if t.get("section") == "bid_candidate"]
+    market_intel = [t for t in tenders if t.get("section") == "market_intel"]
+    rejected = [t for t in tenders if t.get("section") == "rejected"]
+
+    for t in bid_candidates + market_intel:
         _enrich_for_display(t)
 
-    high_count = sum(1 for t in visible if t.get("relevance") == "high")
-    possible_count = sum(1 for t in visible if t.get("relevance") == "possible")
-    corrigenda_count = sum(1 for t in visible if _is_corrigendum(t))
-
-    # Category counts
-    counts = {"converter": 0, "interconnector": 0, "consulting": 0, "studies": 0}
-    for t in visible:
-        for tag in t.get("category_tags", []):
-            if tag in counts:
-                counts[tag] += 1
+    corrigenda_count = sum(1 for t in bid_candidates + market_intel if t.get("is_corrigendum"))
 
     now = datetime.now(timezone.utc)
 
     html = tpl.render(
-        tenders=visible,
-        total_screened=total_screened,
-        high_count=high_count,
-        possible_count=possible_count,
+        bid_candidates=bid_candidates,
+        market_intel=market_intel,
+        bid_count=len(bid_candidates),
+        intel_count=len(market_intel),
+        rejected_count=len(rejected),
         corrigenda_count=corrigenda_count,
-        relevant_count=len(visible),
-        counts=counts,
+        total_screened=total_screened,
         last_run_label=now.strftime("%a %d %b %Y, %H:%M UTC"),
         this_week_label=now.strftime("Updated %a %d %b %Y"),
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
@@ -61,8 +53,8 @@ def render_dashboard(tenders: list[dict], total_screened: int, repo: str = "") -
 
 
 def _enrich_for_display(t: dict) -> None:
-    """Pre-compute display strings so the template stays clean."""
-    t["badge_class"], t["badge_label"] = _badge(t)
+    t["is_corrigendum"] = _is_corrigendum(t)
+    t["is_award"] = _is_award(t)
 
     value = t.get("value_amount")
     currency = t.get("value_currency") or ""
@@ -81,16 +73,6 @@ def _enrich_for_display(t: dict) -> None:
     t["description_snippet"] = (desc[:280] + "…") if len(desc) > 280 else desc
 
 
-def _badge(t: dict) -> tuple[str, str]:
-    if _is_corrigendum(t):
-        return "b-corr", "Corrigendum"
-    if _is_award(t):
-        return "b-award", "Award"
-    if t.get("relevance") == "high":
-        return "b-high", "High relevance"
-    return "b-possible", "Possibly relevant"
-
-
 def _is_corrigendum(t: dict) -> bool:
     nt = (t.get("notice_type") or "").lower()
     return "corrigendum" in nt or "f14" in nt or "cor-" in nt
@@ -105,13 +87,7 @@ def _short_date(s: str) -> str:
     if not s:
         return ""
     try:
-        # Try common ISO formats
-        for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d"):
-            try:
-                dt = datetime.strptime(s[:len(fmt) if fmt == "%Y-%m-%d" else 25], fmt) if fmt != "%Y-%m-%dT%H:%M:%S%z" else datetime.fromisoformat(s.replace("Z", "+00:00"))
-                return dt.strftime("%d %b %Y")
-            except ValueError:
-                continue
-    except Exception:
-        pass
-    return s[:10]
+        dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+        return dt.strftime("%d %b %Y")
+    except (ValueError, TypeError):
+        return s[:10]
