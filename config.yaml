@@ -1,0 +1,159 @@
+# HVDC tender screening configuration
+# Edit this file to tune what the tool catches. Commit in the browser
+# and the next run picks up your changes automatically.
+
+# ============================================================
+# SCORING
+# ============================================================
+# Each notice is scored: (strong_hits * 1.0) + (contextual_hits * 0.5)
+# Boosted by +2.0 if a watchlist_project name matches.
+scoring:
+  min_score_high: 1.5       # Highlighted as "high relevance" in dashboard & email
+  min_score_possible: 0.5   # Included in a secondary "possibly relevant" list
+  archive_days: 90          # How long to keep notices in the rolling archive
+
+# ============================================================
+# KEYWORDS — matched case-insensitively in title + description
+# ============================================================
+keywords_strong:
+  # Core HVDC terms
+  - HVDC
+  - high voltage direct current
+  - high-voltage direct current
+  # Converter technology
+  - VSC converter
+  - LCC converter
+  - voltage source converter
+  - line commutated converter
+  - MMC converter
+  - modular multilevel converter
+  - converter station
+  - converter platform
+  - valve hall
+  # DC voltage levels commonly seen
+  - "±320 kV"
+  - "±525 kV"
+  - "±640 kV"
+  - "320 kV DC"
+  - "525 kV DC"
+  # Interconnector & transmission project terms
+  - interconnector
+  - bipole
+  - monopole
+  - multi-terminal HVDC
+  - meshed HVDC
+  - hybrid interconnector
+  - offshore hybrid asset
+
+keywords_contextual:
+  # Only count half, since any of these alone could be non-HVDC
+  - converter
+  - DC cable
+  - subsea cable
+  - submarine cable
+  - HVDC cable
+  - offshore transmission
+  - offshore grid
+  - offshore platform
+  - DC breaker
+  - DC circuit breaker
+  - STATCOM
+  - reactive compensation
+  - harmonic filter
+  - EMT study
+  - electromagnetic transient
+  - grid stability study
+  - owner's engineer
+  - owners engineer
+  - technical advisor
+  - feasibility study
+  - pre-FEED
+  - FEED study
+
+# ============================================================
+# WATCHLIST — always surface these, +2.0 score boost
+# ============================================================
+watchlist_projects:
+  # UK
+  - Eastern Green Link
+  - EGL1
+  - EGL2
+  - EGL3
+  - EGL4
+  - Viking Link
+  - NeuConnect
+  - LionLink
+  - Shetland HVDC
+  - Western HVDC Link
+  - North Sea Link
+  # Continental Europe
+  - SuedLink
+  - SuedOstLink
+  - NordLink
+  - NordOstLink
+  - BalWin
+  - LanWin
+  - DolWin
+  - BorWin
+  - HelWin
+  - IJmuiden Ver
+  - Nederwiek
+  - Doordewind
+  - Kriegers Flak
+  - Kontek
+  # TSOs worth flagging as buyer
+  - TenneT
+  - National Grid Ventures
+  - NESO
+  - Energinet
+  - 50Hertz
+  - Amprion
+  - TransnetBW
+  - Elia
+  - Statnett
+
+# ============================================================
+# CPV CODES — second net; any match adds 0.5 contextual score
+# ============================================================
+# Browse at https://simap.ted.europa.eu/web/simap/cpv
+cpv_codes:
+  - "31170000"   # Transformers
+  - "31321000"   # Electricity power lines
+  - "31321100"   # Overhead power lines
+  - "31321200"   # Low and medium-voltage lines / cables
+  - "31321300"   # High-voltage cables
+  - "45232200"   # Ancillary works for electricity transmission lines
+  - "45231400"   # Construction of electricity power lines
+  - "31682540"   # Substation equipment
+  - "71323100"   # Electrical power systems design services
+  - "71314100"   # Electrical services
+  - "71334000"   # Mechanical and electrical engineering services
+
+# ============================================================
+# API QUERY SCOPE
+# ============================================================
+api:
+  # Find a Tender (UK) — dates used as 'publication-date' window
+  fts_days_lookback: 3        # Catch weekend notices on Monday
+  # TED (EU) — same lookback
+  ted_days_lookback: 3
+  # TED country filter — comment out to search all
+  ted_countries:
+    - GBR
+    - DEU
+    - NLD
+    - DNK
+    - BEL
+    - NOR
+    - FRA
+    - IRL
+    - SWE
+    - ESP
+    - ITA
+
+# ============================================================
+# LLM SUMMARY
+# ============================================================
+llm:
+  model: claude-haiku-4-5-20251001  # Fast and cheap for per-notice summaries
+  max_summaries_per_run: 30          # Cap cost — high-relevance first

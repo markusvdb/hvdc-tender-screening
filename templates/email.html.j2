@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HVDC tender digest — week of {{ week_of }}</title>
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #1c1c1a; background: #ffffff; margin: 0; padding: 24px 16px; line-height: 1.5;">
+<table role="presentation" style="max-width: 680px; margin: 0 auto; border-collapse: collapse; width: 100%;">
+<tr><td>
+
+<h1 style="font-size: 22px; font-weight: 500; margin: 0 0 6px;">HVDC tender digest</h1>
+<p style="font-size: 13px; color: #5f5e5a; margin: 0 0 24px;">Week of {{ week_of }} · {{ total_screened }} notices screened · <a href="{{ dashboard_url }}" style="color: #185fa5;">Open dashboard</a></p>
+
+<table role="presentation" style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+<tr>
+  <td style="background: #f7f6f2; border-radius: 8px; padding: 14px; width: 33%;">
+    <div style="font-size: 13px; color: #5f5e5a;">High relevance</div>
+    <div style="font-size: 22px; font-weight: 500; color: #185fa5; margin-top: 4px;">{{ high_count }}</div>
+  </td>
+  <td style="width: 8px;"></td>
+  <td style="background: #f7f6f2; border-radius: 8px; padding: 14px; width: 33%;">
+    <div style="font-size: 13px; color: #5f5e5a;">Possibly relevant</div>
+    <div style="font-size: 22px; font-weight: 500; margin-top: 4px;">{{ possible_count }}</div>
+  </td>
+  <td style="width: 8px;"></td>
+  <td style="background: #f7f6f2; border-radius: 8px; padding: 14px; width: 33%;">
+    <div style="font-size: 13px; color: #5f5e5a;">Corrigenda</div>
+    <div style="font-size: 22px; font-weight: 500; color: #854f0b; margin-top: 4px;">{{ corrigenda_count }}</div>
+  </td>
+</tr>
+</table>
+
+{% if high_tenders %}
+<h2 style="font-size: 16px; font-weight: 500; margin: 24px 0 12px;">High relevance ({{ high_tenders|length }})</h2>
+{% for t in high_tenders %}
+<table role="presentation" style="width: 100%; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; margin-bottom: 12px; border-collapse: separate;">
+<tr><td style="padding: 14px 16px;">
+  <div style="font-size: 11px; color: #5f5e5a; margin-bottom: 4px;">{{ t.source }} · {{ t.buyer }}{% if t.country %} · {{ t.country }}{% endif %}</div>
+  <a href="{{ t.url }}" style="font-size: 15px; font-weight: 500; color: #1c1c1a; text-decoration: none;">{{ t.title }}</a>
+  <div style="font-size: 12px; color: #5f5e5a; margin: 8px 0;">
+    {% if t.value_display %}<strong style="color: #1c1c1a;">Value:</strong> {{ t.value_display }} &nbsp;·&nbsp; {% endif %}
+    {% if t.deadline_display %}<strong style="color: #1c1c1a;">Deadline:</strong> {{ t.deadline_display }} &nbsp;·&nbsp; {% endif %}
+    <strong style="color: #1c1c1a;">Score:</strong> {{ t.score }}
+  </div>
+  {% if t.summary and t.summary.scope_summary %}
+  <div style="font-size: 13px; color: #1c1c1a; margin: 10px 0;">{{ t.summary.scope_summary }}</div>
+  {% if t.summary.notable_requirements %}
+  <ul style="font-size: 12px; color: #5f5e5a; margin: 8px 0; padding-left: 18px;">
+    {% for req in t.summary.notable_requirements %}<li>{{ req }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  {% if t.summary.red_flags %}
+    {% for flag in t.summary.red_flags %}
+    <div style="font-size: 12px; color: #854f0b; background: #faeeda; padding: 6px 10px; border-radius: 6px; margin-top: 6px;">⚠ {{ flag }}</div>
+    {% endfor %}
+  {% endif %}
+  {% endif %}
+</td></tr>
+</table>
+{% endfor %}
+{% endif %}
+
+{% if corrigenda %}
+<h2 style="font-size: 16px; font-weight: 500; margin: 24px 0 12px;">Corrigenda ({{ corrigenda|length }})</h2>
+{% for t in corrigenda %}
+<div style="font-size: 13px; padding: 8px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08);">
+  <a href="{{ t.url }}" style="color: #1c1c1a; text-decoration: none;">{{ t.title }}</a>
+  <div style="font-size: 12px; color: #5f5e5a; margin-top: 3px;">{{ t.buyer }} · {{ t.source }}</div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if possible_tenders %}
+<h2 style="font-size: 16px; font-weight: 500; margin: 24px 0 12px;">Possibly relevant ({{ possible_tenders|length }})</h2>
+<p style="font-size: 12px; color: #5f5e5a; margin: 0 0 12px;">Lower-confidence matches — skim for false positives.</p>
+{% for t in possible_tenders %}
+<div style="font-size: 13px; padding: 8px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08);">
+  <a href="{{ t.url }}" style="color: #1c1c1a; text-decoration: none;">{{ t.title }}</a>
+  <div style="font-size: 12px; color: #5f5e5a; margin-top: 3px;">{{ t.buyer }} · {{ t.source }} · score {{ t.score }}</div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if high_count == 0 and possible_count == 0 %}
+<div style="text-align: center; padding: 32px 16px; color: #888780; border: 0.5px dashed rgba(0,0,0,0.15); border-radius: 12px;">
+  No matches this week. Watchlist keeps scanning.
+</div>
+{% endif %}
+
+<p style="font-size: 11px; color: #888780; margin-top: 32px; text-align: center;">
+  Generated {{ generated_at }} UTC · <a href="{{ dashboard_url }}" style="color: #888780;">Full dashboard</a><br>
+  Data: Find a Tender (UK, OGL v3.0), TED (EU)
+</p>
+
+</td></tr>
+</table>
+</body>
+</html>
