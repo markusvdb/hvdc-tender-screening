@@ -87,3 +87,17 @@ python scripts/run_weekly.py
 - GitHub Actions: ~30 min/month used of 2,000 free.
 - Anthropic API: ~$0.02–$0.10 per daily run. Budget $10–30/year.
 - Everything else: free.
+
+## Note: scheduled run times
+
+The daily and weekly workflows use cron expressions that are deliberately **off-the-hour**:
+
+- Daily: `17 6 * * *` — runs at 06:17 UTC (approx 08:17 Paris time)
+- Weekly: `23 6 * * 1` — runs Mondays at 06:23 UTC
+
+This is intentional. GitHub Actions cron scheduling is best-effort on the free tier — scheduled runs at top-of-hour times (06:00, 07:00, etc.) can be delayed up to an hour or skipped entirely due to runner congestion. Off-the-hour minutes (17, 23, 41, etc.) are far more reliable.
+
+**Do not change these back to `0 6` or similar round times.** If the bot stops running on schedule, check:
+1. Actions tab — was the last run manual or scheduled?
+2. Commit dates on `docs/index.html` — when did the dashboard last refresh?
+3. If scheduled runs stop for 60 days, GitHub auto-disables the workflow. Go to Actions → Daily screening → "..." → Enable workflow.
