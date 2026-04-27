@@ -2,7 +2,7 @@ name: Daily screening
 
 on:
   schedule:
-    - cron: '17 6 * * *'
+    - cron: '37 2 * * *'
   workflow_dispatch:
 
 permissions:
