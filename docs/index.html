@@ -114,15 +114,15 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">Updated Mon 27 Apr 2026 · 3818 notices screened · 3810 rejected at HVDC gate</p>
+      <p class="subtitle">Updated Tue 28 Apr 2026 · 4143 notices screened · 4134 rejected at HVDC gate</p>
     </div>
-    <div class="last-run">Last run: Mon 27 Apr 2026, 12:12 UTC</div>
+    <div class="last-run">Last run: Tue 28 Apr 2026, 10:29 UTC</div>
   </div>
 
   <div class="stats">
     <div class="stat">
       <div class="stat-label">Bid candidates</div>
-      <div class="stat-value info">3</div>
+      <div class="stat-value info">4</div>
     </div>
     <div class="stat">
       <div class="stat-label">Market intel</div>
@@ -144,11 +144,11 @@
 
   <div class="filter-row">
     <span class="filter-label">Stage:</span>
-    <button class="sbtn" data-stage="all">All (8)</button>
+    <button class="sbtn" data-stage="all">All (9)</button>
     <button class="sbtn active-stage" data-stage="active">Active tenders (1)</button>
     <button class="sbtn" data-stage="pipeline">Pipeline (1)</button>
     <button class="sbtn" data-stage="corrigendum">Corrigenda (1)</button>
-    <button class="sbtn" data-stage="award">Awards (5)</button>
+    <button class="sbtn" data-stage="award">Awards (6)</button>
   </div>
 
   <div class="filter-row">
@@ -169,10 +169,50 @@
     </select>
   </div>
 
-  <h2>1. Bid candidates<span class="count" id="bid-count-display">3</span></h2>
+  <h2>1. Bid candidates<span class="count" id="bid-count-display">4</span></h2>
   <p class="section-desc">HVDC scope + RTEi-relevant service. Default view: active tenders.</p>
 
   <div id="bid-section">
+    
+    <div class="tender bid"
+         data-cats=""
+         data-source="TED"
+         data-stage="award">
+      <div class="tender-head">
+        <div style="flex: 1; min-width: 0;">
+          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/290322-2026" target="_blank" rel="noopener">Denmark, Sweden – Geotechnical engineering services – Cable Burial and Protection to Konti-Skan Connect</a></p>
+          <p class="tender-buyer">[&#39;Energinet Eltransmission A/S&#39;, &#39;Svenska kraftnät&#39;] · TED · can-standard · DNK</p>
+        </div>
+        <div class="badges">
+          <span class="badge b-award">Award</span>
+          <span class="badge b-fit-partial">Fit: partial</span>
+          
+          <span class="badge b-bid">Bid candidate</span>
+        </div>
+      </div>
+      <div class="tender-meta">
+        
+        
+        <span><strong>Published:</strong> 28 Apr 2026</span>
+        <span><strong>Score:</strong> 5.0</span>
+      </div>
+      
+      <p class="tender-summary">Geotechnical engineering services for cable burial and protection strategy on the Konti-Skan Connect HVDC Interconnector between Denmark and Sweden. Work includes seabed risk assessment, shoreline morphology, cable installation method evaluation, and Security by Design assessment for hybrid warfare resilience, with optional owner&#39;s engineer roles during cable tender and installation phases.</p>
+      <p class="bid-fit-reason">Fit: HVDC interconnector context and owner&#39;s engineer options align with RTEi, but primary scope is geotechnical/marine engineering rather than HVDC electrical design or system studies.</p>
+      
+      <ul class="tender-requirements">
+        <li>Security by Design assessment addressing hybrid warfare threats at sea</li><li>Geotechnical and shoreline morphology expertise required</li><li>Optional owner&#39;s engineer role in cable tender and installation phases</li>
+      </ul>
+      
+      
+        <div class="tender-red-flag">⚠ Primary scope is geotechnical/marine engineering; RTEi&#39;s HVDC electrical expertise may not be primary differentiator</div><div class="tender-red-flag">⚠ Submission deadline not yet published; tender appears early-stage</div>
+      
+      
+      <div class="tender-kw">
+        <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">hvdc interconnector</span><span class="kw kw-hvdc">konti-skan</span>
+        <span class="kw kw-service">engineering services</span><span class="kw kw-service">consultant</span>
+      </div>
+    </div>
     
     <div class="tender bid"
          data-cats="converter"
@@ -236,15 +276,15 @@
         <span><strong>Score:</strong> 3.0</span>
       </div>
       
-      <p class="tender-summary">TenneT is modifying an existing contract with Arcadis Nederland for civil engineering services on the IJmuiden Ver HVDC landstations (2GW programme). The modification adds €5.157m to develop and apply a generic 2GW standard design, including civil design and systems engineering activities emerging from progressive design refinement during implementation.</p>
-      <p class="bid-fit-reason">Fit: This is a contract modification to an incumbent civil engineering supplier (Arcadis); RTEi cannot bid as the contract is already assigned and only open to the existing contractor.</p>
+      <p class="tender-summary">TenneT is modifying an existing Arcadis contract to increase engineering services value by €5.157m (capped at €5.45m) for civil/structural design of HVDC landstations under the 2GW programme. Additional engineering work has become necessary to optimize the generic 2GW standard design, reduce costs, and support handover to the EPC contractor.</p>
+      <p class="bid-fit-reason">Fit: This is a contract modification (opdrachtwijziging) with Arcadis already in place; the tender is closed and RTEi cannot bid as it is a change order to an existing award, not an open procurement.</p>
       
       <ul class="tender-requirements">
-        <li>Scope is civil/structural engineering, not electrical/HVDC systems engineering.</li><li>Work tied to a 2GW standard design platform being applied across multiple IJmuiden Ver landstations.</li><li>Strong knowledge continuity requirement with existing Arcadis design and systems integration with HVDC contractor.</li>
+        <li>Work is civil/structural engineering only (not electrical HVDC design).</li><li>Strict continuity requirement: contractor must maintain technical coherence with existing 2GW standard design and HVDC contractor interfaces.</li>
       </ul>
       
       
-        <div class="tender-red-flag">⚠ Not a competitive tender — contract modification under Article 2.163d of Dutch procurement law, restricted to incumbent.</div><div class="tender-red-flag">⚠ Civil engineering focus misaligned with RTEi&#39;s electrical HVDC consulting services; no electrical design, studies, or advisory scope evident.</div>
+        <div class="tender-red-flag">⚠ This is a contract modification notice, not an open tender; Arcadis is the sole awarded contractor due to technical lock-in and design continuity requirements.</div><div class="tender-red-flag">⚠ Civil-focused scope (CPV 71300000) does not align with RTEi&#39;s electrical HVDC consulting expertise.</div>
       
       
       <div class="tender-kw">
@@ -321,7 +361,7 @@
         <span><strong>Published:</strong> 27 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">Energinet and 50Hertz are establishing a Supplier Qualification System (SQS) for procurement of HVDC converters and substations (±525 kV VSC-MMC technology, 1.2–2 GW capacity) for interconnector and offshore wind projects, including the Bornholm Energy Island. The SQS framework covers design, engineering, studies, manufacturing, delivery, installation, testing, commissioning, and maintenance.</p>
+      <p class="tender-summary">Energinet and 50Hertz are establishing a Supplier Qualification System (SQS) for procurement of VSC-MMC HVDC converters and substations (±525 kV, 1.2–2 GW capacity) for interconnector and offshore wind projects, including the Bornholm Energy Island. Suppliers&#39; scope spans development, design, engineering, studies, manufacturing, installation, testing, commissioning, and documentation.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">voltage source converter</span><span class="kw kw-hvdc">converter station</span><span class="kw kw-hvdc">±525 kv</span>
@@ -348,7 +388,7 @@
         <span><strong>Published:</strong> 27 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">Energinet is procuring HVDC spare part electrode nets for the Kontek HVDC interconnector through a direct award framework agreement with Permascand AB.</p>
+      <p class="tender-summary">Framework agreement for procurement of HVDC spare part electrode nets for the Kontek HVDC interconnector, via direct award negotiation with Permascand AB.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">hvdc interconnector</span><span class="kw kw-hvdc">kontek</span>
@@ -375,7 +415,7 @@
         <span><strong>Published:</strong> 27 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">Energinet is establishing a supplier qualification system (SQS) for 525 kV HVDC cable systems and offshore installation services on Danish interconnectors. Qualified suppliers will deliver end-to-end cable supply, engineering, production, testing, transportation, jointing, and offshore installation for projects of 100–250 km length and 1.2–2 GW capacity.</p>
+      <p class="tender-summary">Energinet Eltransmission A/S is establishing a supplier qualification system (SQS) for 525 kV HVDC cable supply and offshore installation on interconnector projects in Denmark, covering cable systems of 100–250 km route length and 1.2–2 GW capacity. The scope includes engineering, production, transportation, jointing, testing, and offshore installation of complete HVDC cable systems.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">dc cable</span>
@@ -402,7 +442,7 @@
         <span><strong>Published:</strong> 27 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">Construction of turnkey converter stations (Stromrichtersysteme V5 B and V5a B) as part of the SuedOstLink HVDC transmission project in Germany. This is an EPC contract for converter substation civil works and electrical integration.</p>
+      <p class="tender-summary">Turnkey construction and delivery of converter subsystems (V5 B and V5a B) for the SuedOstLink HVDC transmission project in Germany, including EPC signal integration for the V5a converter.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">suedostlink</span>
@@ -429,7 +469,7 @@
         <span><strong>Published:</strong> 23 Apr 2026</span>
       </div>
       
-      <p class="tender-summary">RTE seeks marine operators and service providers for curative maintenance and repair of submarine cable links (HVAC and HVDC) across French waters, including fault location, cable deburial, cutting, joint deployment, and reprotection. This is a periodic indicative notice to identify market capacity and solicit technical proposals.</p>
+      <p class="tender-summary">RTE is seeking marine operations services for curative (repair) maintenance of submarine cable links, including both HVAC and HVDC systems. The scope covers fault location, vessel mobilization, cable deburial, cutting, preparation, pull-in, joint deployment, and reprotection—excluding jointing itself.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span>
@@ -440,7 +480,7 @@
   <div id="intel-empty" class="empty" style="display:none;">No market intel matching current filters.</div>
 
   <footer>
-    <p>Generated 2026-04-27 12:12 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
+    <p>Generated 2026-04-28 10:29 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
   </footer>
 </div>
 
