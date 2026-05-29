@@ -114,19 +114,19 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">Updated Fri 29 May 2026 · 15475 notices screened · 15458 rejected at HVDC gate</p>
+      <p class="subtitle">Updated Fri 29 May 2026 · 16702 notices screened · 16685 rejected at HVDC gate</p>
     </div>
-    <div class="last-run">Last run: Fri 29 May 2026, 06:41 UTC</div>
+    <div class="last-run">Last run: Fri 29 May 2026, 19:04 UTC</div>
   </div>
 
   <div class="stats">
     <div class="stat">
       <div class="stat-label">Bid candidates</div>
-      <div class="stat-value info">6</div>
+      <div class="stat-value info">7</div>
     </div>
     <div class="stat">
       <div class="stat-label">Market intel</div>
-      <div class="stat-value">11</div>
+      <div class="stat-value">10</div>
     </div>
     <div class="stat">
       <div class="stat-label">Active tenders</div>
@@ -169,10 +169,50 @@
     </select>
   </div>
 
-  <h2>1. Bid candidates<span class="count" id="bid-count-display">6</span></h2>
+  <h2>1. Bid candidates<span class="count" id="bid-count-display">7</span></h2>
   <p class="section-desc">HVDC scope + RTEi-relevant service. Default view: active tenders.</p>
 
   <div id="bid-section">
+    
+    <div class="tender bid"
+         data-cats="named_project"
+         data-source="FTS"
+         data-stage="active">
+      <div class="tender-head">
+        <div style="flex: 1; min-width: 0;">
+          <p class="tender-title"><a href="https://www.find-tender.service.gov.uk/Notice/ocds-h6vhtk-068f46" target="_blank" rel="noopener">Eastern Green Link 4 AC Digital Models Study</a></p>
+          <p class="tender-buyer">SCOTTISH POWER UK PLC · FTS · tender · GB</p>
+        </div>
+        <div class="badges">
+          <span class="badge b-active">Active</span>
+          <span class="badge b-fit-partial">Fit: partial</span>
+          
+          <span class="badge b-bid">Bid candidate</span>
+        </div>
+      </div>
+      <div class="tender-meta">
+        
+        <span><strong>Deadline:</strong> 25 May 2026</span>
+        <span><strong>Published:</strong> 30 Apr 2026</span>
+        <span><strong>Score:</strong> 9.0</span>
+      </div>
+      
+      <p class="tender-summary">Scottish Power seeks a study contractor to develop AC network models for the Eastern Green Link 4 (EGL4) project in two stages: first, standalone AC modelling; second, collaborative testing of the EGL4 HVDC link control system with an HVDC contractor.</p>
+      <p class="bid-fit-reason">Fit: AC network modelling is outside RTEi&#39;s core HVDC consulting remit, but Stage 2 involvement in HVDC control system testing aligns with system studies expertise.</p>
+      
+      <ul class="tender-requirements">
+        <li>Detailed scope in attached AQ document (not provided in this notice)</li><li>Stage 2 requires coordination with a separate HVDC Contractor</li>
+      </ul>
+      
+      
+        <div class="tender-red-flag">⚠ AC modelling expertise may be required but is outside typical RTEi HVDC service line</div><div class="tender-red-flag">⚠ Full scope details unavailable; Stage 2 scope depends on external HVDC contractor selection</div>
+      
+      
+      <div class="tender-kw">
+        <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">high voltage direct current</span><span class="kw kw-hvdc">eastern green link</span><span class="kw kw-hvdc">egl4</span>
+        <span class="kw kw-service">ac network model</span><span class="kw kw-service">ac network models</span><span class="kw kw-service">network model</span>
+      </div>
+    </div>
     
     <div class="tender bid"
          data-cats=""
@@ -277,15 +317,15 @@
         <span><strong>Score:</strong> 3.0</span>
       </div>
       
-      <p class="tender-summary">TERNA is seeking specialized engineering services to support HVDC Converter Station engineering activities for the ELMED interconnector project. The scope covers technical advisory and engineering support for converter station design and development.</p>
-      <p class="bid-fit-reason">Fit: Direct match to RTEi&#39;s owner&#39;s engineer and HVDC electrical design review services for converter stations.</p>
+      <p class="tender-summary">Terna seeks specialized engineering support services for HVDC converter station activities on the ELMED project (Italy–Malta interconnection). Services cover technical advisory and engineering coordination for converter station design and implementation.</p>
+      <p class="bid-fit-reason">Fit: Direct match: HVDC converter station engineering services align with RTEi&#39;s owner&#39;s engineer, technical advisor, and design review capabilities.</p>
       
       <ul class="tender-requirements">
-        <li>Specialized engineering support (supporto specialistico) — scope detail limited by notice abstraction</li><li>ELMED project context — Italy–Spain subsea HVDC interconnector adds strategic importance</li>
+        <li>ELMED project context (Italy–Malta HVDC link) — established programme with specific technical baseline</li><li>Specialised HVDC converter station focus — not general grid engineering</li>
       </ul>
       
       
-        <div class="tender-red-flag">⚠ Scope definition sparse in published notice; detailed technical requirements likely in full tender documents</div><div class="tender-red-flag">⚠ Italian tender — confirm RTEi capacity for Italian regulatory/language compliance and TERNA stakeholder engagement</div>
+        <div class="tender-red-flag">⚠ Notice published May 2026 (future-dated); verify if live tender or template</div><div class="tender-red-flag">⚠ No budget disclosed — assess resource/commercial risk before bid investment</div>
       
       
       <div class="tender-kw">
@@ -416,7 +456,7 @@
   </div>
   <div id="bid-empty" class="empty" style="display:none;">No bid candidates matching current filters.</div>
 
-  <h2>2. HVDC market intelligence<span class="count" id="intel-count-display">11</span></h2>
+  <h2>2. HVDC market intelligence<span class="count" id="intel-count-display">10</span></h2>
   <p class="section-desc">Other HVDC tenders — OEM/EPC/cable supply. Useful for tracking the market; not RTEi bid targets.</p>
 
   <div id="intel-section">
@@ -449,29 +489,29 @@
     </div>
     
     <div class="tender"
-         data-cats="named_project"
-         data-source="FTS"
-         data-stage="active">
+         data-cats=""
+         data-source="TED"
+         data-stage="corrigendum">
       <div class="tender-head">
         <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://www.find-tender.service.gov.uk/Notice/ocds-h6vhtk-068f46" target="_blank" rel="noopener">Eastern Green Link 4 AC Digital Models Study</a></p>
-          <p class="tender-buyer">SCOTTISH POWER UK PLC · FTS · tender · GB</p>
+          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/370423-2026" target="_blank" rel="noopener">Italy – Construction work – Variante n.2</a></p>
+          <p class="tender-buyer">[&#39;Terna S.p.A&#39;] · TED · can-modif · ITA</p>
         </div>
         <div class="badges">
-          <span class="badge b-active">Active</span>
+          <span class="badge b-corrigendum">Corrigendum</span>
           <span class="badge b-intel">Market intel</span>
         </div>
       </div>
       <div class="tender-meta">
         
-        <span><strong>Deadline:</strong> 25 May 2026</span>
-        <span><strong>Published:</strong> 30 Apr 2026</span>
+        
+        <span><strong>Published:</strong> 29 May 2026</span>
       </div>
       
-      <p class="tender-summary">Scottish Power seeks a study contractor to develop AC network models for the Eastern Green Link 4 (EGL4) project in two stages: first, standalone AC modelling; second, collaborative testing of the EGL4 HVDC link control system with an HVDC contractor.</p>
+      <p class="tender-summary">Construction work variation (Variante n.2) for the Tyrrhenian Link HVDC VSC double-bipolar submarine interconnection, 2 × 500 MW, ±500 kV (East Bipole), procured on a turnkey (&#39;chiavi in mano&#39;) basis by Terna S.p.A.</p>
       
       <div class="tender-kw">
-        <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">high voltage direct current</span><span class="kw kw-hvdc">eastern green link</span><span class="kw kw-hvdc">egl4</span>
+        <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">±500 kv</span><span class="kw kw-hvdc">tyrrhenian link</span>
       </div>
     </div>
     
@@ -499,33 +539,6 @@
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">hvdc interconnector</span><span class="kw kw-hvdc">kontek</span>
-      </div>
-    </div>
-    
-    <div class="tender"
-         data-cats=""
-         data-source="TED"
-         data-stage="corrigendum">
-      <div class="tender-head">
-        <div style="flex: 1; min-width: 0;">
-          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/370423-2026" target="_blank" rel="noopener">Italy – Construction work – Variante n.2</a></p>
-          <p class="tender-buyer">[&#39;Terna S.p.A&#39;] · TED · can-modif · ITA</p>
-        </div>
-        <div class="badges">
-          <span class="badge b-corrigendum">Corrigendum</span>
-          <span class="badge b-intel">Market intel</span>
-        </div>
-      </div>
-      <div class="tender-meta">
-        
-        
-        <span><strong>Published:</strong> 29 May 2026</span>
-      </div>
-      
-      <p class="tender-summary">Construction work – Variante n.2 (modification notice) for turnkey realisation of a dual-bipole HVDC VSC interconnection with marine electrodes, 2×500 MW capacity, ±500 kV (Tyrrhenian Link – Eastern Bipole).</p>
-      
-      <div class="tender-kw">
-        <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">±500 kv</span><span class="kw kw-hvdc">tyrrhenian link</span>
       </div>
     </div>
     
@@ -576,7 +589,7 @@
         <span><strong>Published:</strong> 27 May 2026</span>
       </div>
       
-      <p class="tender-summary">Turnkey construction of converter subsystems V5 B and V5a B for the SuedOstLink HVDC transmission system in Germany, including extended Microsoft product support phase-out for Windows products in converter V5a.</p>
+      <p class="tender-summary">Construction of turnkey converter systems (V5 and V5a subsystems) for the SuedOstLink HVDC transmission project in Germany, including electrical infrastructure and associated works.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">suedostlink</span>
@@ -603,7 +616,7 @@
         <span><strong>Published:</strong> 04 May 2026</span>
       </div>
       
-      <p class="tender-summary">Turnkey construction and commissioning of converter station subsystems (V5B and V5aB) for the SuedOstLink HVDC transmission system in Germany, including switchover of control functions from reactive power to voltage control mode.</p>
+      <p class="tender-summary">Turnkey construction and commissioning of converter station subsystems (V5B and V5aB) for the SuedOstLink HVDC transmission project in Germany, including control function switchover (Q to U-mode) for converter V5.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">suedostlink</span>
@@ -657,7 +670,7 @@
         <span><strong>Published:</strong> 21 May 2026</span>
       </div>
       
-      <p class="tender-summary">TenneT seeks maintenance and repair services for offshore converter stations and onshore DC land stations in the Dutch North Sea and Netherlands. This is a pre-tender market consultation to gather industry input on service scope and procurement approach.</p>
+      <p class="tender-summary">TenneT is conducting a market consultation for future repair and maintenance services on its offshore HVDC converter stations and onshore DC land stations in the Dutch North Sea and Netherlands. This is a pre-tender consultation to gather market feedback on service scope and procurement strategy.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">converter station</span>
@@ -684,7 +697,7 @@
         <span><strong>Published:</strong> 18 May 2026</span>
       </div>
       
-      <p class="tender-summary">TenneT TSO GmbH seeks framework agreements for secondary construction drawing services (Sekundärkonstruktionsleistungen) for substations, grid connection systems, and HVDC systems across TenneT&#39;s network. Two suppliers will be awarded (60/40 split) under a multi-stage tender process.</p>
+      <p class="tender-summary">TenneT is issuing framework agreements for secondary construction engineering drawing services for substations, grid connection systems, and HVDC systems across its entire network in Germany. Two contractors will be selected (60/40 volume split) under a multi-stage procedure.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span>
@@ -722,7 +735,7 @@
   <div id="intel-empty" class="empty" style="display:none;">No market intel matching current filters.</div>
 
   <footer>
-    <p>Generated 2026-05-29 06:41 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
+    <p>Generated 2026-05-29 19:04 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
   </footer>
 </div>
 
