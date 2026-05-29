@@ -3,7 +3,7 @@
 # This file is the control surface. Edit it in the GitHub web UI,
 # commit, and tomorrow's 06:00 UTC run picks it up automatically.
 # ============================================================
-
+ 
 # ============================================================
 # GATE RULE — notices must pass the gate to appear on the dashboard.
 #
@@ -18,7 +18,7 @@
 # term eliminates false positives (e.g. Madagascar "Sofia region" road
 # projects, Shetland islands ferry services, Gotland regional tenders).
 # ============================================================
-
+ 
 # Path A — HVDC technology terms, any of these alone is enough to pass
 hvdc_technology_terms:
   - HVDC
@@ -50,7 +50,7 @@ hvdc_technology_terms:
   - "500 kV DC"
   - "525 kV DC"
   - "800 kV DC"
-
+ 
 # Path B — named HVDC projects from the RTEi HVDC-VSC Newsletter.
 # These match ONLY IF the notice also contains a technology term above.
 # This prevents geographic name collisions (Madagascar "Sofia region",
@@ -338,15 +338,23 @@ hvdc_project_names:
   - Murraylink
   - Nordic Link
   - NordicLink
-
+ 
 # Legacy key kept for backward-compatibility with older code paths.
 # screen.py now uses hvdc_technology_terms + hvdc_project_names instead.
 hvdc_gate_terms: []
-
+ 
 # ============================================================
 # RTEi SERVICE SIGNALS — mark a notice as bid_candidate if matched
 # ============================================================
+# Each match is a +1.0 to the score. Bid candidate requires score >= 2.0
+# AND at least one service signal hit. So a notice with 1 tech term
+# (HVDC) + 1 service hit = score 2.0 = bid_candidate. Notices with
+# multiple matches score higher and appear at top of the list.
+#
+# Categories below are illustrative — the screener doesn't use them,
+# just the flat list of strings. Order doesn't matter.
 rtei_service_signals:
+  # --- Owner's / Independent engineer roles ---
   - owner's engineer
   - owners engineer
   - owner engineer
@@ -355,37 +363,173 @@ rtei_service_signals:
   - technical adviser
   - independent engineer
   - independent engineering
+  - third-party review
+  - third party review
+  - independent verification
   - engineering services
   - engineering consultancy
   - technical assistance
   - technical support services
+  - consultancy
+  - consulting services
+  - consultant
+ 
+  # --- Design review / specification ---
   - design review
   - specification review
   - spec writing
   - specification writing
+  - basis of design
+  - design verification
+  - design validation
+  - technical specification
+ 
+  # --- Feasibility / FEED / pre-development ---
   - feasibility study
   - pre-FEED
   - "pre FEED"
   - FEED study
   - concept study
   - options study
+  - options appraisal
+  - prefeasibility
+  - pre-feasibility
+ 
+  # --- Power system studies (general) ---
   - grid study
   - grid stability study
+  - grid stability
   - system study
-  - EMT study
-  - electromagnetic transient study
-  - harmonic study
   - power system study
-  - insulation coordination study
+  - dynamic study
+  - dynamic studies
+  - dynamic performance
+  - stability study
+  - transient stability
+  - transient studies
+  - load flow study
+  - load flow studies
+  - short-circuit study
+  - short circuit study
   - protection study
   - protection settings review
+  - protection coordination
   - control and protection study
-  - consultancy
-  - consulting services
-  - consultant
+  - control system study
+  - insulation coordination study
+  - insulation coordination
+ 
+  # --- EMT / electromagnetic transient ---
+  - EMT study
+  - EMT studies
+  - EMT simulation
+  - EMT model
+  - EMT modelling
+  - EMT modeling
+  - electromagnetic transient study
+  - electromagnetic transient
+  - electromagnetic transients
+ 
+  # --- HVDC-specific studies ---
+  - harmonic study
+  - harmonic studies
+  - harmonic analysis
+  - harmonic filter
+  - HVDC control system
+  - DC control system
+  - converter control
+  - control system testing
+  - control system validation
+ 
+  # --- Multi-infeed / interaction studies ---
+  - multi-infeed interaction
+  - multi infeed interaction
+  - MIIF
+  - unit interaction factor
+  - UIF
+  - interaction study
+  - interaction studies
+  - resonance study
+ 
+  # --- Power system modelling tools / artefacts ---
+  - PowerFactory
+  - DIgSILENT
+  - PSCAD
+  - PSS/E
+  - PSSE
+  - EMTP
+  - RTDS
+  - real-time digital simulator
+  - real time digital simulator
+  - hardware-in-the-loop
+  - hardware in the loop
+  - HIL test
+  - HIL testing
+  - AC network model
+  - AC network models
+  - network model
+  - network models
+  - generic plant model
+  - generic plant models
+  - equivalent network model
+  - reduced network model
+ 
+  # --- Grid code compliance ---
+  - grid code compliance
+  - grid code compliant
+  - grid code requirement
+  - grid code requirements
+  - grid code study
+  - grid code studies
+  - grid code assessment
+  - grid code verification
+  - grid code testing
+  - compliance study
+  - compliance studies
+  - compliance assessment
+  - compliance testing
+  - compliance verification
+  - grid connection compliance
+  - grid connection study
+  - grid connection studies
+  - grid connection assessment
+  - network code compliance
+  - network code requirement
+  - connection conditions
+  - connection requirements
+  - GB grid code
+  - Grid Code
+ 
+  # --- Grid forming / advanced converter control ---
+  - grid forming
+  - grid-forming
+  - grid forming control
+  - grid forming converter
+  - grid forming inverter
+  - grid forming requirement
+  - grid forming requirements
+  - grid forming definition
+  - grid forming specification
+  - grid forming testing
+  - grid forming validation
+  - grid forming compliance
+  - virtual synchronous machine
+  - virtual synchronous generator
+  - synthetic inertia
+  - synchronous inertia
+  - inertia provision
+ 
+  # --- Procurement scope language ---
+  - study contractor
+  - study contract
   - expression of interest
   - request for expression of interest
-
+  - REoI
+  - "RFEI"
+  - call for studies
+  - framework for studies
+  - framework agreement for engineering
+ 
 # ============================================================
 # STAGE CLASSIFICATION
 # ============================================================
@@ -463,22 +607,22 @@ stages:
       - can-tran
   other:
     keywords: []   # catch-all
-
+ 
 # Which stage to show by default on the dashboard:
 default_stage_filter: active
-
+ 
 # Which stages go into the Monday email:
 email_stages:
   - active
   - corrigendum
-
+ 
 # ============================================================
 # SCORING
 # ============================================================
 scoring:
   bid_candidate_min_score: 2.0
   archive_days: 90
-
+ 
 # ============================================================
 # WATCHLIST BUYERS — boost on score, appear as "watched buyer"
 # ============================================================
@@ -538,7 +682,7 @@ watchlist_buyers:
   - CINEA
   - INEA
   - Connecting Europe Facility
-
+ 
 # ============================================================
 # CPV CODES (used by TED query)
 # ============================================================
@@ -554,7 +698,11 @@ cpv_codes:
   - "71323100"   # Electrical power systems design services
   - "71314100"   # Electrical services
   - "71334000"   # Mechanical and electrical engineering services
-
+  - "71241000"   # Feasibility study, advisory service, analysis (matches EGL4)
+  - "71311000"   # Civil engineering consultancy services
+  - "71318000"   # Advisory and consultative engineering services
+  - "73000000"   # Research and experimental development services
+ 
 # ============================================================
 # API SCOPES
 # ============================================================
@@ -583,7 +731,7 @@ api:
     - GRC
     - AUT
     - CHE
-
+ 
 # World Bank scope — which sectors / regions matter
 worldbank:
   # Limit to energy-sector notices (major-sector filter)
@@ -596,7 +744,7 @@ worldbank:
     - "General Procurement Notice"
     - "Specific Procurement Notice"
     - "Contract Award"
-
+ 
 # Gmail scope — which senders are trusted TSO portal alerts
 # Add more as you register on additional portals
 gmail:
@@ -615,7 +763,7 @@ gmail:
     - procurement@50hertz.com
     - alerts@ebrd.com
     - ecepp.ebrd.com
-
+ 
 # ============================================================
 # LLM SUMMARY
 # ============================================================
