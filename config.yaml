@@ -621,7 +621,7 @@ email_stages:
 # ============================================================
 scoring:
   bid_candidate_min_score: 2.0
-  archive_days: 90
+  archive_days: 45
  
 # ============================================================
 # WATCHLIST BUYERS — boost on score, appear as "watched buyer"
