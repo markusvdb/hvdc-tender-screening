@@ -114,15 +114,15 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">Updated Mon 07 Sep 2026 · 5534 notices screened · 5531 rejected at HVDC gate</p>
+      <p class="subtitle">Updated Tue 08 Sep 2026 · 6002 notices screened · 5998 rejected at HVDC gate</p>
     </div>
-    <div class="last-run">Last run: Mon 07 Sep 2026, 07:32 UTC</div>
+    <div class="last-run">Last run: Tue 08 Sep 2026, 07:25 UTC</div>
   </div>
 
   <div class="stats">
     <div class="stat">
       <div class="stat-label">Bid candidates</div>
-      <div class="stat-value info">0</div>
+      <div class="stat-value info">1</div>
     </div>
     <div class="stat">
       <div class="stat-label">Market intel</div>
@@ -144,7 +144,7 @@
 
   <div class="filter-row">
     <span class="filter-label">Stage:</span>
-    <button class="sbtn" data-stage="all">All (3)</button>
+    <button class="sbtn" data-stage="all">All (4)</button>
     <button class="sbtn active-stage" data-stage="active">Active tenders (0)</button>
     <button class="sbtn" data-stage="pipeline">Pipeline (0)</button>
     <button class="sbtn" data-stage="corrigendum">Corrigenda (2)</button>
@@ -169,10 +169,50 @@
     </select>
   </div>
 
-  <h2>1. Bid candidates<span class="count" id="bid-count-display">0</span></h2>
+  <h2>1. Bid candidates<span class="count" id="bid-count-display">1</span></h2>
   <p class="section-desc">HVDC scope + RTEi-relevant service. Default view: active tenders.</p>
 
   <div id="bid-section">
+    
+    <div class="tender bid"
+         data-cats=""
+         data-source="TED"
+         data-stage="other">
+      <div class="tender-head">
+        <div style="flex: 1; min-width: 0;">
+          <p class="tender-title"><a href="https://ted.europa.eu/en/notice/-/detail/619240-2026" target="_blank" rel="noopener">Netherlands – Research, testing and scientific technical simulator – Voluntary Ex-Ante Transparency Notice for NFDTES – RTDS units</a></p>
+          <p class="tender-buyer">[&#39;TenneT TSO B.V.&#39;] · TED · veat · NLD</p>
+        </div>
+        <div class="badges">
+          <span class="badge b-other">Other</span>
+          <span class="badge b-fit-partial">Fit: partial</span>
+          
+          <span class="badge b-bid">Bid candidate</span>
+        </div>
+      </div>
+      <div class="tender-meta">
+        
+        
+        <span><strong>Published:</strong> 08 Sep 2026</span>
+        <span><strong>Score:</strong> 3.5</span>
+      </div>
+      
+      <p class="tender-summary">Procurement of RTDS (Real-Time Digital Simulator) units and associated hardware-in-the-loop testing infrastructure for TenneT&#39;s National Facility Digital Twin Electricity System (NFDTES), supporting real-time simulation, power system modelling, and HVDC integration research for the Dutch grid.</p>
+      <p class="bid-fit-reason">Fit: HVDC system studies and simulation expertise align with RTEi&#39;s scope, but this appears to be equipment/hardware procurement (RTDS units) rather than engineering consulting services.</p>
+      
+      <ul class="tender-requirements">
+        <li>Hardware-in-the-loop testing capability for HVDC systems</li><li>Real-time simulation and digital twin modelling of transmission/distribution networks</li><li>Collaboration with TU Delft research initiative</li>
+      </ul>
+      
+      
+        <div class="tender-red-flag">⚠ VEAT notice only — formal procurement documents and deadline not yet published</div><div class="tender-red-flag">⚠ Primary scope appears to be RTDS equipment supply/systems integration rather than engineering consulting</div>
+      
+      
+      <div class="tender-kw">
+        <span class="kw kw-hvdc">hvdc</span>
+        <span class="kw kw-service">rtds</span><span class="kw kw-service">hardware-in-the-loop</span>
+      </div>
+    </div>
     
   </div>
   <div id="bid-empty" class="empty" style="display:none;">No bid candidates matching current filters.</div>
@@ -229,7 +269,7 @@
         <span><strong>Published:</strong> 17 Aug 2026</span>
       </div>
       
-      <p class="tender-summary">Contract variation (Variante n.2) for turnkey construction and implementation of HVDC conversion stations and associated works for the SA.CO.I. 3 tri-terminal bipolar HVDC interconnection (±200 kV) linking Sardinia, Corsica, and mainland Italy (2×200 MW and 2×75 MW). This is a modification to existing contract 3000094003 with Terna S.p.A.</p>
+      <p class="tender-summary">Contract variation (Variante n.2) for turnkey construction and commissioning of three-terminal HVDC conversion stations (±200 kV, 2×200 MW + 2×75 MW) linking Sardinia, Corsica, and mainland Italy (SA.CO.I. 3 interconnection). This is an amendment to an existing EPC contract.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span>
@@ -256,7 +296,7 @@
         <span><strong>Published:</strong> 12 Aug 2026</span>
       </div>
       
-      <p class="tender-summary">Technical assistance services for HVDC converter stations of the COMETA project in Spain, operated by Red Eléctrica de España. Scope involves installation services (excluding software) for HVDC converter facilities.</p>
+      <p class="tender-summary">Technical assistance services for HVDC converter stations in the COMETA project in Spain. Scope involves diverse services (contratación de servicios diversos) but specific deliverables are not detailed in the notice.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span>
@@ -267,7 +307,7 @@
   <div id="intel-empty" class="empty" style="display:none;">No market intel matching current filters.</div>
 
   <footer>
-    <p>Generated 2026-09-07 07:32 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
+    <p>Generated 2026-09-08 07:25 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
   </footer>
 </div>
 
