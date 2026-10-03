@@ -114,15 +114,15 @@
   <div class="header">
     <div>
       <h1>HVDC tender screening</h1>
-      <p class="subtitle">Updated Fri 02 Oct 2026 · 14564 notices screened · 14554 rejected at HVDC gate</p>
+      <p class="subtitle">Updated Sat 03 Oct 2026 · 14990 notices screened · 14979 rejected at HVDC gate</p>
     </div>
-    <div class="last-run">Last run: Fri 02 Oct 2026, 08:56 UTC</div>
+    <div class="last-run">Last run: Sat 03 Oct 2026, 08:32 UTC</div>
   </div>
 
   <div class="stats">
     <div class="stat">
       <div class="stat-label">Bid candidates</div>
-      <div class="stat-value info">2</div>
+      <div class="stat-value info">3</div>
     </div>
     <div class="stat">
       <div class="stat-label">Market intel</div>
@@ -130,7 +130,7 @@
     </div>
     <div class="stat">
       <div class="stat-label">Active tenders</div>
-      <div class="stat-value">2</div>
+      <div class="stat-value">3</div>
     </div>
     <div class="stat">
       <div class="stat-label">Pipeline</div>
@@ -144,8 +144,8 @@
 
   <div class="filter-row">
     <span class="filter-label">Stage:</span>
-    <button class="sbtn" data-stage="all">All (10)</button>
-    <button class="sbtn active-stage" data-stage="active">Active tenders (2)</button>
+    <button class="sbtn" data-stage="all">All (11)</button>
+    <button class="sbtn active-stage" data-stage="active">Active tenders (3)</button>
     <button class="sbtn" data-stage="pipeline">Pipeline (0)</button>
     <button class="sbtn" data-stage="corrigendum">Corrigenda (2)</button>
     <button class="sbtn" data-stage="award">Awards (2)</button>
@@ -169,10 +169,50 @@
     </select>
   </div>
 
-  <h2>1. Bid candidates<span class="count" id="bid-count-display">2</span></h2>
+  <h2>1. Bid candidates<span class="count" id="bid-count-display">3</span></h2>
   <p class="section-desc">HVDC scope + RTEi-relevant service. Default view: active tenders.</p>
 
   <div id="bid-section">
+    
+    <div class="tender bid"
+         data-cats="converter,design_review"
+         data-source="WB"
+         data-stage="active">
+      <div class="tender-head">
+        <div style="flex: 1; min-width: 0;">
+          <p class="tender-title"><a href="https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00472554" target="_blank" rel="noopener"></a></p>
+          <p class="tender-buyer">World Bank — GFPP SKN Caribbean Resilient Renewable Energy Infrastructure Investment Facility · WB · Request for Expression of Interest</p>
+        </div>
+        <div class="badges">
+          <span class="badge b-active">Active</span>
+          <span class="badge b-fit-yes">Fit: yes</span>
+          
+          <span class="badge b-bid">Bid candidate</span>
+        </div>
+      </div>
+      <div class="tender-meta">
+        
+        <span><strong>Deadline:</strong> 22 Oct 2026</span>
+        
+        <span><strong>Score:</strong> 11.5</span>
+      </div>
+      
+      <p class="tender-summary">10-month grid modernization and submarine cable interconnection study for Saint Kitts and Nevis, including transmission/distribution redesign, geothermal integration (up to 50 MW), HVDC or submarine cable route selection, smart grid architecture, and climate/disaster resilience assessment for renewable energy integration.</p>
+      <p class="bid-fit-reason">Fit: Core HVDC/submarine cable consulting scope with converter station, design review, technical specifications, protection coordination, grid code compliance, and basis-of-design elements—classic owner&#39;s engineer / technical advisor territory.</p>
+      
+      <ul class="tender-requirements">
+        <li>Submarine cable route selection, landing-point substation design, and redundancy analysis for inter-island interconnection</li><li>Climate and disaster-risk assessment (hurricane, cyclone, seismic, volcanic hazards) specific to SIDS context</li><li>Smart grid, SCADA, DERMS, AMI, cybersecurity, and EV integration pathways—broad digital scope beyond traditional HVDC</li><li>69 kV ring topology redesign on both islands and geothermal generation integration (30–50 MW)</li>
+      </ul>
+      
+      
+        <div class="tender-red-flag">⚠ Scope spans grid modernization, smart grid digitalization, and renewable integration—risk of broad brush risk if submarine cable/HVDC is secondary to terrestrial AC grid design and software/digital systems.</div><div class="tender-red-flag">⚠ World Bank procurement may favour consortia with regional presence, climate/SIDS expertise, and strong local ties; RTEi&#39;s role may be as sub-consultant on HVDC/cable design rather than prime.</div>
+      
+      
+      <div class="tender-kw">
+        <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">converter station</span>
+        <span class="kw kw-service">consultancy</span><span class="kw kw-service">consulting services</span><span class="kw kw-service">consultant</span>
+      </div>
+    </div>
     
     <div class="tender bid"
          data-cats=""
@@ -197,15 +237,15 @@
         <span><strong>Score:</strong> 3.5</span>
       </div>
       
-      <p class="tender-summary">TenneT and TU Delft seek RTDS (Real-Time Digital Simulator) units and related hardware-in-the-loop testing infrastructure for the National Facility Digital Twin Electricity System (NFDTES), a Dutch initiative for real-time grid simulation, power system modelling, and HVDC integration research.</p>
-      <p class="bid-fit-reason">Fit: HVDC and system studies are within RTEi&#39;s scope, but this tender is for equipment (RTDS hardware) supply rather than engineering consulting services.</p>
+      <p class="tender-summary">TenneT and TU Delft are procuring RTDS (real-time digital simulator) units and associated hardware-in-the-loop testing infrastructure for the National Facility Digital Twin Electricity System (NFDTES), which will support real-time simulation, stability research, and HVDC integration studies on the Dutch grid.</p>
+      <p class="bid-fit-reason">Fit: RTDS hardware supply and simulator platform procurement fall outside RTEi&#39;s engineering consulting scope; however, system studies and HVDC integration advisory around the simulator could be relevant if scoped separately.</p>
       
       <ul class="tender-requirements">
-        <li>Hardware-in-the-loop simulation capability for grid and HVDC systems</li><li>Real-time digital twin modelling platform for transmission and distribution networks</li><li>Research focus on system stability, resilience and HVDC integration</li>
+        <li>Real-time digital simulator (RTDS) units with hardware-in-the-loop capability</li><li>Large-scale power system modelling and HVDC integration testing</li><li>Collaboration with Delft University of Technology</li>
       </ul>
       
       
-        <div class="tender-red-flag">⚠ This is a VEAT (Voluntary Ex-Ante Transparency Notice) — formal procurement has not yet been launched; deadline and full scope unknown</div><div class="tender-red-flag">⚠ Scope is equipment/hardware supply; RTEi&#39;s strength is in engineering advisory and studies, not vendor supply</div>
+        <div class="tender-red-flag">⚠ VEAT notice only — formal procurement process and detailed scope not yet published; submission deadline not specified</div><div class="tender-red-flag">⚠ Primary procurement appears to be equipment/platform supply rather than engineering services; RTEi involvement unclear without detailed bid package</div>
       
       
       <div class="tender-kw">
@@ -282,7 +322,7 @@
         <span><strong>Published:</strong> 30 Sep 2026</span>
       </div>
       
-      <p class="tender-summary">Construction and supply of four EPC/Turnkey lots for the MaresConnect 750 MW HVDC interconnector (Wales–Ireland): two converter stations, one AC tail substation, and subsea/underground cable systems (both HVDC and HVAC). Project uses VSC technology at ±320 kV symmetrical monopole configuration.</p>
+      <p class="tender-summary">MaresConnect is procuring four EPC/turnkey lots for a 750 MW, 320 kV HVDC interconnector between Wales and Ireland: two converter stations, subsea/underground HVDC cables, AC tail substations, and AC distribution cables. Work is split geographically and by asset type.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">high voltage direct current</span><span class="kw kw-hvdc">voltage source converter</span><span class="kw kw-hvdc">converter station</span>
@@ -390,7 +430,7 @@
         <span><strong>Published:</strong> 17 Sep 2026</span>
       </div>
       
-      <p class="tender-summary">Turnkey EPCI delivery of a 2 GW offshore HVDC converter platform (jacket substructure, topside, auxiliaries) and transport/installation for the NorthSeaConnector 1 project in German waters; onshore converter station scope remains with original contractor.</p>
+      <p class="tender-summary">Turnkey EPCI delivery of a 2 GW offshore HVDC converter platform (yard scope: jacket, topside, transport, installation) and onshore converter station for the NorthSeaConnector 1 project, including all electrical and auxiliary systems to connect to the German HV grid.</p>
       
       <div class="tender-kw">
         <span class="kw kw-hvdc">hvdc</span><span class="kw kw-hvdc">converter station</span><span class="kw kw-hvdc">converter platform</span>
@@ -482,7 +522,7 @@
   <div id="intel-empty" class="empty" style="display:none;">No market intel matching current filters.</div>
 
   <footer>
-    <p>Generated 2026-10-02 08:56 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
+    <p>Generated 2026-10-03 08:32 UTC · <a href="https://github.com/markusvdb/hvdc-tender-screening" target="_blank">source</a> · Data: FTS (OGL v3.0), TED (© EU), World Bank (CC BY 4.0), TSO portal alerts</p>
   </footer>
 </div>
 
